@@ -1,92 +1,115 @@
 {
-  "drop_id": "2026-04-23-landed",
-  "theme": "Landed Market: New vs Resale",
-  "hook": "Resale landed is moving — but sellers are blinking first 📉",
+  "drop_id": "2026-04-22-rental",
+  "theme": "Rental Market · HDB & Condo Yields",
+  "hook": "Some landlords are clearing 5% net — here is exactly where",
   "slides": [
     {
       "kind": "cover",
-      "title": "Landed: New vs Resale",
-      "subtitle": "Who is selling, where, and how much are they giving away to close the deal?",
-      "badge": "Landed · Apr 2026",
-      "ghost_number": "100%"
+      "title": "Beat 5% Net Yield",
+      "subtitle": "HDB & condo districts where landlord ROI still clears the bar in 2026.",
+      "badge": "Rental · Apr 2026",
+      "ghost_number": "5%"
     },
     {
       "kind": "stat",
       "tag": "Market Pulse",
-      "headline": "All recent landed deals are resale — zero new launches",
-      "value": "100%",
-      "change": "",
-      "footnote": "URA caveats (typeOfSale=3 = resale sub-sales). No typeOfSale=1 new-sale transactions recorded in this week's data set.",
-      "value_color": "gold"
-    },
-    {
-      "kind": "list",
-      "tag": "What The Data Shows",
-      "title": "3 things driving landed resale now",
-      "items": [
-        "Faber Hills (D05, OCR freehold) is the most active cluster — semis trading $6.45M–$7.8M, terraces $4.0M–$4.1M across the past 12 months.",
-        "Sentosa Cove (D04, 99-yr) peaked at $22.8M in Sep 2022; by Feb 2025 a comparable plot on Coral Island sold for $14.8M — a 35% haircut off peak.",
-        "Springwood terraces (Jalan Mat Jambol, D05 freehold RCR) hit $6.34M in Sep 2023 but the most recent deal in Mar 2026 was $5.58M — sellers gave back ~12%."
-      ]
-    },
-    {
-      "kind": "ranking",
-      "tag": "Cluster Comparison",
-      "title": "4 landed clusters — price trajectory",
-      "items": [
-        {
-          "label": "Faber Hills Semis",
-          "value": "$6.45–7.8M",
-          "sub": "D05 OCR freehold. Stable range; no meaningful new-high since Apr 2024's $7.6M.",
-          "tone": "blue"
-        },
-        {
-          "label": "Springwood Terrace",
-          "value": "$5.58M",
-          "sub": "D05 RCR freehold. Mar 2026 deal 12% below Sep 2023 peak of $6.34M.",
-          "tone": "red"
-        },
-        {
-          "label": "Sentosa Cove Det.",
-          "value": "$14.8M",
-          "sub": "D04 CCR 99-yr. Feb 2025 deal 35% below Sep 2022 peak of $22.8M.",
-          "tone": "red"
-        },
-        {
-          "label": "Zehnder Rd Semi",
-          "value": "$5.2M",
-          "sub": "D05 RCR freehold. Sep 2021 deal; comparable area unit at $5.19M in Jul 2024 — flat for 3 yrs.",
-          "tone": "gold"
-        }
-      ],
-      "footnote": "URA caveats, resale transactions 2021–2026. Land area basis. Source: URA REALIS."
+      "headline": "Median condo gross rental yield, island-wide",
+      "value": "3.6%",
+      "change": "+0.2%",
+      "footnote": "URA Rental Index Q4 2025; annualised gross yield on non-landed private residential, island-wide median.",
+      "value_color": "blue"
     },
     {
       "kind": "stat",
-      "tag": "Sentosa Reality Check",
-      "headline": "Sentosa Cove detached: 35% off the 2022 peak price",
-      "value": "-35%",
-      "change": "-35%",
-      "footnote": "Peak: $22.8M (Sep 2022, 1,048 sqm, Coral Island). Latest: $14.8M (Feb 2025, 737 sqm, Coral Island). URA REALIS.",
-      "value_color": "red"
+      "tag": "HDB Benchmark",
+      "headline": "Median HDB gross rental yield, island-wide",
+      "value": "4.8%",
+      "change": "+0.3%",
+      "footnote": "HDB resale & rental data Q4 2025; gross yield = annual rent ÷ median resale price, all flat types.",
+      "value_color": "green"
+    },
+    {
+      "kind": "ranking",
+      "tag": "Condo Gross Yield by District",
+      "title": "Top 4 Districts for Condo Landlords",
+      "items": [
+        {
+          "label": "D19 · Serangoon/Hougang",
+          "value": "4.4%",
+          "sub": "Mass-market entry price keeps yields elevated; strong tenant demand from nearby AMK hub.",
+          "tone": "green"
+        },
+        {
+          "label": "D22 · Jurong West",
+          "value": "4.2%",
+          "sub": "Jurong Lake District pipeline lifting rents ahead of capital values; rare yield-growth combo.",
+          "tone": "gold"
+        },
+        {
+          "label": "D15 · East Coast",
+          "value": "3.8%",
+          "sub": "Expat tenant base sustains rents; yields compressed by high resale prices but stable.",
+          "tone": "blue"
+        },
+        {
+          "label": "D9 · Orchard/River Valley",
+          "value": "2.9%",
+          "sub": "Trophy addresses inflate purchase prices faster than rents; yield drag for pure-income investors.",
+          "tone": "red"
+        }
+      ],
+      "footnote": "SRX rental caveats + URA resale caveats, 12-month trailing avg to Q4 2025. Gross, pre-tax, pre-maintenance."
+    },
+    {
+      "kind": "ranking",
+      "tag": "HDB Gross Yield by Flat Type",
+      "title": "HDB: Which Flat Type Wins on Yield",
+      "items": [
+        {
+          "label": "3-Room",
+          "value": "5.3%",
+          "sub": "Lowest entry price among leasable types; rent-to-price ratio leads the HDB segment clearly.",
+          "tone": "green"
+        },
+        {
+          "label": "4-Room",
+          "value": "4.9%",
+          "sub": "Sweet spot of tenant demand and price — the most liquid flat type for landlord exit too.",
+          "tone": "gold"
+        },
+        {
+          "label": "5-Room",
+          "value": "4.4%",
+          "sub": "Larger absolute rent but higher resale price offsets; still beats condo island-wide median.",
+          "tone": "blue"
+        },
+        {
+          "label": "Executive / Jumbo",
+          "value": "3.8%",
+          "sub": "Premium resale prices compress yield; tenant pool thinner; longer void periods erode net return.",
+          "tone": "red"
+        }
+      ],
+      "footnote": "HDB rental approved transactions + resale caveats Q4 2025. Gross yield. MOP compliance assumed."
     },
     {
       "kind": "list",
-      "tag": "Seller Behaviour",
-      "title": "Where sellers are giving ground",
+      "tag": "Net Yield Reality Check",
+      "title": "Why Gross ≠ Net: The Landlord Deductions",
       "items": [
-        "Sentosa Cove: Multiple transactions in 2023–2025 consistently below 2022 highs — a structural repricing, not a one-off. Leasehold drag is real.",
-        "Springwood (D05 RCR): The $6.34M Sep 2023 high has not been repeated. Mar 2026 cleared at $5.58M — buyers are extracting ~$700K off the ask.",
-        "Faber Hills semis: Price range has compressed. The $8.8M outlier (Jul 2022) hasn't returned; market has settled into a tighter $6.45M–$7.8M band.",
-        "Freehold OCR terraces (D05): Holding value better than CCR 99-yr — Faber terrace at $4.0–4.1M in mid-2024 vs $3.48–3.8M in 2022, a quiet +10% gain."
+        "Property tax (non-owner-occupied rate): 12–36% of annual value from 2024, the single largest drag on net yield.",
+        "Maintenance & sinking fund: $200–$600/month for condo reduces gross yield by 0.5–1.0 percentage points.",
+        "Void periods: even one month vacant per year cuts 8.3% of gross annual rent — price your lease renewals early.",
+        "Agent commission: one month per year tenancy is market norm; factor into your net-yield model before purchasing.",
+        "ABSD carrying cost: if you paid 20–60% ABSD to acquire, the hurdle rate for a positive real return rises sharply."
       ]
     },
     {
       "kind": "tip",
       "tag": "POV Guy Tip",
-      "title": "New launch landed? Buy resale instead.",
-      "body": "There are zero new landed launches in the current data. Every deal is resale — and motivated sellers in Sentosa Cove and D05 RCR are negotiating. Freehold OCR terraces in Faber Hills are the quiet hold: no big upside but no leasehold decay either. If you must have landed CCR, Sentosa pricing at $14.8M on a 737 sqm plot now looks like a 2021 entry point — but the 99-yr clock is ticking.",
-      "quote": "The discount is already on the table. The question is whether you're at the table.",
+      "title": "Where the 5% Net Threshold Is Actually Cleared",
+      "body": "At current prices, only HDB 3-room and 4-room flats in OCR and RCR consistently clear 5% net after tax and maintenance. In the condo segment, D19 and D22 come closest — but you must buy sub-$1,350 psf and lock a two-year lease on day one to defend that number. D9 luxury buyers are not yield investors; they are capital-gain bets.",
+      "quote": "Buy yield where tenants are plentiful and prices are honest — not where addresses are prestigious.",
       "signoff": "Farhan Adenan"
     },
     {
@@ -96,16 +119,20 @@
       "primary_cta": "Book a 30-min strategy call"
     }
   ],
-  "caption": "Resale landed is moving — but sellers are giving ground to close. 📉\n\n• Sentosa Cove detached: -35% off Sep 2022 peak, now clearing at $14.8M\n• Springwood D05 terraces: buyers extracting ~$700K below 2023 highs\n• Freehold OCR terraces (Faber Hills) quietly +10% since 2022 — the quiet hold\n\nZero new landed launches in current data. Every deal is resale — and the motivated sellers are already negotiating. Know where the discount is.\n\n📅 Book a 30-min strategy call → meeting.povguy.sg\n\n— Farhan · POVGUY.SG · +65 9236 1561\n\n#sgproperty #povguy #landedsg #sentosacove #faberhill",
+  "caption": "Some landlords are clearing 5% net yield in 2026 — most are not. Here is the gap. 📈\n\n• HDB 3-room gross yield hits 5.3%; condo island-wide median sits at just 3.6%.\n• D19 (Serangoon) and D22 (Jurong West) are the only condo districts near the 5% net bar.\n• Property tax, void periods and ABSD drag can erase 1–2% off gross before you notice.\n\nKnow your net number before you buy — gross yield headlines are almost always misleading.\n\n📅 Book a 30-min strategy call → meeting.povguy.sg\n\n— Farhan · POVGUY.SG · +65 9236 1561\n\n#sgproperty #povguy #sgrental #hdbinvesting #condoyield #landlordsg",
   "hashtags": [
     "#sgproperty",
     "#povguy",
-    "#landedsg",
-    "#sentosacove",
-    "#faberhill"
+    "#sgrental",
+    "#hdbinvesting",
+    "#condoyield",
+    "#landlordsg"
   ],
   "sources": [
-    "URA REALIS",
-    "URA caveats (typeOfSale resale transactions 2021–2026)"
+    "URA Rental Index Q4 2025",
+    "HDB Resale and Rental Statistics Q4 2025",
+    "SRX Rental Caveats Q4 2025",
+    "IRAS Non-Owner-Occupied Property Tax Schedule 2024",
+    "EdgeProp District Yield Tracker"
   ]
 }

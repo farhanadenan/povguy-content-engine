@@ -1,20 +1,24 @@
 {
-  "drop_id": "2026-04-23-landed",
-  "theme": "Landed Market: New vs Resale",
-  "hook": "Resale landed is moving — but sellers are blinking first 📉",
+  "drop_id": "2026-04-22-rental",
+  "theme": "Rental Market · HDB & Condo Yields",
+  "hook": "Some landlords are clearing 5% net — here is exactly where",
   "slide_count": 8,
   "hashtags": [
     "#sgproperty",
     "#povguy",
-    "#landedsg",
-    "#sentosacove",
-    "#faberhill"
+    "#sgrental",
+    "#hdbinvesting",
+    "#condoyield",
+    "#landlordsg"
   ],
   "sources": [
-    "URA REALIS",
-    "URA caveats (typeOfSale resale transactions 2021–2026)"
+    "URA Rental Index Q4 2025",
+    "HDB Resale and Rental Statistics Q4 2025",
+    "SRX Rental Caveats Q4 2025",
+    "IRAS Non-Owner-Occupied Property Tax Schedule 2024",
+    "EdgeProp District Yield Tracker"
   ],
-  "rendered_at": "2026-04-22T21:43:40.739Z",
+  "rendered_at": "2026-04-22T22:34:33.095Z",
   "image_urls": [
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-1.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-2.png",
