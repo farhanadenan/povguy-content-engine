@@ -29,7 +29,7 @@
  *
  *   <One-line takeaway / what it means for the buyer>
  *
- *   📅 Book a 30-min strategy call → calendly.com/farhan-adenan/30min
+ *   📅 Book a 30-min strategy call → meeting.povguy.sg
  *
  *   — Farhan · POVGUY.SG · +65 9236 1561
  *
@@ -93,7 +93,7 @@ SLIDE RULES
 - Numbers must be EXACT, drawn from the source data. If you don't have an exact number, omit that slide rather than approximating.
 - Never mention "AI", "automated", "machine learning", or "language model".
 - Do NOT include WhatsApp, phone numbers, or any contact details inside slide copy
-  — the CTA template renders Calendly + sign-off automatically.
+  — the CTA template renders the meeting link + sign-off automatically.
 
 CAPTION RULES (this is what shows on Telegram, FB, IG, Threads — get it right)
 - Total length ≤ 700 chars including hashtags.
@@ -107,7 +107,7 @@ CAPTION RULES (this is what shows on Telegram, FB, IG, Threads — get it right)
 
   <Single-line takeaway — what it means for the buyer/seller. ≤120 chars.>
 
-  📅 Book a 30-min strategy call → calendly.com/farhan-adenan/30min
+  📅 Book a 30-min strategy call → meeting.povguy.sg
 
   — Farhan · POVGUY.SG · +65 9236 1561
 
