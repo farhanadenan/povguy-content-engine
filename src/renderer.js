@@ -32,9 +32,10 @@ async function renderDrop(dropDir) {
     await page.screenshot({ path: out, type: 'png', omitBackground: false });
     console.log(`[renderer] ${out}`);
 
-    // Cover slide: also emit a transparent-bg overlay PNG (text/UI only)
-    // so cover-enhancer can composite it on top of the AI-generated background.
-    if (slide.kind === 'cover') {
+    // For slides we plan to AI-enhance (cover, stat, tip): also emit a
+    // transparent-bg overlay PNG (text/UI only) so cover-enhancer can composite
+    // the overlay on top of the AI-generated background.
+    if (slide.kind === 'cover' || slide.kind === 'stat' || slide.kind === 'tip') {
       const overlayPayload = encodeURIComponent(JSON.stringify({ ...basePayload, _overlay: true }));
       await page.goto(`${templateUrl}#${overlayPayload}`, { waitUntil: 'networkidle' });
       await page.waitForTimeout(200);
