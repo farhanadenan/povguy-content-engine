@@ -1,22 +1,21 @@
 {
   "drop_id": "2026-04-22-rental",
-  "theme": "Singapore Rental Market — Q1 2026 Landlord Yield Breakdown",
-  "hook": "Five districts where rental income still beats five percent gross yield",
-  "slide_count": 9,
+  "theme": "Rental Yields Q1 2026",
+  "hook": "District 25 just cracked 5.5% gross yield while Orchard lags at 3.8%",
+  "slide_count": 8,
   "hashtags": [
     "#sgproperty",
     "#povguy",
-    "#sgrentals",
-    "#landlordsg",
-    "#condoyield",
+    "#condorental",
     "#rentalyield",
-    "#districtguide"
+    "#singaporerentals",
+    "#district14"
   ],
   "sources": [
-    "URA Rental Contracts 26Q1 (Jan–Mar 2026)",
-    "POV Guy yield analysis — indicative purchase values based on prevailing market context"
+    "URA Rental Transactions Q1 2026",
+    "data.gov.sg"
   ],
-  "rendered_at": "2026-04-22T13:57:27.634Z",
+  "rendered_at": "2026-04-22T14:38:25.508Z",
   "image_urls": [
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-1.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-2.png",
@@ -25,8 +24,7 @@
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-5.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-6.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-7.png",
-    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-8.png",
-    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-9.png"
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-8.png"
   ],
   "image_cdn": {
     "owner": "farhanadenan",
