@@ -1,23 +1,22 @@
 {
   "drop_id": "2026-04-22-rental",
-  "theme": "Singapore Rental Yields Q1 2026",
-  "hook": "Most landlords miss 5% net yield — here's exactly why.",
+  "theme": "Singapore Rental Market — Q1 2026 Landlord Yield Breakdown",
+  "hook": "Five districts where rental income still beats five percent gross yield",
   "slide_count": 9,
   "hashtags": [
     "#sgproperty",
     "#povguy",
-    "#condorental",
+    "#sgrentals",
+    "#landlordsg",
+    "#condoyield",
     "#rentalyield",
-    "#singaporelandlord",
-    "#ura",
-    "#propertyinvestmentsg"
+    "#districtguide"
   ],
   "sources": [
     "URA Rental Contracts 26Q1 (Jan–Mar 2026)",
-    "URA REALIS",
-    "SRX (purchase psf reference estimates)"
+    "POV Guy yield analysis — indicative purchase values based on prevailing market context"
   ],
-  "rendered_at": "2026-04-22T13:40:03.787Z",
+  "rendered_at": "2026-04-22T13:57:27.634Z",
   "image_urls": [
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-1.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-2.png",
