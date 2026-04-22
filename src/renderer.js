@@ -23,13 +23,25 @@ async function renderDrop(dropDir) {
 
   for (let i = 0; i < spec.slides.length; i++) {
     const slide = spec.slides[i];
-    const payload = encodeURIComponent(JSON.stringify({ ...slide, _index: i + 1, _total: spec.slides.length, _drop: spec }));
+    const basePayload = { ...slide, _index: i + 1, _total: spec.slides.length, _drop: spec };
+    const payload = encodeURIComponent(JSON.stringify(basePayload));
     await page.goto(`${templateUrl}#${payload}`, { waitUntil: 'networkidle' });
     // Give CSS animations time to settle
     await page.waitForTimeout(200);
     const out = path.join(dropDir, `slide-${i + 1}.png`);
     await page.screenshot({ path: out, type: 'png', omitBackground: false });
     console.log(`[renderer] ${out}`);
+
+    // Cover slide: also emit a transparent-bg overlay PNG (text/UI only)
+    // so cover-enhancer can composite it on top of the AI-generated background.
+    if (slide.kind === 'cover') {
+      const overlayPayload = encodeURIComponent(JSON.stringify({ ...basePayload, _overlay: true }));
+      await page.goto(`${templateUrl}#${overlayPayload}`, { waitUntil: 'networkidle' });
+      await page.waitForTimeout(200);
+      const overlayOut = path.join(dropDir, `slide-${i + 1}-overlay.png`);
+      await page.screenshot({ path: overlayOut, type: 'png', omitBackground: true });
+      console.log(`[renderer] ${overlayOut} (transparent overlay)`);
+    }
   }
   await browser.close();
 
