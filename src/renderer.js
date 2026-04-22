@@ -21,13 +21,24 @@ async function renderDrop(dropDir) {
   const context = await browser.newContext({ viewport: { width: SLIDE_W, height: SLIDE_H } });
   const page = await context.newPage();
 
+  // Per-render counter for unique cache-busting query string. Using a query
+  // param (instead of just a hash) forces Playwright to do a real page load
+  // each time — same-path-different-hash navigations were silently dropping
+  // the hashchange in long sequences and causing every overlay PNG to capture
+  // the FIRST slide's overlay state.
+  let navCounter = 0;
+  async function gotoSlide(payloadObj) {
+    const payload = encodeURIComponent(JSON.stringify(payloadObj));
+    navCounter += 1;
+    const url = `${templateUrl}?n=${navCounter}#${payload}`;
+    await page.goto(url, { waitUntil: 'networkidle' });
+    await page.waitForTimeout(200);
+  }
+
   for (let i = 0; i < spec.slides.length; i++) {
     const slide = spec.slides[i];
     const basePayload = { ...slide, _index: i + 1, _total: spec.slides.length, _drop: spec };
-    const payload = encodeURIComponent(JSON.stringify(basePayload));
-    await page.goto(`${templateUrl}#${payload}`, { waitUntil: 'networkidle' });
-    // Give CSS animations time to settle
-    await page.waitForTimeout(200);
+    await gotoSlide(basePayload);
     const out = path.join(dropDir, `slide-${i + 1}.png`);
     await page.screenshot({ path: out, type: 'png', omitBackground: false });
     console.log(`[renderer] ${out}`);
@@ -36,9 +47,7 @@ async function renderDrop(dropDir) {
     // transparent-bg overlay PNG (text/UI only) so cover-enhancer can composite
     // the overlay on top of the AI-generated background.
     if (slide.kind === 'cover' || slide.kind === 'stat' || slide.kind === 'tip') {
-      const overlayPayload = encodeURIComponent(JSON.stringify({ ...basePayload, _overlay: true }));
-      await page.goto(`${templateUrl}#${overlayPayload}`, { waitUntil: 'networkidle' });
-      await page.waitForTimeout(200);
+      await gotoSlide({ ...basePayload, _overlay: true });
       const overlayOut = path.join(dropDir, `slide-${i + 1}-overlay.png`);
       await page.screenshot({ path: overlayOut, type: 'png', omitBackground: true });
       console.log(`[renderer] ${overlayOut} (transparent overlay)`);
