@@ -966,15 +966,17 @@
   .glyph.lg { width: 28px; height: 28px; flex-basis: 28px; vertical-align: -6px; }
   .glyph.xl { width: 44px; height: 44px; flex-basis: 44px; vertical-align: -10px; }
 
-  /* ===== Cover overlay mode (text/UI on transparent bg, composited atop AI image) ===== */
+  /* ===== Overlay mode (text/UI on transparent bg, composited atop AI image) ===== */
+  /* Applied to slide kinds: cover, stat, tip. Renderer emits a slide-N-overlay.png
+     transparent screenshot, which slide-enhancer composites on top of the AI bg. */
   html.overlay-render,
   body.overlay-render { background: transparent !important; }
-  .slide.cover.overlay-mode {
+  .slide.overlay-mode {
     background: transparent !important;
   }
-  .slide.cover.overlay-mode .overlay-scrim {
-    /* Diagonal dark scrim — heavier on the upper-left where headline+badge sit,
-       fading out to lower-right so the AI image breathes. */
+  .slide.overlay-mode .overlay-scrim {
+    /* Diagonal dark scrim — heavier on the upper-left where headline sits,
+       fading toward lower-right so the AI image breathes. */
     position: absolute; inset: 0;
     background:
       linear-gradient(135deg,
@@ -985,16 +987,38 @@
     pointer-events: none;
     z-index: 0;
   }
+  /* Stat slide: scrim weighted center-left where the giant number sits. */
+  .slide.stat.overlay-mode .overlay-scrim {
+    background:
+      linear-gradient(105deg,
+        rgba(3,7,26,0.88) 0%,
+        rgba(3,7,26,0.78) 35%,
+        rgba(3,7,26,0.55) 65%,
+        rgba(3,7,26,0.18) 100%);
+  }
+  /* Tip slide: even darker scrim because the punchline card needs maximum readability. */
+  .slide.tip.overlay-mode .overlay-scrim {
+    background:
+      linear-gradient(180deg,
+        rgba(3,7,26,0.88) 0%,
+        rgba(3,7,26,0.82) 50%,
+        rgba(3,7,26,0.78) 100%);
+  }
   /* Lift text above the scrim — keep original positioning intact */
-  .slide.cover.overlay-mode .stage { z-index: 2; }
-  .slide.cover.overlay-mode .ghost-num { z-index: 2; }
-  .slide.cover.overlay-mode .top-strip,
-  .slide.cover.overlay-mode .bot-strip,
-  .slide.cover.overlay-mode .slide-num { z-index: 2; }
+  .slide.overlay-mode .stage { z-index: 2; }
+  .slide.overlay-mode .ghost-num { z-index: 2; }
+  .slide.overlay-mode .top-strip,
+  .slide.overlay-mode .bot-strip,
+  .slide.overlay-mode .slide-num { z-index: 2; }
   /* Drop-shadow on key text so it survives any AI bg */
   .slide.cover.overlay-mode .title-block,
-  .slide.cover.overlay-mode .badge-line {
-    text-shadow: 0 2px 24px rgba(0,0,0,0.65);
+  .slide.cover.overlay-mode .badge-line,
+  .slide.stat.overlay-mode .stat-headline,
+  .slide.stat.overlay-mode .stat-value,
+  .slide.tip.overlay-mode .tip-title,
+  .slide.tip.overlay-mode .tip-body,
+  .slide.tip.overlay-mode .tip-quote {
+    text-shadow: 0 2px 24px rgba(0,0,0,0.75);
   }
 </style>
 </head>
@@ -1215,17 +1239,19 @@
                         colorKey === 'red'  ? 'red'  :
                         colorKey === 'green' ? 'green' : '';
       html = `
-        <div class="slide stat bg2">
+        <div class="slide stat bg2 ${overlayMode ? 'overlay-mode' : ''}">
+          ${overlayMode ? '<div class="overlay-scrim"></div>' : `
           <div class="glow blue-cr"></div>
           <div class="glow red-tl"></div>
+          `}
           ${chrome()}
           <div class="stage">
             ${data.tag ? `<div class="tag">${esc(data.tag)}</div>` : ''}
-            <div class="headline">${esc(data.headline || '')}</div>
+            <div class="headline stat-headline">${esc(data.headline || '')}</div>
             <div class="stat-stage">
               <div class="value-wrap">
                 ${donutSvg(460, colorHex(colorKey))}
-                <div class="value ${valueColor}">${esc(data.value || '')}</div>
+                <div class="value stat-value ${valueColor}">${esc(data.value || '')}</div>
                 ${change ? `<div class="change ${dir}">${esc(change)}</div>` : ''}
               </div>
             </div>
@@ -1303,19 +1329,21 @@
 
     else if (k === 'tip') {
       html = `
-        <div class="slide tip tip-v5 bg3">
+        <div class="slide tip tip-v5 bg3 ${overlayMode ? 'overlay-mode' : ''}">
+          ${overlayMode ? '<div class="overlay-scrim"></div>' : `
           <div class="glow gold-tr"></div>
           <div class="glow blue-cr"></div>
+          `}
           ${chrome()}
           <div class="stage">
             <div class="badge-row">
               ${glyph('lightbulb', 'tip-glyph')}
               <div class="tip-tag">${esc(data.tag || 'POV Guy Tip')}</div>
             </div>
-            <div class="h2" style="font-size:62px;">${esc(data.title || '')}</div>
+            <div class="h2 tip-title" style="font-size:62px;">${esc(data.title || '')}</div>
             <div class="divider"></div>
-            <div class="body-block">${esc(data.body || '')}</div>
-            ${data.quote ? `<div class="quote-box"><div class="text">${esc(data.quote)}</div></div>` : ''}
+            <div class="body-block tip-body">${esc(data.body || '')}</div>
+            ${data.quote ? `<div class="quote-box"><div class="text tip-quote">${esc(data.quote)}</div></div>` : ''}
             <div class="signoff">— ${esc(data.signoff || 'Farhan Adenan')}</div>
           </div>
         </div>`;
