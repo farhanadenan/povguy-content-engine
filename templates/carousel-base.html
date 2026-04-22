@@ -176,6 +176,8 @@
     width: auto;
     margin-bottom: 38px;
     opacity: 0.95;
+    align-self: flex-start;
+    flex-shrink: 0;
   }
   .cta-logo {
     height: 64px;
@@ -183,6 +185,8 @@
     margin: 0 auto 24px;
     display: block;
     opacity: 0.95;
+    align-self: center;
+    flex-shrink: 0;
   }
 
   /* ===== Tag pills ===== */
@@ -621,9 +625,14 @@
   const payload = decodeURIComponent(location.hash.slice(1) || '%7B%7D');
   const data = JSON.parse(payload || '{}');
   const root = document.getElementById('root');
-  const drop = data._drop || {};
-  const idx  = data._index || 1;
-  const tot  = data._total || 1;
+  // NB: idx/tot/drop are derived per-render from `data` so hashchange picks them up.
+  function ctx() {
+    return {
+      drop: data._drop || {},
+      idx:  data._index || 1,
+      tot:  data._total || 1,
+    };
+  }
 
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
@@ -634,6 +643,7 @@
   const SIGNOFF_ROLE = 'CEA R068636D · L3008022J';
 
   function chrome(opts = {}) {
+    const { idx, tot } = ctx();
     const numText = String(idx).padStart(2,'0') + ' / ' + String(tot).padStart(2,'0');
     const wm = opts.hideWatermark ? '' :
       `<div class="footer-wm">povguy.sg</div>`;
@@ -649,6 +659,7 @@
   }
 
   function dotPattern() {
+    const { idx } = ctx();
     return `
     <svg class="dotgrid" xmlns="http://www.w3.org/2000/svg">
       <defs>
@@ -675,6 +686,7 @@
     let html = '';
 
     if (k === 'cover') {
+      const { drop } = ctx();
       const ghost = (data.ghost_number || '').toString();
       const badge = data.badge || drop.theme || 'Daily Drop';
       html = `
@@ -837,6 +849,20 @@
 
     root.innerHTML = html;
   }
+  // Re-render whenever the URL hash changes. The renderer navigates via
+  // page.goto(template#payload) for each slide; without a hashchange listener,
+  // only the first render fires and every screenshot returns the cover slide.
+  function rerenderFromHash() {
+    try {
+      const next = JSON.parse(decodeURIComponent(location.hash.slice(1) || '%7B%7D'));
+      Object.keys(data).forEach(k => delete data[k]);
+      Object.assign(data, next);
+      render();
+    } catch (e) {
+      console.error('hashchange parse failed', e);
+    }
+  }
+  window.addEventListener('hashchange', rerenderFromHash);
   render();
 </script>
 </body>
