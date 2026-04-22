@@ -1,21 +1,19 @@
 {
   "drop_id": "2026-04-22-rental",
-  "theme": "Rental Market · Q1 2026",
-  "hook": "District 14 condos are quietly printing 5%+ yields right now",
+  "theme": "Rental Market Q1 2026",
+  "hook": "These 4 districts are quietly printing 5%+ rental yields right now",
   "slide_count": 8,
   "hashtags": [
     "#sgproperty",
     "#povguy",
-    "#sgcondo",
-    "#rentalyield",
-    "#district14",
-    "#landlordsg"
+    "#sgrentalyield",
+    "#condorental",
+    "#sglandlord"
   ],
   "sources": [
-    "URA Rental Transactions Q1 2026",
-    "data.gov.sg"
+    "URA Rental Transactions Q1 2026 (data.gov.sg)"
   ],
-  "rendered_at": "2026-04-22T14:44:03.588Z",
+  "rendered_at": "2026-04-22T14:53:08.405Z",
   "image_urls": [
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-1.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-2.png",
