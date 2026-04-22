@@ -3,7 +3,7 @@ name: Daily Content Generation
 on:
   schedule:
     # 05:00 SGT (21:00 UTC previous day) — run BEFORE publisher's 06:00 preview
-    - cron: '0 21 * * *'
+    - cron: '0 8 * * *'
   workflow_dispatch:
     inputs:
       date:
