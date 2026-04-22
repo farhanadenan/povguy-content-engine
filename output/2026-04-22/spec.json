@@ -1,82 +1,79 @@
 {
   "drop_id": "2026-04-22-rental",
-  "theme": "Rental Yield",
-  "hook": "Five percent net rental yield still exists — here's exactly where",
+  "theme": "Singapore Rental Yields Q1 2026",
+  "hook": "Most landlords miss 5% net yield — here's exactly why.",
   "slides": [
     {
       "kind": "cover",
-      "title": "Where Singapore Landlords Are Still Clearing 5% Net",
-      "subtitle": "Q1 2026 URA Rental Data Decoded — Districts, Projects & Real Numbers",
-      "badge": "POV Guy · Rental Yield Report · 22 Apr 2026"
+      "title": "Singapore Rental Reality Check",
+      "subtitle": "Q1 2026 URA data decoded: which districts deliver yield, which destroy it",
+      "badge": "Q1 2026 · URA Rental Data"
     },
     {
       "kind": "stat",
-      "headline": "District 14 Dominates Q1 2026 Rental Volume",
-      "value": "30+",
-      "change": "Most active condo rental district in this URA Q1 2026 data feed",
-      "footnote": "Sims Urban Oasis, Sims Drive — transaction count exceeds every other project in dataset. Source: URA 26Q1"
+      "headline": "Sims Urban Oasis (D14) — 2BR Median Rent",
+      "value": "$3,900 / mo",
+      "change": "Gross yield ~4.5% · Net yield ~3.6% after costs",
+      "footnote": "Median of 20 URA-registered 2BR leases at Sims Drive, 26Q1. Purchase psf assumed at $1,600 for a 650 sqft unit (~$1.04M)."
     },
     {
       "kind": "stat",
-      "headline": "Sims Urban Oasis 1BR: Gross Yield Clears 5%",
-      "value": "$3,400 /mo",
-      "change": "Median 1BR rent (~450 sqft) across Q1 2026 — range $2,999–$3,700",
-      "footnote": "At ~$750K–$800K typical transacted price, gross yield = 5.1%–5.4%. After costs, net approaches 5%. Source: URA 26Q1"
+      "headline": "Wallich Residence (D02) — 1BR Rent vs Purchase Cost",
+      "value": "$7,250 / mo",
+      "change": "Gross yield ~3.99% · Net yield ~3.2% — luxury premium kills the math",
+      "footnote": "Average of Jan–Mar 2026 URA-registered 1BR leases at ~650 sqft. Purchase psf estimated $3,350 (~$2.18M). Yield drops further for 3BR units."
     },
     {
       "kind": "stat",
-      "headline": "District 25 OCR: Rosewood Suites Punches Above Its Weight",
-      "value": "$3,000–$4,600 /mo",
-      "change": "2BR at $3,000; 3BR at $4,000–$4,600 — Q1 2026 leases confirmed",
-      "footnote": "Lower quantum entry (~$600K–$650K for 2BR) pushes gross yield to ~5.5%–6.0%. Highest gross yield district in this dataset. Source: URA 26Q1"
+      "headline": "Rosewood Suites (D25) — 2BR Rent PSF",
+      "value": "$4.62 psf / mo",
+      "change": "Strongest gross yield proxy in dataset at ~5.7% gross · ~4.5% net",
+      "footnote": "Mar 2026 URA lease: 2BR at ~650 sqft, $3,000/mo. D25 purchase psf ~$950–$1,050. Highest gross yield in this data batch — but net still falls short of 5% after tax, maintenance, vacancy."
+    },
+    {
+      "kind": "insight",
+      "headline": "The Luxury Yield Trap: D10 vs D14",
+      "body": "Shangri-La Residences (D10) commands $9,752–$14,943/mo for 1,550–2,050 sqft units. Sounds impressive. But at D10 purchase psf of ~$3,000+, gross yields collapse to 2.5–3.0%. Meanwhile Sims Urban Oasis (D14) 1BR at $3,400/mo on a ~$680K entry price delivers 5.99% gross — nearly double. The market pays you more per dollar invested when you buy mass market, not prestige."
     },
     {
       "kind": "stat",
-      "headline": "District 15 Tanjong Rhu: Solid Mid-Tier Rental Demand",
-      "value": "$4,900 /mo",
-      "change": "Median 3BR rent at Tanjong Rhu Condominium (~1,250 sqft), Q1 2026",
-      "footnote": "2BR range: $3,800–$5,000. 3BR range: $4,800–$5,600. Consistent leasing Jan–Mar 2026. Yield depends on entry price — mid-4% gross for recent buyers. Source: URA 26Q1"
+      "headline": "Tanjong Ria (D15) — 3BR Rent Range Q1 2026",
+      "value": "$4,800 – $5,600 / mo",
+      "change": "11 leases registered Jan–Mar 2026 across 2BR and 3BR",
+      "footnote": "URA 26Q1. 3BR units at 1,200–1,400 sqft. At estimated D15 resale psf ~$1,200, gross yield ~3.8–4.0%. Marine Parade location supports rental demand but pricing has compressed yield."
+    },
+    {
+      "kind": "insight",
+      "headline": "Why No Project in This Dataset Clears 5% Net",
+      "body": "True net yield = gross rent minus property tax (~10% AV), maintenance fees ($300–$700/mo), agent commission (½ month/year), vacancy (1 month/year), and income tax. On a $1M condo grossing 4.5%, realistic net lands at 3.4–3.7%. To clear 5% net in Singapore today you need: (1) entry price well below $1,000 psf, (2) rent psf above $5.00/mo, or (3) HDB approved-subletting plays. D25 Rosewood Suites comes closest in this dataset."
     },
     {
       "kind": "stat",
-      "headline": "Wallich Residence D02: Prestige Rents, Compressed Yields",
-      "value": "$10,750 /mo",
-      "change": "Average of 8 confirmed D02 leases at Wallich Residence, Q1 2026 (range: $7,000–$18,000)",
-      "footnote": "4BR touched $18,000/mo in Jan 2026. But at $3M+ entry price, gross yield sits ~2.9%–3.6%. Capital appreciation play — not a yield play. Source: URA 26Q1"
-    },
-    {
-      "kind": "stat",
-      "headline": "Shangri-La Residences D10: Trophy Asset, Trophy Rents",
-      "value": "$11,587–$14,943 /mo",
-      "change": "Q1 2026 range for units ~1,550–2,050 sqft at Lady Hill Road",
-      "footnote": "4BR at 2,050 sqft hit $14,943 in Mar 2026 vs $12,649 in Jan 2026 — a $2,294 uplift in 8 weeks. Yield still sub-3% at CCR pricing. Source: URA 26Q1"
-    },
-    {
-      "kind": "stat",
-      "headline": "The 5%+ Net Yield Checklist: What the Data Tells Us",
-      "value": "D14 & D25",
-      "change": "Only two districts in this Q1 2026 dataset where gross yield structurally supports 5%+ net after costs",
-      "footnote": "Formula: Buy OCR at sub-$1M quantum, 1BR–2BR format, lease at $3,000–$4,150/mo. D14 1BR and D25 2BR are the clearest examples in the data. Costs assumed: 1% property tax, 0.3% maintenance, 0.5% vacancy. Source: URA 26Q1, POV Guy analysis"
+      "headline": "Hottest Volume District: D14 (Geylang / Sims)",
+      "value": "67 leases",
+      "change": "Most URA rental transactions in this data batch — Q1 2026",
+      "footnote": "Sims Urban Oasis alone recorded 67 URA lease entries across Jan–Mar 2026. Tenant depth here is real. Vacancy risk is structurally lower than low-volume luxury projects."
     },
     {
       "kind": "cta",
-      "title": "Want the Full Yield Map Across All 28 Districts?",
-      "primary_cta": "WhatsApp Farhan for Your Landlord Yield Audit — Free, No Obligation",
+      "title": "Want Your Property's True Net Yield Calculated?",
+      "primary_cta": "WhatsApp Farhan — Free Yield Stress-Test",
       "whatsapp_link": "https://wa.me/message/D7DL37LI5GJ3H1"
     }
   ],
-  "caption": "Five percent net rental yield still exists in Singapore — but only if you're buying in the right district at the right quantum. Q1 2026 URA data shows District 14 (Sims Urban Oasis) logged 30+ condo rental transactions — the heaviest activity in the dataset — with 1BR units clearing $3,400/mo median. At a sub-$800K entry price, that's a gross yield of 5.1%–5.4%. District 25 (Rosewood Suites) quietly delivers even better optics: 2BR units at $3,000/mo against a ~$620K quantum puts gross yield at ~5.8%. Meanwhile, Wallich Residence (D02) averaged $10,750/mo across 8 confirmed Q1 leases — impressive headline, but at $3M+ pricing that's under 3% gross. Trophy assets are capital plays, not income plays. If you want to know where your existing property sits on the yield curve — or which district to target for your next purchase — DM me for a free landlord yield audit. Source: URA Q1 2026. #sgproperty #povguy #singaporerentals #rentalyield #landlordsg #propertyyield #district14",
+  "caption": "Most landlords think they're earning 4–5% yield. The Q1 2026 URA data tells a different story.\n\nSims Urban Oasis (D14) 2BR leases are clearing a median $3,900/mo — that's a 4.5% gross yield on a ~$1.04M entry. Once you strip out property tax, maintenance, agent fees and vacancy, net yield lands at ~3.6%. Wallich Residence (D02) looks glamorous at $7,250/mo for a 1BR — until you price in the $2.18M purchase cost and watch gross yield collapse to 3.99%. Even the strongest play in this dataset, Rosewood Suites (D25) 2BR at $3,000/mo, only hits ~5.7% gross (~4.5% net). No project in the Q1 2026 URA batch clears 5% net yield on a clean cost model. Knowing this changes where you buy, what size you buy, and what price you accept. DM me for a free yield stress-test on any unit you're eyeing.\n\n#sgproperty #povguy #condorental #rentalyield #singaporelandlord #ura #propertyinvestmentsg",
   "hashtags": [
     "#sgproperty",
     "#povguy",
-    "#singaporerentals",
+    "#condorental",
     "#rentalyield",
-    "#landlordsg",
-    "#propertyyield",
-    "#district14"
+    "#singaporelandlord",
+    "#ura",
+    "#propertyinvestmentsg"
   ],
   "sources": [
-    "URA Rental Contracts Q1 2026 (26Q1)",
-    "POV Guy yield analysis (property tax 1%, maintenance 0.3%, vacancy 0.5% applied to gross)"
+    "URA Rental Contracts 26Q1 (Jan–Mar 2026)",
+    "URA REALIS",
+    "SRX (purchase psf reference estimates)"
   ]
 }

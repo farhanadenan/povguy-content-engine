@@ -1,22 +1,23 @@
 {
   "drop_id": "2026-04-22-rental",
-  "theme": "Rental Yield",
-  "hook": "Five percent net rental yield still exists — here's exactly where",
+  "theme": "Singapore Rental Yields Q1 2026",
+  "hook": "Most landlords miss 5% net yield — here's exactly why.",
   "slide_count": 9,
   "hashtags": [
     "#sgproperty",
     "#povguy",
-    "#singaporerentals",
+    "#condorental",
     "#rentalyield",
-    "#landlordsg",
-    "#propertyyield",
-    "#district14"
+    "#singaporelandlord",
+    "#ura",
+    "#propertyinvestmentsg"
   ],
   "sources": [
-    "URA Rental Contracts Q1 2026 (26Q1)",
-    "POV Guy yield analysis (property tax 1%, maintenance 0.3%, vacancy 0.5% applied to gross)"
+    "URA Rental Contracts 26Q1 (Jan–Mar 2026)",
+    "URA REALIS",
+    "SRX (purchase psf reference estimates)"
   ],
-  "rendered_at": "2026-04-22T13:21:03.987Z",
+  "rendered_at": "2026-04-22T13:40:03.787Z",
   "image_urls": [
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-1.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-2.png",
