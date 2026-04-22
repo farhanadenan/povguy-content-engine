@@ -1,0 +1,109 @@
+name: Daily Content Generation
+
+on:
+  schedule:
+    # 05:00 SGT (21:00 UTC previous day) — run BEFORE publisher's 06:00 preview
+    - cron: '0 21 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Drop date (YYYY-MM-DD), defaults to today'
+        required: false
+      force_theme:
+        description: 'Override theme (distress|hdb|rental|landed|wrap|masterplan|geopolitics)'
+        required: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to commit output/<date>/ back so jsDelivr can serve it
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT }}   # PAT so the push triggers no other workflows by default
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - name: Install
+        run: |
+          npm install
+          npx playwright install --with-deps chromium
+
+      - name: Pull latest data snapshot
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          DATE="${{ github.event.inputs.date || '' }}"
+          [ -z "$DATE" ] && DATE=$(TZ=Asia/Singapore date +%Y-%m-%d)
+          echo "DROP_DATE=$DATE" >> $GITHUB_ENV
+          mkdir -p snapshots/$DATE
+          # Fetch latest release tarball from data-engine and extract relevant theme files
+          gh release download --repo farhanadenan/povguy-data-engine --pattern "snapshot-*.tar.gz" --dir /tmp || echo "No snapshot yet — using stub data"
+          [ -f /tmp/snapshot-*.tar.gz ] && tar -xzf /tmp/snapshot-*.tar.gz -C snapshots/$DATE/ || true
+
+      - name: Generate spec via Claude
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FORCE_THEME: ${{ github.event.inputs.force_theme }}
+          DROPS_DIR: ./dist
+        run: |
+          mkdir -p dist/$DROP_DATE
+          node src/generator.js > dist/$DROP_DATE/spec.json
+          cat dist/$DROP_DATE/spec.json | jq -r '.hook' || true
+
+      - name: Render slides via Playwright
+        env:
+          DROPS_DIR: ./dist
+        run: node src/renderer.js $DROP_DATE
+
+      - name: Enhance cover slide via Nanobanana (optional)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        continue-on-error: true
+        run: |
+          node -e "
+            import('./src/cover-enhancer.js').then(async m => {
+              const spec = JSON.parse(require('fs').readFileSync('dist/$DROP_DATE/spec.json'));
+              await m.enhanceCover({
+                baseImagePath: 'dist/$DROP_DATE/slide-1.png',
+                theme: spec.slides[0].kind === 'cover' ? '${{ github.event.inputs.force_theme || '' }}' : 'wrap',
+                headline: spec.hook,
+                outPath: 'dist/$DROP_DATE/slide-1.png'
+              });
+            });
+          "
+
+      - name: Commit drop output back to repo (for jsDelivr CDN)
+        # This is what makes the slide PNGs publicly addressable via:
+        #   https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/<date>/slide-N.png
+        # Publisher reads these URLs (from manifest.image_urls) for FB/Threads/IG.
+        run: |
+          mkdir -p output/$DROP_DATE
+          cp -r dist/$DROP_DATE/* output/$DROP_DATE/
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+          git add output/$DROP_DATE
+          if git diff --staged --quiet; then
+            echo "no new files to commit"
+          else
+            git commit -m "drop: $DROP_DATE — automated content engine output"
+            git push origin HEAD:main
+          fi
+
+      - name: Upload drop as artifact (also kept for publisher artifact-pull path)
+        uses: actions/upload-artifact@v4
+        with:
+          name: drop-${{ env.DROP_DATE }}
+          path: dist/${{ env.DROP_DATE }}/
+          retention-days: 30
+
+      - name: Trigger publisher (preview)
+        env:
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          gh workflow run daily-publish.yml \
+            --repo farhanadenan/povguy-publisher \
+            -f mode=preview-only \
+            -f date=$DROP_DATE
