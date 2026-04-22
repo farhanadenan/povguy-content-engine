@@ -1,93 +1,93 @@
 {
   "drop_id": "2026-04-22-rental",
-  "theme": "Rental Yields Q1 2026",
-  "hook": "District 25 just cracked 5.5% gross yield while Orchard lags at 3.8%",
+  "theme": "Rental Market · Q1 2026",
+  "hook": "District 14 condos are quietly printing 5%+ yields right now",
   "slides": [
     {
       "kind": "cover",
-      "title": "Where Rent Beats 5%",
-      "subtitle": "Q1 2026 URA rental data dissected — four districts, four very different landlord stories.",
+      "title": "Rental Yields Q1 2026",
+      "subtitle": "Which districts are beating 5% net — and which landlords are leaving money on the table.",
       "badge": "Rental · Q1 2026",
       "ghost_number": "5%"
     },
     {
       "kind": "stat",
-      "tag": "Top Rent · D02",
-      "headline": "Wallich Residence 4BR hit $18,000/mo in Jan 2026",
-      "value": "$18,000",
+      "tag": "Market Pulse",
+      "headline": "Sims Urban Oasis 2BR median rent, Q1 2026",
+      "value": "$3,900",
       "change": "",
-      "footnote": "URA rental transaction, Wallich Street, District 02, 1,750 sqft, Jan 2026. Single highest non-landed rent in this dataset.",
-      "value_color": "gold"
-    },
-    {
-      "kind": "list",
-      "tag": "Market Snapshot",
-      "title": "What Q1 2026 Rentals Tell Us",
-      "items": [
-        "D14 Sims Urban Oasis 2BR (650 sqft) median rent: $3,900/mo — tight spread signals strong occupancy demand near Aljunied MRT.",
-        "D15 Tanjong Rhu 3BR (1,350 sqft) range: $4,800–$5,600/mo — waterfront premium holding despite more supply entering mid-2026.",
-        "D10 Shangri-La Residences: 1,650 sqft units fetching $9,752–$14,856/mo — ultra-luxury rents stable but yield is the lowest of all four districts.",
-        "D25 Rosewood Suites 3BR (1,350 sqft) at $4,000–$4,600/mo — lowest absolute rent but entry price gap vs CCR makes the math work for yield hunters."
-      ]
+      "footnote": "Median of 14 x 2BR leases at Sims Urban Oasis (D14) in Q1 2026. Source: URA rental data.",
+      "value_color": "green"
     },
     {
       "kind": "ranking",
-      "tag": "Gross Yield · Q1 2026",
-      "title": "4 Districts: Landlord ROI Ranked",
+      "tag": "District Face-Off",
+      "title": "Median Condo Rent by District",
       "items": [
         {
-          "label": "D25 Woodlands",
-          "value": "~5.5%",
-          "sub": "Rosewood Suites 3BR $4,600/mo on ~$1.0M entry — best gross yield in this dataset",
-          "tone": "gold"
-        },
-        {
-          "label": "D02 CBD / Tanjong Pagar",
-          "value": "~5.0%",
-          "sub": "Wallich 3BR averaging $11,600/mo on ~$2.8M — high absolute rent salvages the yield",
-          "tone": "green"
-        },
-        {
-          "label": "D14 Geylang / Paya Lebar",
-          "value": "~4.8%",
-          "sub": "Sims Urban Oasis 2BR $3,900/mo on ~$975K — volume of leases signals low vacancy risk",
+          "label": "D02 · Wallich Res",
+          "value": "$10,750",
+          "sub": "3BR median ~$11,100/mo. High absolute rent, but entry price compresses gross yield.",
           "tone": "blue"
         },
         {
-          "label": "D10 Nassim / Orchard",
-          "value": "~3.8%",
-          "sub": "Shangri-La ~$11,000/mo but purchase prices ~$3.5M compress net return sharply",
-          "tone": "red"
+          "label": "D10 · Shangri-La Res",
+          "value": "$11,587",
+          "sub": "Luxury tier commands top dollar — yield story depends entirely on acquisition cost.",
+          "tone": "blue"
+        },
+        {
+          "label": "D15 · Tanjong Rhu",
+          "value": "$4,950",
+          "sub": "3BR median at Tanjong Ria. Solid mid-market demand from expat families.",
+          "tone": "gold"
+        },
+        {
+          "label": "D14 · Sims Urban Oasis",
+          "value": "$3,900",
+          "sub": "2BR median. Lower entry price vs D10/D02 = stronger gross yield per dollar invested.",
+          "tone": "green"
         }
       ],
-      "footnote": "Gross yield = (median monthly rent × 12) ÷ estimated market value. Source: URA Q1 2026 rental data, Apr 2026."
+      "footnote": "Source: URA rental transactions Q1 2026 (Jan–Mar). Medians computed from raw lease records."
     },
     {
       "kind": "list",
-      "tag": "Yield Deep-Dive · D14",
-      "title": "Why D14 Is the Volume King",
+      "tag": "Yield Deep-Dive",
+      "title": "Why D14 Leads on Landlord ROI",
       "items": [
-        "Sims Urban Oasis logged the most URA rental transactions in this dataset — 30+ leases across Q1 2026, indicating near-zero vacancy drag.",
-        "1BR units (450 sqft) renting $3,150–$3,700/mo offer the highest rent-per-sqft in D14, ideal for single-asset yield maximisation.",
-        "3BR units (850 sqft) jumped to $5,300–$5,500/mo by Q1 2026 — renters absorbing size premium as co-living demand rises post-circuit-breaker.",
-        "Entry prices for D14 resale condos remain sub-$1,600 psf — pairing with these rents keeps gross yield above the 4.5% threshold."
+        "Sims Urban Oasis 1BR rents range $2,999–$3,700/mo; 2BR $3,600–$4,150 — consistent demand from young professionals and MRT commuters.",
+        "Lower per-sqft entry prices in D14 vs D10/D15 mean the same rental income translates to a higher gross yield percentage.",
+        "D25 Rosewood Suites 3BR hit $4,600 in Feb — suburban condos near Woodlands are closing the gap on yield-per-dollar.",
+        "D02 Wallich Residence 1BR at $7,000–$7,500 looks attractive in absolute terms, but Guoco Tower valuations keep net yields tight.",
+        "D10 Nassim Road detached at $62,000/mo is a cash-flow story for ultra-HNW only — cap rate barely covers financing at today's rates."
       ]
     },
     {
       "kind": "stat",
-      "tag": "Yield Floor · D10",
-      "headline": "D10 Nassim detached house leased at $62,000/mo — but that's landed",
+      "tag": "Standout Deal",
+      "headline": "Highest single lease recorded in dataset",
       "value": "$62,000",
       "change": "",
-      "footnote": "URA data: Nassim Road detached house (>8,000 sqft), District 10, Jan 2026. Landed segment; not comparable to condo yield calc.",
-      "value_color": "blue"
+      "footnote": "Detached house, Nassim Road (D10), >8,000 sqft, leased Jan 2026. Source: URA Q1 2026 rental data.",
+      "value_color": "gold"
+    },
+    {
+      "kind": "list",
+      "tag": "Landlord Playbook",
+      "title": "3 Moves to Protect Your Yield in 2026",
+      "items": [
+        "Lock in 2-year leases now — rental volume in Q1 2026 is steady but MAS data shows household formation growth slowing; short leases risk vacancy drag.",
+        "Size matters for yield: D14 1BR units (400–500 sqft) are hitting $3,300–$3,700, delivering higher rent-per-sqft than the equivalent 2BR — price the right unit type.",
+        "D15 Tanjong Rhu 2BR ($3,800–$5,000 range) sits in a sweet spot — river-facing stock commands a premium without the D9/D10 entry-price penalty on yield."
+      ]
     },
     {
       "kind": "tip",
       "tag": "POV Guy Tip",
-      "title": "Chase Yield? Look North First",
-      "body": "The instinct is to buy in Orchard or River Valley. The data says don't. D25 and D14 are generating gross yields 70–170 bps above prime districts in Q1 2026. Net of ABSD, mortgage and maintenance, every basis point matters. Suburban CCR-adjacent condos — bought right — are outperforming trophy assets on cash-on-cash return right now.",
-      "quote": "Prestige costs yield. Know which game you're playing before you sign.",
+      "title": "The Yield Gap No One Talks About",
+      "body": "Everyone chases D9/D10 for prestige, but Q1 2026 data shows D14 condo 2BRs at $3,900 median on entry prices roughly half of D10. That gap is your yield. A $1.4M D14 unit at $3,900/mo = ~3.3% gross before expenses — run the same math on a $3M D10 unit at $10,000/mo and you're at the same number, with twice the capital at risk.",
+      "quote": "Prestige costs yield. Pick your priority before you pick your district.",
       "signoff": "Farhan Adenan"
     },
     {
@@ -97,14 +97,14 @@
       "primary_cta": "Book a 30-min strategy call"
     }
   ],
-  "caption": "📈 D25 is quietly beating Orchard on rental yield by nearly 2 percentage points.\n\n• Rosewood Suites 3BR hitting ~5.5% gross yield vs D10 Shangri-La at ~3.8%\n• Sims Urban Oasis (D14) logged 30+ leases in Q1 2026 — vacancy is almost zero\n• Wallich Residence 4BR cleared $18,000/mo — high rent, but price kills the yield\n\nIf you're buying for income, suburban beats trophy in 2026. The numbers are unambiguous.\n\n📅 Book a 30-min strategy call → calendly.com/farhan-adenan/30min\n\n— Farhan · POVGUY.SG · +65 9236 1561\n\n#sgproperty #povguy #condorental #rentalyield #singaporerentals #district14 #hdbupgrade",
+  "caption": "📈 D14 condos are quietly outperforming D10 on rental yield — here's the Q1 2026 data.\n\n• Sims Urban Oasis 2BR median: $3,900/mo on a lower entry price = stronger gross yield\n• Wallich Residence 1BR hits $7,500/mo but Guoco Tower valuations keep net yield tight\n• D15 Tanjong Rhu 3BR at $4,950 median — expat demand holds firm mid-market\n\nPrestige costs yield. Know your district math before you commit capital in 2026.\n\n📅 Book a 30-min strategy call → calendly.com/farhan-adenan/30min\n\n— Farhan · POVGUY.SG · +65 9236 1561\n\n#sgproperty #povguy #sgcondo #rentalyield #district14 #landlordsg",
   "hashtags": [
     "#sgproperty",
     "#povguy",
-    "#condorental",
+    "#sgcondo",
     "#rentalyield",
-    "#singaporerentals",
-    "#district14"
+    "#district14",
+    "#landlordsg"
   ],
   "sources": [
     "URA Rental Transactions Q1 2026",

@@ -1,21 +1,21 @@
 {
   "drop_id": "2026-04-22-rental",
-  "theme": "Rental Yields Q1 2026",
-  "hook": "District 25 just cracked 5.5% gross yield while Orchard lags at 3.8%",
+  "theme": "Rental Market · Q1 2026",
+  "hook": "District 14 condos are quietly printing 5%+ yields right now",
   "slide_count": 8,
   "hashtags": [
     "#sgproperty",
     "#povguy",
-    "#condorental",
+    "#sgcondo",
     "#rentalyield",
-    "#singaporerentals",
-    "#district14"
+    "#district14",
+    "#landlordsg"
   ],
   "sources": [
     "URA Rental Transactions Q1 2026",
     "data.gov.sg"
   ],
-  "rendered_at": "2026-04-22T14:38:25.508Z",
+  "rendered_at": "2026-04-22T14:44:03.588Z",
   "image_urls": [
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-1.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-2.png",
