@@ -160,18 +160,37 @@ ${JSON.stringify(snapshot, null, 2).slice(0, 30_000)}
 Produce the carousel JSON now.
 `.trim();
 
-  const response = await client.messages.create({
-    model: 'claude-sonnet-4-6',
-    max_tokens: 8000,
-    system: SYSTEM_PROMPT,
-    messages: [{ role: 'user', content: userPrompt }]
-  });
-
-  const text = response.content[0].text;
-  // Extract first { ... } JSON block
-  const jsonStart = text.indexOf('{');
-  const jsonEnd = text.lastIndexOf('}');
-  const spec = JSON.parse(text.slice(jsonStart, jsonEnd + 1));
+  // Retry up to 3 times — Anthropic occasionally returns an empty content
+  // block on transient overload, and a silent JSON.parse fail on empty string
+  // takes the whole pipeline down.
+  let response, text, spec, lastErr;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      response = await client.messages.create({
+        model: 'claude-sonnet-4-6',
+        max_tokens: 8000,
+        system: SYSTEM_PROMPT,
+        messages: [{ role: 'user', content: userPrompt }]
+      });
+      text = response?.content?.[0]?.text || '';
+      const jsonStart = text.indexOf('{');
+      const jsonEnd = text.lastIndexOf('}');
+      if (jsonStart === -1 || jsonEnd === -1 || jsonEnd <= jsonStart) {
+        throw new Error(`no JSON braces in model output (len=${text.length}, stop_reason=${response?.stop_reason}, first_200_chars=${JSON.stringify(text.slice(0, 200))})`);
+      }
+      spec = JSON.parse(text.slice(jsonStart, jsonEnd + 1));
+      break; // success
+    } catch (e) {
+      lastErr = e;
+      console.error(`[generator] attempt ${attempt}/3 failed: ${e.message}`);
+      if (attempt < 3) {
+        await new Promise(r => setTimeout(r, 2000 * attempt));
+      }
+    }
+  }
+  if (!spec) {
+    throw new Error(`generator failed after 3 attempts: ${lastErr?.message}`);
+  }
 
   // Defensive: ensure final slide is CTA, even if model forgot.
   const last = spec.slides[spec.slides.length - 1];
