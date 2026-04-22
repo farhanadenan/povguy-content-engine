@@ -82,7 +82,8 @@ async function loadSnapshot(theme, dropDate) {
 
 export async function generate(date = new Date()) {
   const theme = themeForDate(date);
-  console.log(`[generator] theme=${theme.id} date=${theme.date}`);
+  // Logs MUST go to stderr — stdout is captured into spec.json by the workflow.
+  console.error(`[generator] theme=${theme.id} date=${theme.date}`);
 
   const snapshot = await loadSnapshot(theme, theme.date);
 
