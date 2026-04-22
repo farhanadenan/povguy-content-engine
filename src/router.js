@@ -13,8 +13,8 @@ const THEMES = {
   tuesday: {
     id: 'hdb',
     label: 'HDB market',
-    sources: ['hdb-market', 'data.gov.sg/resale', 'data.gov.sg/bto'],
-    research_query: "HDB BTO + resale insights this week — flat-type winners, towns with biggest price moves, BTO subscription odds"
+    sources: ['datagov-hdb-resale', 'datagov-hdb-rental'],
+    research_query: "HDB resale + rental insights this week — flat-type winners, towns with biggest price moves, hottest rental yield neighborhoods"
   },
   wednesday: {
     id: 'rental',
