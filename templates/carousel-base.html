@@ -617,6 +617,354 @@
     color: var(--muted2);
     letter-spacing: 0.10em;
   }
+
+  /* ============================================================
+   * v5 VISUAL ELEMENTS — Bloomberg-meets-Apple
+   * Adds dataviz primitives so every slide carries a visual
+   * signal: donut gauges, spark strips, tier bands, bar-race
+   * rankings, glyph badges, terminal address bars.
+   * ============================================================ */
+
+  /* Donut gauge — purely decorative concentric ring SVG behind big values */
+  .donut-gauge {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.55;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Stat slide — value+ring composition */
+  .stat .stat-stage {
+    position: relative;
+    margin-top: 12px;
+    height: 460px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .stat .value-wrap {
+    position: relative;
+    display: inline-block;
+    padding: 40px 60px;
+  }
+  .stat .stat-stage .value {
+    position: relative;
+    z-index: 2;
+    font-size: 200px;
+  }
+  .stat .stat-stage .change {
+    position: absolute;
+    bottom: 20px;
+    right: 24px;
+    font-family: var(--mono);
+    font-size: 30px;
+    z-index: 3;
+  }
+
+  /* Tier band — LO / MED / HI / PEAK positioning indicator */
+  .tier-band {
+    margin-top: 10px;
+    display: flex;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
+  .tier-band .seg {
+    flex: 1;
+    text-align: center;
+    padding: 12px 6px;
+    border: 1px solid rgba(77,114,255,0.18);
+    background: rgba(77,114,255,0.04);
+    color: var(--muted2);
+    border-radius: 4px;
+    text-transform: uppercase;
+  }
+  .tier-band .seg.active {
+    background: rgba(77,114,255,0.16);
+    color: var(--blue-bright);
+    border-color: rgba(77,114,255,0.45);
+    text-shadow: 0 0 12px rgba(77,114,255,0.6);
+  }
+  .tier-band .seg.active.gold {
+    background: rgba(232,192,64,0.16);
+    color: var(--amber);
+    border-color: rgba(232,192,64,0.45);
+    text-shadow: 0 0 12px rgba(232,192,64,0.6);
+  }
+  .tier-band .seg.active.green {
+    background: rgba(0,232,123,0.14);
+    color: var(--green);
+    border-color: rgba(0,232,123,0.45);
+    text-shadow: 0 0 12px rgba(0,232,123,0.6);
+  }
+  .tier-band .seg.active.red {
+    background: rgba(255,77,77,0.14);
+    color: var(--red);
+    border-color: rgba(255,77,77,0.45);
+    text-shadow: 0 0 12px rgba(255,77,77,0.6);
+  }
+
+  /* Spark strip — a row of mini bars used as visual rhythm decoration */
+  .spark-strip {
+    margin-top: 18px;
+    display: flex;
+    align-items: end;
+    gap: 4px;
+    height: 40px;
+  }
+  .spark-strip .bar {
+    flex: 1;
+    background: linear-gradient(to top, rgba(77,114,255,0.05), rgba(77,114,255,0.55));
+    border-top: 1px solid rgba(77,114,255,0.7);
+    border-radius: 2px 2px 0 0;
+    min-height: 4px;
+  }
+  .spark-strip.green .bar {
+    background: linear-gradient(to top, rgba(0,232,123,0.05), rgba(0,232,123,0.55));
+    border-top-color: rgba(0,232,123,0.7);
+  }
+  .spark-strip.gold .bar {
+    background: linear-gradient(to top, rgba(232,192,64,0.05), rgba(232,192,64,0.55));
+    border-top-color: rgba(232,192,64,0.7);
+  }
+  .spark-strip.red .bar {
+    background: linear-gradient(to top, rgba(255,77,77,0.05), rgba(255,77,77,0.55));
+    border-top-color: rgba(255,77,77,0.7);
+  }
+
+  /* Data ribbon — terminal-style source/freshness attribution */
+  .data-ribbon {
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 16px;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(77,114,255,0.22);
+    border-radius: 6px;
+    font-family: var(--mono);
+    font-size: 14px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+  .data-ribbon .pulse-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px rgba(0,232,123,0.8);
+  }
+  .data-ribbon .sep {
+    width: 1px; height: 12px;
+    background: rgba(77,114,255,0.30);
+  }
+
+  /* List v5 — circle number badge + glyph + body */
+  .list-v5 .items {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .list-v5 .row {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 22px 26px;
+    border-radius: 12px;
+    background: rgba(77,114,255,0.05);
+    border: 1px solid rgba(77,114,255,0.18);
+    border-left: 4px solid var(--blue-bright);
+  }
+  .list-v5 .row.featured {
+    background: rgba(77,114,255,0.10);
+    border-color: rgba(77,114,255,0.35);
+    box-shadow: 0 0 28px rgba(77,114,255,0.15);
+  }
+  .list-v5 .row .num-badge {
+    flex-shrink: 0;
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    background: rgba(26,68,240,0.20);
+    border: 1px solid rgba(77,114,255,0.45);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--blue-bright);
+    letter-spacing: -0.5px;
+  }
+  .list-v5 .row .row-glyph {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    margin-top: 10px;
+    color: var(--blue-bright);
+    opacity: 0.65;
+  }
+  .list-v5 .row .body-cell {
+    flex: 1;
+    color: var(--off-white);
+    font-family: var(--body);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.45;
+  }
+
+  /* Bar-race ranking — horizontal bars with rank, label, value */
+  .bar-race {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .bar-race .bar-row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 56px minmax(220px, 290px) 1fr 130px;
+    gap: 16px;
+    align-items: center;
+    padding: 16px 18px;
+    background: rgba(77,114,255,0.05);
+    border: 1px solid rgba(77,114,255,0.18);
+    border-radius: 10px;
+  }
+  .bar-race .bar-row .rank {
+    font-family: var(--mono);
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--blue-bright);
+  }
+  .bar-race .bar-row .row-label {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: -0.3px;
+    line-height: 1.15;
+  }
+  .bar-race .bar-row .row-label .sub {
+    display: block;
+    font-family: var(--body);
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--muted);
+    margin-top: 4px;
+    letter-spacing: 0;
+    line-height: 1.35;
+  }
+  .bar-race .bar-row .bar-track {
+    position: relative;
+    height: 26px;
+    background: rgba(0,0,0,0.30);
+    border: 1px solid rgba(77,114,255,0.18);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .bar-race .bar-row .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, rgba(77,114,255,0.9), rgba(77,114,255,0.5));
+    box-shadow: inset 0 0 16px rgba(77,114,255,0.6);
+  }
+  .bar-race .bar-row .row-value {
+    font-family: var(--mono);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--blue-bright);
+    text-align: right;
+    letter-spacing: -0.5px;
+  }
+  .bar-race .bar-row.gold {
+    border-color: rgba(232,192,64,0.40);
+    background: rgba(232,192,64,0.06);
+    box-shadow: 0 0 36px rgba(232,192,64,0.12);
+  }
+  .bar-race .bar-row.gold .rank,
+  .bar-race .bar-row.gold .row-value { color: var(--amber); }
+  .bar-race .bar-row.gold .bar-fill {
+    background: linear-gradient(90deg, rgba(232,192,64,0.95), rgba(232,192,64,0.55));
+    box-shadow: inset 0 0 18px rgba(232,192,64,0.6);
+  }
+  .bar-race .bar-row.green { border-color: rgba(0,232,123,0.30); background: rgba(0,232,123,0.05); }
+  .bar-race .bar-row.green .rank,
+  .bar-race .bar-row.green .row-value { color: var(--green); }
+  .bar-race .bar-row.green .bar-fill {
+    background: linear-gradient(90deg, rgba(0,232,123,0.85), rgba(0,232,123,0.45));
+    box-shadow: inset 0 0 14px rgba(0,232,123,0.5);
+  }
+  .bar-race .bar-row.red { border-color: rgba(255,77,77,0.30); background: rgba(255,77,77,0.06); }
+  .bar-race .bar-row.red .rank,
+  .bar-race .bar-row.red .row-value { color: var(--red); }
+  .bar-race .bar-row.red .bar-fill {
+    background: linear-gradient(90deg, rgba(255,77,77,0.85), rgba(255,77,77,0.45));
+    box-shadow: inset 0 0 14px rgba(255,77,77,0.5);
+  }
+
+  /* Tip v5 — lightbulb glyph + structured badge */
+  .tip-v5 .badge-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .tip-v5 .badge-row .tip-glyph {
+    width: 38px; height: 38px;
+    flex: 0 0 38px;
+    color: var(--amber);
+    filter: drop-shadow(0 0 10px rgba(232,192,64,0.45));
+  }
+  .tip-v5 .badge-row .tip-tag {
+    font-family: var(--mono);
+    font-size: 15px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    border: 1px solid rgba(232,192,64,0.30);
+    background: rgba(232,192,64,0.08);
+    padding: 8px 16px;
+    border-radius: 4px;
+  }
+
+  /* CTA v5 — terminal-style address bar inside the cta-card */
+  .term-addr {
+    margin-top: 18px;
+    padding: 12px 16px;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(77,114,255,0.30);
+    border-radius: 6px;
+    font-family: var(--mono);
+    font-size: 18px;
+    color: var(--green);
+    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .term-addr .prompt { color: var(--blue-bright); }
+  .term-addr .cursor {
+    display: inline-block;
+    width: 10px; height: 18px;
+    background: var(--green);
+    margin-left: 6px;
+    box-shadow: 0 0 8px rgba(0,232,123,0.6);
+  }
+
+  /* Glyph base style — used everywhere */
+  .glyph {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    vertical-align: -3px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .glyph.lg { width: 28px; height: 28px; flex-basis: 28px; vertical-align: -6px; }
+  .glyph.xl { width: 44px; height: 44px; flex-basis: 44px; vertical-align: -10px; }
 </style>
 </head>
 <body>
@@ -681,6 +1029,96 @@
     `;
   }
 
+  /* ========== v5 dataviz helpers ========== */
+
+  // Decorative concentric ring SVG (Bloomberg gauge feel) placed behind big values.
+  function donutSvg(size, color) {
+    const cx = size / 2, cy = size / 2;
+    const arcs = [
+      { r: cx - 8,  dash: '380 220', off: '0',   w: 2,   o: 0.85 },
+      { r: cx - 30, dash: '180 480', off: '120', w: 1.5, o: 0.55 },
+      { r: cx - 56, dash: '90 480',  off: '40',  w: 1,   o: 0.40 },
+      { r: cx - 4,  dash: '4 22',    off: '0',   w: 1,   o: 0.30 },
+    ];
+    const ring = arcs.map(a =>
+      `<circle cx="${cx}" cy="${cy}" r="${a.r}" fill="none" stroke="${color}" stroke-width="${a.w}" stroke-dasharray="${a.dash}" stroke-dashoffset="${a.off}" opacity="${a.o}"/>`
+    ).join('');
+    return `<svg class="donut-gauge" width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">${ring}</svg>`;
+  }
+
+  // Spark-bar strip — pseudo-random heights derived from a deterministic sine pattern.
+  // This is decoration, not data. Kept short enough to feel like a market ticker.
+  function sparkBars(count, tone) {
+    const bars = [];
+    for (let i = 0; i < count; i++) {
+      const h = 32 + Math.sin(i * 0.7 + count * 0.3) * 22 + Math.cos(i * 1.3) * 16;
+      const pct = Math.max(10, Math.min(100, h));
+      bars.push(`<div class="bar" style="height:${pct}%"></div>`);
+    }
+    return `<div class="spark-strip ${tone || ''}">${bars.join('')}</div>`;
+  }
+
+  // Tier band — labels [LO MED HI PEAK] with one segment lit. Driven by value_color.
+  function tierBand(activeIdx, tone) {
+    const tiers = ['LO', 'MED', 'HI', 'PEAK'];
+    return `<div class="tier-band">${
+      tiers.map((t, i) =>
+        `<div class="seg ${i === activeIdx ? 'active ' + (tone || '') : ''}">${t}</div>`
+      ).join('')
+    }</div>`;
+  }
+
+  // Map value_color → tier index + tone class.
+  // red = outlier/peak rent; gold = premium tier; green = value tier; default = mid.
+  function tierFromColor(color) {
+    if (color === 'red')   return { idx: 3, tone: 'red' };
+    if (color === 'gold')  return { idx: 2, tone: 'gold' };
+    if (color === 'green') return { idx: 1, tone: 'green' };
+    return { idx: 1, tone: '' };
+  }
+
+  // Lucide-style stroked SVG icons. Each entry is the inner content of an SVG tag.
+  const GLYPHS = {
+    'chart-up':    '<polyline points="3 17 9 11 13 15 21 7"/><polyline points="14 7 21 7 21 14"/>',
+    'scale':       '<path d="M16 16l-4-12-4 12z"/><path d="M3 6h18"/><path d="M5 9l-3 7h6z"/><path d="M19 9l-3 7h6z"/>',
+    'building':    '<rect x="4" y="3" width="16" height="18" rx="1"/><line x1="9" y1="7" x2="11" y2="7"/><line x1="9" y1="11" x2="11" y2="11"/><line x1="9" y1="15" x2="11" y2="15"/><line x1="13" y1="7" x2="15" y2="7"/><line x1="13" y1="11" x2="15" y2="11"/><line x1="13" y1="15" x2="15" y2="15"/>',
+    'tag':         '<path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="0.6"/>',
+    'sparkles':    '<path d="M12 3l1.5 5L18 9.5 13.5 11 12 16l-1.5-5L6 9.5 10.5 8z"/><path d="M19 15l.7 2L21 17.7 19 18.4 18.3 20 17.6 18.4 16 17.7 17.6 17z"/>',
+    'lightbulb':   '<path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7 4 4 0 0 1 1.5 3.3h5a4 4 0 0 1 1.5-3.3A7 7 0 0 0 12 2z"/>',
+    'arrow-right': '<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>',
+    'calendar':    '<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>',
+  };
+  function glyph(name, cls) {
+    const inner = GLYPHS[name] || GLYPHS['arrow-right'];
+    return `<svg class="glyph ${cls || ''}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">${inner}</svg>`;
+  }
+  const ROW_GLYPHS = ['chart-up', 'scale', 'building', 'tag', 'sparkles'];
+
+  // Extract a numeric value from "$3,900", "~$11,800", "5.5%" etc.
+  function parseValueNumber(s) {
+    const m = String(s || '').match(/[\d,.]+/);
+    if (!m) return 0;
+    return parseFloat(m[0].replace(/,/g, '')) || 0;
+  }
+
+  // Map value_color → CSS hex (used for donut stroke).
+  function colorHex(c) {
+    if (c === 'gold')  return '#E8C040';
+    if (c === 'red')   return '#FF4D4D';
+    if (c === 'green') return '#00E87B';
+    return '#4D72FF';
+  }
+
+  // "LIVE · TAG · SOURCE" terminal-style metadata strip
+  function dataRibbon(label, source) {
+    return `<div class="data-ribbon">
+      <div class="pulse-dot"></div>
+      <span>LIVE</span>
+      ${label ? `<div class="sep"></div><span>${esc(label)}</span>` : ''}
+      ${source ? `<div class="sep"></div><span>${esc(source)}</span>` : ''}
+    </div>`;
+  }
+
   function render() {
     const k = data.kind || 'cover';
     let html = '';
@@ -716,35 +1154,52 @@
       const change = data.change || '';
       const dir = change.toString().trim().startsWith('-') ? 'red-text' :
                   change.toString().trim().startsWith('+') ? 'green-text' : 'blue-text';
-      const valueColor = data.value_color === 'green' ? 'green-text' :
-                         data.value_color === 'red'   ? 'red-text' :
-                         data.value_color === 'gold'  ? 'gold-text' : 'grad-blue';
+      const colorKey = data.value_color || 'blue';
+      const valueColor = colorKey === 'green' ? 'green-text' :
+                         colorKey === 'red'   ? 'red-text' :
+                         colorKey === 'gold'  ? 'gold-text' : 'grad-blue';
+      const tier = tierFromColor(colorKey);
+      const sparkTone = colorKey === 'gold' ? 'gold' :
+                        colorKey === 'red'  ? 'red'  :
+                        colorKey === 'green' ? 'green' : '';
       html = `
         <div class="slide stat bg2">
           <div class="glow blue-cr"></div>
+          <div class="glow red-tl"></div>
           ${chrome()}
           <div class="stage">
             ${data.tag ? `<div class="tag">${esc(data.tag)}</div>` : ''}
             <div class="headline">${esc(data.headline || '')}</div>
-            <div class="value ${valueColor}">${esc(data.value || '')}</div>
-            <div class="change ${dir}">${esc(change)}</div>
+            <div class="stat-stage">
+              <div class="value-wrap">
+                ${donutSvg(460, colorHex(colorKey))}
+                <div class="value ${valueColor}">${esc(data.value || '')}</div>
+                ${change ? `<div class="change ${dir}">${esc(change)}</div>` : ''}
+              </div>
+            </div>
+            ${tierBand(tier.idx, tier.tone)}
+            ${sparkBars(28, sparkTone)}
             <div class="footnote">${esc(data.footnote || '')}</div>
           </div>
         </div>`;
     }
 
     else if (k === 'list') {
-      const items = (data.items || []).map((it, i) => {
+      const itemsRaw = (data.items || []);
+      const items = itemsRaw.map((it, i) => {
         const text = typeof it === 'string' ? it : (it.text || it.body || JSON.stringify(it));
         const num = String(i + 1).padStart(2, '0');
+        const g = ROW_GLYPHS[i % ROW_GLYPHS.length];
+        const featured = i === 0 ? 'featured' : '';
         return `
-          <div class="row">
-            <div class="num">${num}</div>
+          <div class="row ${featured}">
+            <div class="num-badge">${num}</div>
+            ${glyph(g, 'row-glyph')}
             <div class="body-cell">${esc(text)}</div>
           </div>`;
       }).join('');
       html = `
-        <div class="slide list bg3">
+        <div class="slide list list-v5 bg3">
           <div class="glow blue-cr"></div>
           ${chrome()}
           <div class="stage">
@@ -757,14 +1212,26 @@
     }
 
     else if (k === 'ranking' || k === 'cards' || k === 'chart') {
-      const cards = (data.items || data.cards || []).map(it => {
+      const items = (data.items || data.cards || []);
+      // Compute bar widths from numeric portion of each value, normalized to the max.
+      const numbers = items.map(it => parseValueNumber(it.value));
+      const maxNum = Math.max(1, ...numbers);
+      const rows = items.map((it, i) => {
         const tone = it.tone || 'blue';
         const toneClass = tone === 'green' ? 'green' : tone === 'red' ? 'red' : tone === 'gold' ? 'gold' : '';
+        const widthPct = Math.max(8, (numbers[i] / maxNum) * 100);
+        const rank = String(i + 1).padStart(2, '0');
         return `
-          <div class="card ${toneClass}">
-            <div class="label">${esc(it.label || '')}</div>
-            <div class="num">${esc(it.value || '')}</div>
-            <div class="sub">${esc(it.sub || '')}</div>
+          <div class="bar-row ${toneClass}">
+            <div class="rank">${rank}.</div>
+            <div class="row-label">
+              ${esc(it.label || '')}
+              ${it.sub ? `<span class="sub">${esc(it.sub)}</span>` : ''}
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:${widthPct.toFixed(1)}%"></div>
+            </div>
+            <div class="row-value">${esc(it.value || '')}</div>
           </div>`;
       }).join('');
       html = `
@@ -776,19 +1243,23 @@
             ${data.tag ? `<div class="tag">${esc(data.tag)}</div>` : ''}
             <div class="h2" style="font-size:50px;">${esc(data.title || '')}</div>
             <div class="divider gradient"></div>
-            <div class="grid">${cards}</div>
-            ${data.footnote ? `<div class="footnote mono" style="margin-top:24px;font-size:18px;color:var(--muted2);">${esc(data.footnote)}</div>` : ''}
+            <div class="bar-race">${rows}</div>
+            ${data.footnote ? `<div class="footnote mono" style="margin-top:22px;font-size:16px;color:var(--muted2);line-height:1.5;">${esc(data.footnote)}</div>` : ''}
           </div>
         </div>`;
     }
 
     else if (k === 'tip') {
       html = `
-        <div class="slide tip bg3">
+        <div class="slide tip tip-v5 bg3">
+          <div class="glow gold-tr"></div>
           <div class="glow blue-cr"></div>
           ${chrome()}
           <div class="stage">
-            <div class="tag gold">${esc(data.tag || 'POV Guy Tip')}</div>
+            <div class="badge-row">
+              ${glyph('lightbulb', 'tip-glyph')}
+              <div class="tip-tag">${esc(data.tag || 'POV Guy Tip')}</div>
+            </div>
             <div class="h2" style="font-size:62px;">${esc(data.title || '')}</div>
             <div class="divider"></div>
             <div class="body-block">${esc(data.body || '')}</div>
@@ -819,9 +1290,13 @@
             <div class="divider gradient"></div>
             <div class="cta-card">
               <div class="glow-inner"></div>
-              <div class="label">Book a 30-min strategy call</div>
+              <div class="label">${glyph('calendar')} &nbsp;Calendly &middot; 30-min slot</div>
               <div class="ask">${esc(ask)}</div>
-              <div class="link">${esc(CALENDLY_URL)}</div>
+              <div class="term-addr">
+                <span class="prompt">&gt;_</span>
+                <span>${esc(CALENDLY_URL)}</span>
+                <span class="cursor"></span>
+              </div>
             </div>
             <div class="signoff">
               <div class="name">${esc(SIGNOFF_NAME)}</div>
