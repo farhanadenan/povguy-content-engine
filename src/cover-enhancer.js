@@ -1,6 +1,6 @@
 /**
  * Nanobanana cover slide enhancer.
- * Uses Gemini 2.5 Flash Image (model: gemini-2.5-flash-image-preview).
+ * Uses Gemini 2.5 Flash Image — Nano Banana (model: gemini-2.5-flash-image).
  *
  * Reads dist/<date>/spec.json + slide-1.png, asks Gemini to reimagine the
  * cover as a cinematic Singapore visual that preserves the headline text
@@ -18,7 +18,9 @@ import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
 
-const MODEL = 'gemini-2.5-flash-image-preview';
+// Default to stable Nano Banana; set GEMINI_IMAGE_MODEL=gemini-3.1-flash-image-preview
+// to opt into Nano Banana 2 once it's stable.
+const MODEL = process.env.GEMINI_IMAGE_MODEL || 'gemini-2.5-flash-image';
 const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
 
 // Per-theme cinematic prompts. Themes match router.js theme.id values.
@@ -72,7 +74,9 @@ export async function enhanceCover({ baseImagePath, theme, headline, outPath }) 
         }
       ]
     }],
-    generationConfig: { responseModalities: ['IMAGE'] }
+    // Nano Banana requires both TEXT and IMAGE modalities even when we only
+    // want the image back; restricting to IMAGE alone returns an error.
+    generationConfig: { responseModalities: ['TEXT', 'IMAGE'] }
   };
 
   let res, data;
@@ -93,12 +97,17 @@ export async function enhanceCover({ baseImagePath, theme, headline, outPath }) 
     return null;
   }
 
-  const part = data?.candidates?.[0]?.content?.parts?.find(p => p.inline_data);
+  // REST output uses camelCase (inlineData) even though the input field is
+  // snake_case (inline_data). Accept either to be safe.
+  const parts = data?.candidates?.[0]?.content?.parts || [];
+  const part = parts.find(p => p.inlineData || p.inline_data);
   if (!part) {
-    console.warn('[cover] no image returned — skipping');
+    const finishReason = data?.candidates?.[0]?.finishReason || 'unknown';
+    console.warn(`[cover] no image returned (finishReason=${finishReason}) — skipping`);
     return null;
   }
-  fs.writeFileSync(outPath, Buffer.from(part.inline_data.data, 'base64'));
+  const inlineData = part.inlineData || part.inline_data;
+  fs.writeFileSync(outPath, Buffer.from(inlineData.data, 'base64'));
   console.log(`[cover] enhanced → ${outPath}`);
   return outPath;
 }
