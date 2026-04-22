@@ -1193,13 +1193,17 @@
 
   function render() {
     const k = data.kind || 'cover';
+    // overlayMode must be defined at the top so ALL branches (cover, stat, tip)
+    // can reference it. Previously declared inside the cover branch only,
+    // which silently threw ReferenceError on stat/tip overlay renders and left
+    // the DOM blank.
+    const overlayMode = !!data._overlay;
     let html = '';
 
     if (k === 'cover') {
       const { drop } = ctx();
       const ghost = (data.ghost_number || '').toString();
       const badge = data.badge || drop.theme || 'Daily Drop';
-      const overlayMode = !!data._overlay;
       // Overlay mode: transparent bg + scrim behind text for legibility over AI image.
       // Decorative elements (glows, dot pattern) suppressed; ghost-number + chrome kept.
       html = `
