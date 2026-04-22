@@ -179,6 +179,9 @@ Produce the carousel JSON now.
         throw new Error(`no JSON braces in model output (len=${text.length}, stop_reason=${response?.stop_reason}, first_200_chars=${JSON.stringify(text.slice(0, 200))})`);
       }
       spec = JSON.parse(text.slice(jsonStart, jsonEnd + 1));
+      if (!spec?.slides || !Array.isArray(spec.slides) || spec.slides.length === 0) {
+        throw new Error(`spec missing slides[] (got keys: ${Object.keys(spec || {}).join(',')}, stop_reason=${response?.stop_reason})`);
+      }
       break; // success
     } catch (e) {
       lastErr = e;
