@@ -965,6 +965,37 @@
   }
   .glyph.lg { width: 28px; height: 28px; flex-basis: 28px; vertical-align: -6px; }
   .glyph.xl { width: 44px; height: 44px; flex-basis: 44px; vertical-align: -10px; }
+
+  /* ===== Cover overlay mode (text/UI on transparent bg, composited atop AI image) ===== */
+  html.overlay-render,
+  body.overlay-render { background: transparent !important; }
+  .slide.cover.overlay-mode {
+    background: transparent !important;
+  }
+  .slide.cover.overlay-mode .overlay-scrim {
+    /* Diagonal dark scrim — heavier on the upper-left where headline+badge sit,
+       fading out to lower-right so the AI image breathes. */
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(135deg,
+        rgba(3,7,26,0.88) 0%,
+        rgba(3,7,26,0.72) 25%,
+        rgba(3,7,26,0.45) 55%,
+        rgba(3,7,26,0.10) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  /* Lift text above the scrim — keep original positioning intact */
+  .slide.cover.overlay-mode .stage { z-index: 2; }
+  .slide.cover.overlay-mode .ghost-num { z-index: 2; }
+  .slide.cover.overlay-mode .top-strip,
+  .slide.cover.overlay-mode .bot-strip,
+  .slide.cover.overlay-mode .slide-num { z-index: 2; }
+  /* Drop-shadow on key text so it survives any AI bg */
+  .slide.cover.overlay-mode .title-block,
+  .slide.cover.overlay-mode .badge-line {
+    text-shadow: 0 2px 24px rgba(0,0,0,0.65);
+  }
 </style>
 </head>
 <body>
@@ -973,6 +1004,23 @@
   const payload = decodeURIComponent(location.hash.slice(1) || '%7B%7D');
   const data = JSON.parse(payload || '{}');
   const root = document.getElementById('root');
+  // Overlay-render mode: transparent page bg so the cover slide composites over an AI image.
+  // Must be a function so the hashchange listener can re-apply when nav goes
+  // cover-normal → cover-overlay on the same page.
+  function applyOverlayMode() {
+    if (data._overlay) {
+      document.documentElement.classList.add('overlay-render');
+      document.body.classList.add('overlay-render');
+      document.documentElement.style.background = 'transparent';
+      document.body.style.background = 'transparent';
+    } else {
+      document.documentElement.classList.remove('overlay-render');
+      document.body.classList.remove('overlay-render');
+      document.documentElement.style.background = '';
+      document.body.style.background = '';
+    }
+  }
+  applyOverlayMode();
   // NB: idx/tot/drop are derived per-render from `data` so hashchange picks them up.
   function ctx() {
     return {
@@ -984,7 +1032,7 @@
 
   const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-  const CALENDLY_URL = 'https://calendly.com/farhan-adenan/30min';
+  const CALENDLY_URL = 'https://meeting.povguy.sg';
   const SIGNOFF_NAME = 'Farhan Adenan';
   const SIGNOFF_PHONE = '+65 9236 1561';
   const SIGNOFF_SITE = 'POVGUY.SG';
@@ -1127,12 +1175,16 @@
       const { drop } = ctx();
       const ghost = (data.ghost_number || '').toString();
       const badge = data.badge || drop.theme || 'Daily Drop';
+      const overlayMode = !!data._overlay;
+      // Overlay mode: transparent bg + scrim behind text for legibility over AI image.
+      // Decorative elements (glows, dot pattern) suppressed; ghost-number + chrome kept.
       html = `
-        <div class="slide cover">
+        <div class="slide cover ${overlayMode ? 'overlay-mode' : ''}">
+          ${overlayMode ? '<div class="overlay-scrim"></div>' : `
           <div class="top-accent"></div>
           <div class="glow blue-cr"></div>
           <div class="glow red-tl"></div>
-          ${dotPattern()}
+          ${dotPattern()}`}
           ${ghost ? `<div class="ghost-num">${esc(ghost)}</div>` : ''}
           ${chrome()}
           <div class="stage">
@@ -1290,7 +1342,7 @@
             <div class="divider gradient"></div>
             <div class="cta-card">
               <div class="glow-inner"></div>
-              <div class="label">${glyph('calendar')} &nbsp;Calendly &middot; 30-min slot</div>
+              <div class="label">${glyph('calendar')} &nbsp;Book a 30-min slot</div>
               <div class="ask">${esc(ask)}</div>
               <div class="term-addr">
                 <span class="prompt">&gt;_</span>
@@ -1332,6 +1384,7 @@
       const next = JSON.parse(decodeURIComponent(location.hash.slice(1) || '%7B%7D'));
       Object.keys(data).forEach(k => delete data[k]);
       Object.assign(data, next);
+      applyOverlayMode();
       render();
     } catch (e) {
       console.error('hashchange parse failed', e);
