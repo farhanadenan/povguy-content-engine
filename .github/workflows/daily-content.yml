@@ -61,19 +61,9 @@ jobs:
       - name: Enhance cover slide via Nanobanana (optional)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DROPS_DIR: ./dist
         continue-on-error: true
-        run: |
-          node -e "
-            import('./src/cover-enhancer.js').then(async m => {
-              const spec = JSON.parse(require('fs').readFileSync('dist/$DROP_DATE/spec.json'));
-              await m.enhanceCover({
-                baseImagePath: 'dist/$DROP_DATE/slide-1.png',
-                theme: spec.slides[0].kind === 'cover' ? '${{ github.event.inputs.force_theme || '' }}' : 'wrap',
-                headline: spec.hook,
-                outPath: 'dist/$DROP_DATE/slide-1.png'
-              });
-            });
-          "
+        run: node src/cover-enhancer.js $DROP_DATE
 
       - name: Commit drop output back to repo (for jsDelivr CDN)
         # This is what makes the slide PNGs publicly addressable via:
