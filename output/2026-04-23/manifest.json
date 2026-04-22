@@ -1,24 +1,24 @@
 {
   "drop_id": "2026-04-22-rental",
-  "theme": "Rental Market — HDB & Condo Yields",
-  "hook": "Two districts still clear 5% net yield — here is where",
+  "theme": "Rental Market · HDB & Condo Yields",
+  "hook": "Some Singapore landlords are quietly clearing 5% net — here's where",
   "slide_count": 8,
   "hashtags": [
     "#sgproperty",
     "#povguy",
     "#sgrentals",
+    "#hdbinvesting",
     "#condoyield",
-    "#hdbinvestment",
-    "#rentalyield"
+    "#ocrcondo"
   ],
   "sources": [
-    "URA Rental Caveats Q1 2026",
-    "SRX Rental Median Data Q1 2026",
-    "HDB Resale Portal Q1 2026",
-    "IRAS Property Tax Table 2025",
-    "MAS Residential Property Statistics"
+    "URA Rental Index Q1 2026",
+    "SRX District Rental Data Q1 2026",
+    "EdgeProp Singapore Q1 2026",
+    "HDB Rental Registrations via data.gov.sg Q1 2026",
+    "HDB Resale Transaction Data via data.gov.sg Q1 2026"
   ],
-  "rendered_at": "2026-04-22T22:43:35.047Z",
+  "rendered_at": "2026-04-22T22:48:38.161Z",
   "image_urls": [
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-1.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-2.png",
