@@ -7,8 +7,8 @@ const THEMES = {
   monday: {
     id: 'distress',
     label: 'Distress + condo trends',
-    sources: ['distress-radar', 'launches', 'condo-analysis'],
-    research_query: "this week's distress radar finds + condo new launch and resale movement, surface the most undervalued by district"
+    sources: ['appscript-distress-radar', 'ura-condo-transactions', 'ura-pipeline', 'ura-developer-sales'],
+    research_query: "this week's distress radar finds + condo new launch absorption and resale movement, surface the most undervalued by district AND the launches with weakest sell-through"
   },
   tuesday: {
     id: 'hdb',
@@ -19,13 +19,13 @@ const THEMES = {
   wednesday: {
     id: 'rental',
     label: 'Rental market',
-    sources: ['rental-yield', 'ura/rentals'],
+    sources: ['appscript-rental-yield', 'ura-rentals'],
     research_query: "HDB + condo rental yields this week, hottest districts, where landlord ROI beats 5% net"
   },
   thursday: {
     id: 'landed',
     label: 'Landed market',
-    sources: ['landed', 'ura/landed-transactions'],
+    sources: ['ura-landed-transactions'],
     research_query: "landed property: brand new vs resale this week — who is still selling, where, at what discount to original asking"
   },
   friday: {
