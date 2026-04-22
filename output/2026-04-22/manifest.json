@@ -1,21 +1,20 @@
 {
   "drop_id": "2026-04-22-rental",
-  "theme": "Rental Market Q1 2026",
-  "hook": "District 14 condos are printing 5%+ yields while D10 landlords flex $62k rents",
+  "theme": "Rental Yields Q1 2026",
+  "hook": "One district is printing 6% gross yield while D10 landlords collect 3.8%",
   "slide_count": 8,
   "hashtags": [
     "#sgproperty",
     "#povguy",
-    "#condorental",
-    "#rentalyield",
-    "#singaporerentals",
-    "#district14"
+    "#sgrentalmarket",
+    "#condoyield",
+    "#sglandlord"
   ],
   "sources": [
-    "URA Rental Caveats 26Q1",
+    "URA Rental Contracts Q1 2026",
     "data.gov.sg"
   ],
-  "rendered_at": "2026-04-22T14:57:15.133Z",
+  "rendered_at": "2026-04-22T15:27:26.328Z",
   "image_urls": [
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-1.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-2.png",
