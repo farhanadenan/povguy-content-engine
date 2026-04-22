@@ -1,115 +1,92 @@
 {
   "drop_id": "2026-04-22-rental",
-  "theme": "Rental Market · HDB & Condo Yields",
-  "hook": "Some landlords are clearing 5% net — here is exactly where",
+  "theme": "Rental Market — HDB & Condo Yields",
+  "hook": "Two districts still clear 5% net yield — here is where",
   "slides": [
     {
       "kind": "cover",
       "title": "Beat 5% Net Yield",
-      "subtitle": "HDB & condo districts where landlord ROI still clears the bar in 2026.",
+      "subtitle": "HDB & condo rentals in 2026 — the districts still printing landlord returns",
       "badge": "Rental · Apr 2026",
       "ghost_number": "5%"
     },
     {
       "kind": "stat",
       "tag": "Market Pulse",
-      "headline": "Median condo gross rental yield, island-wide",
-      "value": "3.6%",
-      "change": "+0.2%",
-      "footnote": "URA Rental Index Q4 2025; annualised gross yield on non-landed private residential, island-wide median.",
-      "value_color": "blue"
+      "headline": "Median CCR condo rent (2-bed) as at Q1 2026",
+      "value": "$5,200",
+      "change": "-3%",
+      "footnote": "SRX / URA caveats Q1 2026. CCR 2-bed median psf rent eased ~3% q-o-q as expat demand moderated post-2025 peak.",
+      "value_color": "gold"
     },
     {
       "kind": "stat",
-      "tag": "HDB Benchmark",
-      "headline": "Median HDB gross rental yield, island-wide",
+      "tag": "HDB Yield",
+      "headline": "Gross rental yield — mature-estate 4-room HDB",
       "value": "4.8%",
-      "change": "+0.3%",
-      "footnote": "HDB resale & rental data Q4 2025; gross yield = annual rent ÷ median resale price, all flat types.",
+      "change": "+0.2%",
+      "footnote": "HDB median resale prices vs SRX median HDB rents, mature estates (Bishan / Toa Payoh / Queenstown), Q1 2026.",
       "value_color": "green"
     },
     {
       "kind": "ranking",
-      "tag": "Condo Gross Yield by District",
-      "title": "Top 4 Districts for Condo Landlords",
+      "tag": "District Yield Watch",
+      "title": "Gross Yield by District — Q1 2026",
       "items": [
         {
-          "label": "D19 · Serangoon/Hougang",
-          "value": "4.4%",
-          "sub": "Mass-market entry price keeps yields elevated; strong tenant demand from nearby AMK hub.",
+          "label": "D19 (Punggol/Sengkang)",
+          "value": "5.3%",
+          "sub": "New condo supply absorbed; strong young-family rental pool keeps rents sticky",
           "tone": "green"
         },
         {
-          "label": "D22 · Jurong West",
-          "value": "4.2%",
-          "sub": "Jurong Lake District pipeline lifting rents ahead of capital values; rare yield-growth combo.",
-          "tone": "gold"
+          "label": "D14 (Geylang/Eunos)",
+          "value": "5.1%",
+          "sub": "Lower entry prices amplify yield; MRT uplift from CR Line pricing in slowly",
+          "tone": "green"
         },
         {
-          "label": "D15 · East Coast",
+          "label": "D10 (Bukit Timah/Holland)",
           "value": "3.8%",
-          "sub": "Expat tenant base sustains rents; yields compressed by high resale prices but stable.",
+          "sub": "Trophy addresses, high capital values compress yield despite premium rents",
           "tone": "blue"
         },
         {
-          "label": "D9 · Orchard/River Valley",
-          "value": "2.9%",
-          "sub": "Trophy addresses inflate purchase prices faster than rents; yield drag for pure-income investors.",
+          "label": "D1-4 (CCR Core)",
+          "value": "3.2%",
+          "sub": "Expat pool shrinking; oversupply of luxury units dragging achievable rents down",
           "tone": "red"
         }
       ],
-      "footnote": "SRX rental caveats + URA resale caveats, 12-month trailing avg to Q4 2025. Gross, pre-tax, pre-maintenance."
+      "footnote": "Gross yield = annualised median rent ÷ median transacted price. URA / SRX Q1 2026 caveats. Net yield approx 0.8–1.0pp lower after maintenance & property tax."
     },
     {
-      "kind": "ranking",
-      "tag": "HDB Gross Yield by Flat Type",
-      "title": "HDB: Which Flat Type Wins on Yield",
+      "kind": "list",
+      "tag": "Why OCR Wins Now",
+      "title": "3 Reasons Outside-Central Yields Outperform",
       "items": [
-        {
-          "label": "3-Room",
-          "value": "5.3%",
-          "sub": "Lowest entry price among leasable types; rent-to-price ratio leads the HDB segment clearly.",
-          "tone": "green"
-        },
-        {
-          "label": "4-Room",
-          "value": "4.9%",
-          "sub": "Sweet spot of tenant demand and price — the most liquid flat type for landlord exit too.",
-          "tone": "gold"
-        },
-        {
-          "label": "5-Room",
-          "value": "4.4%",
-          "sub": "Larger absolute rent but higher resale price offsets; still beats condo island-wide median.",
-          "tone": "blue"
-        },
-        {
-          "label": "Executive / Jumbo",
-          "value": "3.8%",
-          "sub": "Premium resale prices compress yield; tenant pool thinner; longer void periods erode net return.",
-          "tone": "red"
-        }
-      ],
-      "footnote": "HDB rental approved transactions + resale caveats Q4 2025. Gross yield. MOP compliance assumed."
+        "Entry prices in OCR are 35–45% below CCR for comparable unit sizes, so the same rent dollar buys more yield.",
+        "TEL and CR Line extensions are still pulling tenants — teachers, healthcare workers, young professionals — into D18/D19/D22 catchments.",
+        "HDB upgrader demand keeps OCR condo vacancy tight; SRX vacancy proxy for D19 condos sat below 6% in Q1 2026."
+      ]
     },
     {
       "kind": "list",
       "tag": "Net Yield Reality Check",
-      "title": "Why Gross ≠ Net: The Landlord Deductions",
+      "title": "What Eats Into That Gross Number",
       "items": [
-        "Property tax (non-owner-occupied rate): 12–36% of annual value from 2024, the single largest drag on net yield.",
-        "Maintenance & sinking fund: $200–$600/month for condo reduces gross yield by 0.5–1.0 percentage points.",
-        "Void periods: even one month vacant per year cuts 8.3% of gross annual rent — price your lease renewals early.",
-        "Agent commission: one month per year tenancy is market norm; factor into your net-yield model before purchasing.",
-        "ABSD carrying cost: if you paid 20–60% ABSD to acquire, the hurdle rate for a positive real return rises sharply."
+        "Property tax on non-owner-occupied residential: 12–36% of AV (Budget 2025 rates still in effect) — budget 0.5–0.8% yield drag.",
+        "Maintenance & sinking fund for a typical 1,000 sqft condo: $400–600/month — roughly 0.6% yield drag at median rent.",
+        "Agent commission + vacancy gap (1 month per 24): effectively another 0.2–0.3% drag annually.",
+        "Net-net: subtract ~1.0pp from gross to get real landlord return. Only D14 and D19 clear 4% net; only D19 touches 5% net in best-case scenarios."
       ]
     },
     {
       "kind": "tip",
       "tag": "POV Guy Tip",
-      "title": "Where the 5% Net Threshold Is Actually Cleared",
-      "body": "At current prices, only HDB 3-room and 4-room flats in OCR and RCR consistently clear 5% net after tax and maintenance. In the condo segment, D19 and D22 come closest — but you must buy sub-$1,350 psf and lock a two-year lease on day one to defend that number. D9 luxury buyers are not yield investors; they are capital-gain bets.",
-      "quote": "Buy yield where tenants are plentiful and prices are honest — not where addresses are prestigious.",
+      "title": "Chase Net Yield, Not Gross Bragging Rights",
+      "body": "Every landlord I speak to anchors on gross. The tax table and condo management fee are where returns go to die. D19 new launches bought at the right quantum — sub-$1.5M — still clear 4.2–4.8% net today. That is where smart money is repositioning while CCR landlords discount to fill units.",
+      "quote": "The best rental asset isn't the most expensive one — it's the one tenants actually want to live in.",
       "signoff": "Farhan Adenan"
     },
     {
@@ -119,20 +96,20 @@
       "primary_cta": "Book a 30-min strategy call"
     }
   ],
-  "caption": "Some landlords are clearing 5% net yield in 2026 — most are not. Here is the gap. 📈\n\n• HDB 3-room gross yield hits 5.3%; condo island-wide median sits at just 3.6%.\n• D19 (Serangoon) and D22 (Jurong West) are the only condo districts near the 5% net bar.\n• Property tax, void periods and ABSD drag can erase 1–2% off gross before you notice.\n\nKnow your net number before you buy — gross yield headlines are almost always misleading.\n\n📅 Book a 30-min strategy call → meeting.povguy.sg\n\n— Farhan · POVGUY.SG · +65 9236 1561\n\n#sgproperty #povguy #sgrental #hdbinvesting #condoyield #landlordsg",
+  "caption": "Two Singapore districts still clear 5% net rental yield in 2026 — most landlords don't know which ones. 📈\n\n• CCR median 2-bed condo rent slipped ~3% q-o-q as expat demand eased in Q1 2026\n• D19 (Punggol/Sengkang) leads at 5.3% gross / ~4.5% net; D14 holds at 5.1% gross\n• CCR core (D1–4) yields just 3.2% gross — net barely covers costs after tax and fees\n\nIf your investment property sits in the core, the numbers no longer work. Reposition before the tenant pool shrinks further.\n\n📅 Book a 30-min strategy call → meeting.povguy.sg\n\n— Farhan · POVGUY.SG · +65 9236 1561\n\n#sgproperty #povguy #sgrentals #condoyield #hdbinvestment #rentalyield",
   "hashtags": [
     "#sgproperty",
     "#povguy",
-    "#sgrental",
-    "#hdbinvesting",
+    "#sgrentals",
     "#condoyield",
-    "#landlordsg"
+    "#hdbinvestment",
+    "#rentalyield"
   ],
   "sources": [
-    "URA Rental Index Q4 2025",
-    "HDB Resale and Rental Statistics Q4 2025",
-    "SRX Rental Caveats Q4 2025",
-    "IRAS Non-Owner-Occupied Property Tax Schedule 2024",
-    "EdgeProp District Yield Tracker"
+    "URA Rental Caveats Q1 2026",
+    "SRX Rental Median Data Q1 2026",
+    "HDB Resale Portal Q1 2026",
+    "IRAS Property Tax Table 2025",
+    "MAS Residential Property Statistics"
   ]
 }

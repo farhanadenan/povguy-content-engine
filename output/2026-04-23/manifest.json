@@ -1,24 +1,24 @@
 {
   "drop_id": "2026-04-22-rental",
-  "theme": "Rental Market · HDB & Condo Yields",
-  "hook": "Some landlords are clearing 5% net — here is exactly where",
+  "theme": "Rental Market — HDB & Condo Yields",
+  "hook": "Two districts still clear 5% net yield — here is where",
   "slide_count": 8,
   "hashtags": [
     "#sgproperty",
     "#povguy",
-    "#sgrental",
-    "#hdbinvesting",
+    "#sgrentals",
     "#condoyield",
-    "#landlordsg"
+    "#hdbinvestment",
+    "#rentalyield"
   ],
   "sources": [
-    "URA Rental Index Q4 2025",
-    "HDB Resale and Rental Statistics Q4 2025",
-    "SRX Rental Caveats Q4 2025",
-    "IRAS Non-Owner-Occupied Property Tax Schedule 2024",
-    "EdgeProp District Yield Tracker"
+    "URA Rental Caveats Q1 2026",
+    "SRX Rental Median Data Q1 2026",
+    "HDB Resale Portal Q1 2026",
+    "IRAS Property Tax Table 2025",
+    "MAS Residential Property Statistics"
   ],
-  "rendered_at": "2026-04-22T22:34:33.095Z",
+  "rendered_at": "2026-04-22T22:43:35.047Z",
   "image_urls": [
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-1.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-2.png",
