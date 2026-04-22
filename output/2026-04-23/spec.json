@@ -1,115 +1,92 @@
 {
   "drop_id": "2026-04-23-landed",
   "theme": "Landed Market: New vs Resale",
-  "hook": "Resale landed is still trading — but the discount gap is widening 📉",
+  "hook": "Resale landed is moving — but sellers are blinking first 📉",
   "slides": [
     {
       "kind": "cover",
       "title": "Landed: New vs Resale",
-      "subtitle": "Who is selling, where they're selling, and what they're giving up to close.",
+      "subtitle": "Who is selling, where, and how much are they giving away to close the deal?",
       "badge": "Landed · Apr 2026",
       "ghost_number": "100%"
     },
     {
       "kind": "stat",
       "tag": "Market Pulse",
-      "headline": "All landed deals in this dataset are resale (typeOfSale=3)",
+      "headline": "All recent landed deals are resale — zero new launches",
       "value": "100%",
       "change": "",
-      "footnote": "URA REALIS — every transaction in the current landed pull is a sub-sale or resale. Zero new developer launches recorded this week.",
+      "footnote": "URA caveats (typeOfSale=3 = resale sub-sales). No typeOfSale=1 new-sale transactions recorded in this week's data set.",
       "value_color": "gold"
     },
     {
-      "kind": "stat",
-      "tag": "Top Ticket · D04 CCR",
-      "headline": "Sentosa Cove Coral Island detached hit $22.8M in Sep 2022 — latest Feb 2025 deal: $14.8M",
-      "value": "$14.8M",
-      "change": "-35%",
-      "footnote": "URA REALIS — Coral Island, D04, 99-yr lease. Peak $22.8M (Sep 2022) vs $14.8M (Feb 2025). Same ~737 sqm land.",
-      "value_color": "red"
-    },
-    {
-      "kind": "ranking",
-      "tag": "District Comparison",
-      "title": "Where Landed Money Is Moving",
-      "items": [
-        {
-          "label": "D04 Sentosa Cove CCR",
-          "value": "$14.8M",
-          "sub": "Detached, 99-yr, Coral Island. Down 35% from $22.8M 2022 peak. Lease decay biting.",
-          "tone": "red"
-        },
-        {
-          "label": "D05 Faber Hills OCR",
-          "value": "$7.8M",
-          "sub": "Semi-D peak Nov 2024. Most active landed cluster — 30+ deals since 2021, freehold.",
-          "tone": "green"
-        },
-        {
-          "label": "D05 Springwood RCR",
-          "value": "$5.58M",
-          "sub": "Freehold terrace, Mar 2026 deal. Steady climb from $3.2M in 2022 — +74% in 4 yrs.",
-          "tone": "gold"
-        },
-        {
-          "label": "D05 Zehnder Rd RCR",
-          "value": "$5.2M",
-          "sub": "Semi-D, freehold. Sep 2021 deal. Thin liquidity — only 2 transactions on record.",
-          "tone": "blue"
-        }
-      ],
-      "footnote": "URA REALIS resale transactions. All land-area basis. Faber Hills & Springwood show strongest recent volume."
-    },
-    {
       "kind": "list",
-      "tag": "Price Trend Read",
-      "title": "3 Signals From the Resale Data",
+      "tag": "What The Data Shows",
+      "title": "3 things driving landed resale now",
       "items": [
-        "Faber Hills semi-Ds (D05 OCR, freehold) peaked at $8.39M in Dec 2024 — the Jan 2025 deal at $7.1M suggests early softening at the top of the range.",
-        "Springwood terraces (D05 RCR, freehold) are the quiet winner: $3.2M in May 2022 → $5.58M in Mar 2026, a 74% run on small 171–258 sqm plots.",
-        "Sentosa Cove (D04, 99-yr) is the clearest cautionary tale: every 2024–2025 deal has printed below the 2022–2023 highs, with Feb 2025 at $14.8M vs $22.8M peak — a $8M haircut.",
-        "The Vision strata terraces (D05, 99-yr) are flat: $3.35M in Nov 2021, $3.38M in Sep 2025 — four years of zero capital growth on leasehold strata.",
-        "No new launch supply in this week's data — 100% resale. Buyers have zero new-build optionality in the landed segment right now."
+        "Faber Hills (D05, OCR freehold) is the most active cluster — semis trading $6.45M–$7.8M, terraces $4.0M–$4.1M across the past 12 months.",
+        "Sentosa Cove (D04, 99-yr) peaked at $22.8M in Sep 2022; by Feb 2025 a comparable plot on Coral Island sold for $14.8M — a 35% haircut off peak.",
+        "Springwood terraces (Jalan Mat Jambol, D05 freehold RCR) hit $6.34M in Sep 2023 but the most recent deal in Mar 2026 was $5.58M — sellers gave back ~12%."
       ]
     },
     {
       "kind": "ranking",
-      "tag": "Faber Hills Deep Dive",
-      "title": "Semi-D Price Arc 2021 → 2025",
+      "tag": "Cluster Comparison",
+      "title": "4 landed clusters — price trajectory",
       "items": [
         {
-          "label": "Peak: Nov 2024",
-          "value": "$8.39M",
-          "sub": "Detached, 419 sqm land. Highest recorded price in the estate.",
-          "tone": "gold"
+          "label": "Faber Hills Semis",
+          "value": "$6.45–7.8M",
+          "sub": "D05 OCR freehold. Stable range; no meaningful new-high since Apr 2024's $7.6M.",
+          "tone": "blue"
         },
         {
-          "label": "Mid: Apr 2024",
-          "value": "$7.6M",
-          "sub": "Semi-D, 372 sqm. Strong mid-year 2024 print before softening.",
-          "tone": "green"
-        },
-        {
-          "label": "Latest: Jan 2025",
-          "value": "$7.1M",
-          "sub": "Semi-D, 372 sqm — same size as Apr 2024 deal, $500K cheaper. Watch this.",
+          "label": "Springwood Terrace",
+          "value": "$5.58M",
+          "sub": "D05 RCR freehold. Mar 2026 deal 12% below Sep 2023 peak of $6.34M.",
           "tone": "red"
         },
         {
-          "label": "Base: Oct 2021",
-          "value": "$5.69M",
-          "sub": "Semi-D, 544 sqm. Entry-level 2021 pricing — shows how far the estate has run.",
-          "tone": "blue"
+          "label": "Sentosa Cove Det.",
+          "value": "$14.8M",
+          "sub": "D04 CCR 99-yr. Feb 2025 deal 35% below Sep 2022 peak of $22.8M.",
+          "tone": "red"
+        },
+        {
+          "label": "Zehnder Rd Semi",
+          "value": "$5.2M",
+          "sub": "D05 RCR freehold. Sep 2021 deal; comparable area unit at $5.19M in Jul 2024 — flat for 3 yrs.",
+          "tone": "gold"
         }
       ],
-      "footnote": "URA REALIS — Faber Hills, Faber Avenue, D05 OCR freehold. Land-area transactions only."
+      "footnote": "URA caveats, resale transactions 2021–2026. Land area basis. Source: URA REALIS."
+    },
+    {
+      "kind": "stat",
+      "tag": "Sentosa Reality Check",
+      "headline": "Sentosa Cove detached: 35% off the 2022 peak price",
+      "value": "-35%",
+      "change": "-35%",
+      "footnote": "Peak: $22.8M (Sep 2022, 1,048 sqm, Coral Island). Latest: $14.8M (Feb 2025, 737 sqm, Coral Island). URA REALIS.",
+      "value_color": "red"
+    },
+    {
+      "kind": "list",
+      "tag": "Seller Behaviour",
+      "title": "Where sellers are giving ground",
+      "items": [
+        "Sentosa Cove: Multiple transactions in 2023–2025 consistently below 2022 highs — a structural repricing, not a one-off. Leasehold drag is real.",
+        "Springwood (D05 RCR): The $6.34M Sep 2023 high has not been repeated. Mar 2026 cleared at $5.58M — buyers are extracting ~$700K off the ask.",
+        "Faber Hills semis: Price range has compressed. The $8.8M outlier (Jul 2022) hasn't returned; market has settled into a tighter $6.45M–$7.8M band.",
+        "Freehold OCR terraces (D05): Holding value better than CCR 99-yr — Faber terrace at $4.0–4.1M in mid-2024 vs $3.48–3.8M in 2022, a quiet +10% gain."
+      ]
     },
     {
       "kind": "tip",
       "tag": "POV Guy Tip",
-      "title": "Where the Real Value Sits Right Now",
-      "body": "Freehold terraces in D05 RCR (Springwood, Jalan Mat Jambol) are the standout value play — freehold tenure, RCR location, still trading below $6M, and 74% appreciation since 2022 with room left. Sentosa Cove looks cheap vs peak but don't be fooled: leasehold decay accelerates from here and foreigners still face ABSD. Faber Hills semi-Ds are plateauing — the Jan 2025 deal at $7.1M vs Nov 2024's $8.39M is a 15% reset in two months.",
-      "quote": "Buy freehold RCR landed under $6M before the next rate cut — that's the window right now.",
+      "title": "New launch landed? Buy resale instead.",
+      "body": "There are zero new landed launches in the current data. Every deal is resale — and motivated sellers in Sentosa Cove and D05 RCR are negotiating. Freehold OCR terraces in Faber Hills are the quiet hold: no big upside but no leasehold decay either. If you must have landed CCR, Sentosa pricing at $14.8M on a 737 sqm plot now looks like a 2021 entry point — but the 99-yr clock is ticking.",
+      "quote": "The discount is already on the table. The question is whether you're at the table.",
       "signoff": "Farhan Adenan"
     },
     {
@@ -119,16 +96,16 @@
       "primary_cta": "Book a 30-min strategy call"
     }
   ],
-  "caption": "Resale landed is still closing — but not all deals are equal 📉\n\n• Sentosa Cove detached: $22.8M peak (2022) → $14.8M in Feb 2025. That's a $8M haircut.\n• Faber Hills semi-Ds plateauing: Jan 2025 at $7.1M vs $8.39M just 2 months earlier.\n• Springwood freehold terraces quietly up 74% since 2022 — still under $6M.\n\nFreehold RCR landed under $6M is the only segment with both tenure safety and upside left.\n\n📅 Book a 30-min strategy call → meeting.povguy.sg\n\n— Farhan · POVGUY.SG · +65 9236 1561\n\n#sgproperty #povguy #landedsg #freeholdsg #sentosacove",
+  "caption": "Resale landed is moving — but sellers are giving ground to close. 📉\n\n• Sentosa Cove detached: -35% off Sep 2022 peak, now clearing at $14.8M\n• Springwood D05 terraces: buyers extracting ~$700K below 2023 highs\n• Freehold OCR terraces (Faber Hills) quietly +10% since 2022 — the quiet hold\n\nZero new landed launches in current data. Every deal is resale — and the motivated sellers are already negotiating. Know where the discount is.\n\n📅 Book a 30-min strategy call → meeting.povguy.sg\n\n— Farhan · POVGUY.SG · +65 9236 1561\n\n#sgproperty #povguy #landedsg #sentosacove #faberhill",
   "hashtags": [
     "#sgproperty",
     "#povguy",
     "#landedsg",
-    "#freeholdsg",
-    "#sentosacove"
+    "#sentosacove",
+    "#faberhill"
   ],
   "sources": [
     "URA REALIS",
-    "data.gov.sg"
+    "URA caveats (typeOfSale resale transactions 2021–2026)"
   ]
 }
