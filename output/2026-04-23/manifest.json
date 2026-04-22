@@ -1,0 +1,34 @@
+{
+  "drop_id": "2026-04-23-landed",
+  "theme": "Landed Market: New vs Resale",
+  "hook": "Resale landed is still trading — but the discount gap is widening 📉",
+  "slide_count": 8,
+  "hashtags": [
+    "#sgproperty",
+    "#povguy",
+    "#landedsg",
+    "#freeholdsg",
+    "#sentosacove"
+  ],
+  "sources": [
+    "URA REALIS",
+    "data.gov.sg"
+  ],
+  "rendered_at": "2026-04-22T16:13:33.104Z",
+  "image_urls": [
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-1.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-2.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-3.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-4.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-5.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-6.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-7.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-8.png"
+  ],
+  "image_cdn": {
+    "owner": "farhanadenan",
+    "repo": "povguy-content-engine",
+    "branch": "main",
+    "prefix": "output"
+  }
+}
