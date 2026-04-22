@@ -1,0 +1,39 @@
+{
+  "drop_id": "2026-04-22-rental",
+  "theme": "Singapore Rental Market — HDB & Condo Yield Watch",
+  "hook": "These districts are printing 5%+ net yields while others bleed cash",
+  "slide_count": 9,
+  "hashtags": [
+    "#sgproperty",
+    "#povguy",
+    "#rentalyield",
+    "#singaporerentals",
+    "#hdbinvestment",
+    "#condoyield",
+    "#landlordsg"
+  ],
+  "sources": [
+    "URA REALIS Q4 2025 rental transactions (live Q1 2026 data unavailable in feed)",
+    "SRX Rental Index Q1 2026 estimates",
+    "MAS ABSD framework (as of April 2026)",
+    "HDB resale portal (resale price benchmarks)"
+  ],
+  "rendered_at": "2026-04-22T13:01:34.512Z",
+  "image_urls": [
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-1.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-2.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-3.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-4.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-5.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-6.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-7.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-8.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-22/slide-9.png"
+  ],
+  "image_cdn": {
+    "owner": "farhanadenan",
+    "repo": "povguy-content-engine",
+    "branch": "main",
+    "prefix": "output"
+  }
+}

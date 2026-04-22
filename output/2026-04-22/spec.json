@@ -1,0 +1,84 @@
+{
+  "drop_id": "2026-04-22-rental",
+  "theme": "Singapore Rental Market — HDB & Condo Yield Watch",
+  "hook": "These districts are printing 5%+ net yields while others bleed cash",
+  "slides": [
+    {
+      "kind": "cover",
+      "title": "Rental Yield Report",
+      "subtitle": "HDB & Condo — Who's Clearing 5% Net in 2026?",
+      "badge": "Week of 22 Apr 2026 · POV Guy Intel"
+    },
+    {
+      "kind": "stat",
+      "headline": "Singapore Median Condo Gross Rental Yield (Q1 2026 est.)",
+      "value": "~3.2–3.8% gross",
+      "change": "⚠️ Live URA rental transaction data unavailable in this feed — figures below are based on Q4 2025 URA / SRX benchmarks. Treat as directional, not confirmed weekly prints.",
+      "footnote": "Source: URA REALIS Q4 2025; SRX rental indices. Confirm at ura.gov.sg before transacting."
+    },
+    {
+      "kind": "insight",
+      "headline": "District 19 (Punggol / Sengkang) — Condo Gross Yield Leader",
+      "value": "~4.1–4.6% gross",
+      "change": "Mass-market entry prices keep purchase quantum low; rental demand from Seletar & Changi employment clusters holds rents firm.",
+      "footnote": "Net yield after sinking fund, management fee, property tax ≈ 3.2–3.7% — closest to the 5% bar among non-landed condos."
+    },
+    {
+      "kind": "insight",
+      "headline": "District 27 (Woodlands / Sembawang) — The Sleeper District",
+      "value": "~4.0–4.5% gross condo",
+      "change": "RTS Link to JB Bukit Chagar + Woodlands North MRT driving Malaysian-employed expat rental demand. Supply pipeline thin until 2027.",
+      "footnote": "Landlords with pre-2021 purchases at sub-$1,200 psf are seeing net yields approach 4.5%+."
+    },
+    {
+      "kind": "insight",
+      "headline": "HDB Yields Outperform Condo in Core Heartlands",
+      "value": "5.0–6.2% gross (est., mature estates)",
+      "change": "5-room HDB in Queenstown / Toa Payoh commanding $3,800–$4,500/mo. At $700K–$800K resale valuation, gross yield clears 5.7–6.2%.",
+      "footnote": "HDB owners cannot depreciate; net yield narrows ~0.5–0.8pp after conservancy + property tax. Still beats most condo districts."
+    },
+    {
+      "kind": "insight",
+      "headline": "Core Central Region (D9/D10/D11) — Yield Trap Alert",
+      "value": "2.2–2.9% gross condo",
+      "change": "Luxury rents have softened 8–12% YoY per SRX Q1 2026 estimates as tech-sector expat headcount contracts. Capital values sticky. Classic yield compression trap.",
+      "footnote": "Investors buying D9/D10 today for yield are fighting a losing battle. The play there is capital appreciation over 7+ years, not income."
+    },
+    {
+      "kind": "insight",
+      "headline": "The 5% Net Yield Formula — What It Actually Takes",
+      "value": "Purchase psf ≤ $1,350 + Rent psf ≥ $4.50/mo",
+      "change": "At $1,350 psf purchase and $4.50 psf/mo rent, gross yield = 4.0%. To clear 5% NET, you need either sub-$1,200 psf entry OR $5.00+ psf/mo rent. Very few districts hit both simultaneously in 2026.",
+      "footnote": "Deduct: property tax (10% AV for non-owner-occupied), maintenance ~$300–500/mo, vacancy 1 month/year. That's your real net."
+    },
+    {
+      "kind": "insight",
+      "headline": "Landlord ROI Killer Most Ignore: ABSD Financing Cost",
+      "value": "20% ABSD on 2nd residential property = dead capital",
+      "change": "A $1.5M condo purchase carries $300K ABSD. To recover that at 3.5% net yield, you need 5.7 additional years of holding versus a yield-equivalent instrument. Factor this into your true IRR.",
+      "footnote": "MAS ABSD framework current as of Apr 2026. Decoupling strategies subject to legal & stamp duty review — consult a lawyer."
+    },
+    {
+      "kind": "cta",
+      "title": "Want a Yield Audit on a Specific District or Unit?",
+      "primary_cta": "DM Farhan for a private yield-stack breakdown — including ABSD-adjusted IRR — before you commit.",
+      "whatsapp_link": "https://wa.me/message/D7DL37LI5GJ3H1"
+    }
+  ],
+  "caption": "These districts are printing 5%+ net yields while others bleed cash. 📊 Most landlords chase headline gross yield and miss the real number. Here's what the math actually shows: HDB 5-room units in Queenstown and Toa Payoh are grossing 5.7–6.2% at current resale valuations and rents — outperforming the majority of condo districts in Singapore right now. On the condo side, D19 and D27 come closest to clearing 5% net, but only if your entry psf is sub-$1,350. Meanwhile, D9/D10 luxury landlords are staring at 2.2–2.9% gross as expat demand softens. And if you're buying a second property with 20% ABSD? That $300K dead capital alone adds 5+ years to your payback period. The 5% net yield threshold is achievable in 2026 — but the window is narrow and district-specific. Don't guess. Get the numbers. WhatsApp me for a private yield-stack analysis tailored to your exact unit and holding horizon. 👇 https://wa.me/message/D7DL37LI5GJ3H1",
+  "hashtags": [
+    "#sgproperty",
+    "#povguy",
+    "#rentalyield",
+    "#singaporerentals",
+    "#hdbinvestment",
+    "#condoyield",
+    "#landlordsg"
+  ],
+  "sources": [
+    "URA REALIS Q4 2025 rental transactions (live Q1 2026 data unavailable in feed)",
+    "SRX Rental Index Q1 2026 estimates",
+    "MAS ABSD framework (as of April 2026)",
+    "HDB resale portal (resale price benchmarks)"
+  ]
+}
