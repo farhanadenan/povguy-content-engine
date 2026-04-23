@@ -55,8 +55,20 @@ async function renderDrop(dropDir) {
   }
   await browser.close();
 
-  // Write caption.txt and manifest.json
+  // Write caption.txt (full — used by Telegram/FB/Threads publishers)
   fs.writeFileSync(path.join(dropDir, 'caption.txt'), spec.caption);
+
+  // Write IG-specific helpers for manual posting (used while Meta App Review pending):
+  //   - hashtags.txt    — just the hashtags, for paste into IG first comment
+  //   - caption-ig.txt  — caption with hashtag block stripped, for the IG caption itself
+  const hashtagLine = (spec.hashtags || []).join(' ');
+  fs.writeFileSync(path.join(dropDir, 'hashtags.txt'), hashtagLine);
+  // Strip the hashtag line (and any trailing blank line before it) from the caption.
+  // Heuristic: remove the last paragraph if it looks like a #-only block.
+  const captionStripped = (spec.caption || '')
+    .replace(/\n\n#[^\n]*$/m, '')
+    .trimEnd();
+  fs.writeFileSync(path.join(dropDir, 'caption-ig.txt'), captionStripped);
 
   // Construct jsDelivr CDN URLs for each slide.
   // These URLs become live AFTER the workflow commits dist/<date>/ to output/<date>/ in this repo.

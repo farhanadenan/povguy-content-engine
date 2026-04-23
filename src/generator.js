@@ -1,48 +1,50 @@
 /**
- * Carousel + caption generator.
- * Calls Claude with the /research skill prompt embedded inline (skill content baked in).
+ * Carousel + caption generator (v6 — 10-slide "Punchy Type" format).
  *
- * Output (JSON):
+ * Output (JSON spec.json):
  *   {
- *     drop_id: "2026-04-22-rental",
- *     theme: "Rental market",
- *     hook: "Where yields beat 5% net this week",
- *     slides: [
- *       { kind: "cover",   title, subtitle, badge, ghost_number? },
- *       { kind: "stat",    tag?, headline, value, change?, footnote, value_color? },
- *       { kind: "list",    tag?, title, items: [string|{text}] },
- *       { kind: "ranking", tag?, title, items: [{label, value, sub, tone}] },
- *       { kind: "tip",     tag?, title, body, quote?, signoff? },
- *       { kind: "cta",     title, title_accent?, primary_cta? }
- *     ],
- *     caption: "<Telegram-safe point-form caption>",
- *     hashtags: ["#sgproperty", ...],
- *     sources: ["URA", "data.gov.sg", ...]
+ *     drop_id: "2026-04-23-landed",
+ *     theme: "Landed market",
+ *     hook: "Sentosa Cove just printed its first sub-S$2k psf sale",
+ *     slides: [ {kind, ...}, ... ],   // exactly 10 slides
+ *     caption: "...",
+ *     hashtags: [...],
+ *     sources: [...]
  *   }
  *
- * Caption shape (rendered by publisher exactly as-is, then hashtags appended):
- *   <PUNCHY HOOK in caps or with emoji — ≤90 chars>
+ * SLIDE KIND PAYLOADS (must match content-engine/templates/carousel-base.html)
+ *   cover    { title_parts:[{text,style}], badge, sub, eyebrow? }
+ *   context  { lead, headline_parts:[{text,style}], chips:[{text,hot?}], source? }
+ *   stat     { eyebrow?, pre, pre_accent?, value, change?, value_color?, post?, source? }
+ *   list     { eyebrow?, title, title_accent?, items:[{body}|string], source? }
+ *   ranking  { eyebrow?, title, title_accent?, items:[{label, sub?, value}], source? }
+ *   pov_take { eyebrow?, label?, headline_parts:[{text,style}], punch?, punch_bold?, by? }
+ *   tip      { eyebrow?, quote_parts:[{text,style}], by? }
+ *   cta      { eyebrow?, pre?, title, title_accent?, sub?, button_text?, url? }
+ *   save     { eyebrow?, title, title_accent?, sub? }
  *
- *   • Bullet 1 (≤90 chars)
- *   • Bullet 2 (≤90 chars)
- *   • Bullet 3 (≤90 chars)
+ * `parts` is an array of inline runs, each `{ text, style }` where style is
+ *   'plain' | 'yellow' | 'strike' | 'em' | 'break'
  *
- *   <One-line takeaway / what it means for the buyer>
+ * SLOT MAP (default 10-slide flow — model can reorder middle 2-8 if it wants):
+ *   01 cover       — punchy hook, max 3 short lines
+ *   02 context     — one-sentence frame: what just happened
+ *   03 stat        — the headline number
+ *   04 list        — 3 bullet breakdown / "why it matters"
+ *   05 ranking     — 3-4 row comparison (optional second stat OK)
+ *   06 pov_take    — Farhan's POV, signature voice
+ *   07 stat / list — second data beat (different metric than slot 3)
+ *   08 tip         — quotable one-liner that screenshots well
+ *   09 cta         — book the call
+ *   10 save        — engagement close ("save / share if useful")
  *
- *   📅 Book a 30-min strategy call → meeting.povguy.sg
- *
- *   — Farhan · POVGUY.SG · +65 9236 1561
- *
- *   #sgproperty #povguy ...
- *
- * Total caption budget (everything above): ≤700 chars including hashtags.
- * Telegram preview cuts at ~200 chars before "show more" — so the HOOK plus
- * first bullet must land in the first 200 chars.
+ * Caption rules: see CAPTION RULES inside the system prompt below.
  */
 
 import 'dotenv/config';
 import fs from 'node:fs';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 import Anthropic from '@anthropic-ai/sdk';
 import { themeForDate } from './router.js';
 
@@ -50,56 +52,199 @@ const SYSTEM_PROMPT = `
 You are the /research skill operating for POV Guy Realtor (Farhan Adenan, CEA R068636D).
 
 Brand voice: senior Singapore property strategist with 20+ years advising UHNWI.
-Data-driven, cites URA / HDB / MAS / SRX / EdgeProp, never hedges, treats insights
-as if only the top 0.1% see them. Plain English, zero jargon-padding, no fluff.
+Data-driven, cites URA / HDB / MAS / SRX / EdgeProp, treats insights as if only the
+top 0.1% see them. Plain English, zero jargon-padding, no fluff. Confident but never
+arrogant — the value is in the data, not in your hot takes.
 
 Your job: given a theme + source data, output a JSON carousel spec that another
 program will render to PNG slides. You write COPY only — never describe visuals.
+Return EXACTLY this JSON shape (no prose, no markdown fences, no commentary):
 
-Return EXACTLY this JSON shape (no prose, no markdown fences):
 {
   "drop_id": "YYYY-MM-DD-<theme-id>",
-  "theme": "<theme label>",
+  "theme": "<theme label e.g. Landed market>",
   "hook": "<10-12 word headline that earns the swipe>",
   "slides": [
-    {"kind":"cover","title":"<≤32 char punchy title>","subtitle":"<≤90 char one-liner>","badge":"<≤24 char eyebrow, e.g. 'Rental · Q1 2026'>","ghost_number":"<optional big translucent watermark number, e.g. '5%' or '412'>"},
+    /* SLOT 01 — cover */
+    {
+      "kind":"cover",
+      "eyebrow":"<≤32 char brand line e.g. 'POV GUY · LANDED · APR 26'>",
+      "title_parts":[
+        {"text":"Sentosa Cove just printed","style":"plain"},
+        {"style":"break"},
+        {"text":"its first","style":"plain"},
+        {"text":"sub-S$2k","style":"yellow"},
+        {"text":"psf sale","style":"plain"}
+      ],
+      "badge":"<≤32 char tag e.g. 'Landed · Q2 2026'>",
+      "sub":"<≤120 char one-liner subhead>"
+    },
 
-    {"kind":"stat","tag":"<≤24 char tag>","headline":"<≤60 char framing>","value":"<huge number, ≤8 chars>","change":"<+X% / -X% / blank>","footnote":"<≤140 char source line>","value_color":"<blue|green|red|gold>"},
+    /* SLOT 02 — context */
+    {
+      "kind":"context",
+      "eyebrow":"<e.g. 'What just happened'>",
+      "lead":"<≤80 char setup — the one-sentence frame>",
+      "headline_parts":[
+        {"text":"A","style":"plain"},
+        {"text":"$1,950 psf","style":"yellow"},
+        {"text":"deal closed Tuesday — that's","style":"plain"},
+        {"text":"$2,400","style":"strike"},
+        {"text":"two years ago.","style":"plain"}
+      ],
+      "chips":[
+        {"text":"District 4","hot":false},
+        {"text":"Bungalow","hot":false},
+        {"text":"-19% in 24mo","hot":true}
+      ],
+      "source":"<≤60 char e.g. 'URA caveats · POV Guy analysis'>"
+    },
 
-    {"kind":"list","tag":"<≤24 char tag>","title":"<≤44 char title>","items":["<≤120 char point>","<...>","<...>"]},
+    /* SLOT 03 — stat */
+    {
+      "kind":"stat",
+      "eyebrow":"<e.g. 'Headline Number'>",
+      "pre":"<≤60 char setup line — e.g. 'Sentosa Cove median PSF'>",
+      "pre_accent":"<optional substring of pre to render in yellow>",
+      "value":"<huge number, ≤8 chars e.g. 'S$1,950'>",
+      "change":"<+X% / -X% / blank>",
+      "value_color":"<yellow|''>",
+      "post":"<≤120 char tail line e.g. 'lowest print since 2017'>",
+      "source":"<≤60 char attribution>"
+    },
 
-    {"kind":"ranking","tag":"<≤24 char tag>","title":"<≤44 char title>","items":[
-      {"label":"<≤24 char>","value":"<≤10 char number>","sub":"<≤80 char sub>","tone":"<blue|green|red|gold>"},
-      {"label":"<≤24 char>","value":"<≤10 char number>","sub":"<≤80 char sub>","tone":"<blue|green|red|gold>"},
-      {"label":"<≤24 char>","value":"<≤10 char number>","sub":"<≤80 char sub>","tone":"<blue|green|red|gold>"},
-      {"label":"<≤24 char>","value":"<≤10 char number>","sub":"<≤80 char sub>","tone":"<blue|green|red|gold>"}
-    ],"footnote":"<≤120 char source line>"},
+    /* SLOT 04 — list */
+    {
+      "kind":"list",
+      "eyebrow":"<e.g. 'Why this matters'>",
+      "title":"<≤60 char title>",
+      "title_accent":"<optional substring of title for yellow accent>",
+      "items":[
+        {"body":"<≤120 char point 1 — lead with the number>"},
+        {"body":"<≤120 char point 2 — the contrast>"},
+        {"body":"<≤120 char point 3 — the implication>"}
+      ],
+      "source":"<≤60 char attribution>"
+    },
 
-    {"kind":"tip","tag":"POV Guy Tip","title":"<≤44 char title>","body":"<≤220 char insight>","quote":"<≤120 char one-liner — the punchline>","signoff":"Farhan Adenan"},
+    /* SLOT 05 — ranking */
+    {
+      "kind":"ranking",
+      "eyebrow":"<e.g. 'Ranked · This Week'>",
+      "title":"<≤60 char title — what is being ranked>",
+      "title_accent":"<optional substring for yellow>",
+      "items":[
+        {"label":"<≤24 char>","sub":"<≤60 char qualifier>","value":"<≤10 char>"},
+        {"label":"<≤24 char>","sub":"<≤60 char qualifier>","value":"<≤10 char>"},
+        {"label":"<≤24 char>","sub":"<≤60 char qualifier>","value":"<≤10 char>"},
+        {"label":"<≤24 char>","sub":"<≤60 char qualifier>","value":"<≤10 char>"}
+      ],
+      "source":"<≤60 char attribution>"
+    },
 
-    {"kind":"cta","title":"Ready to make","title_accent":"your next move?","primary_cta":"Book a 30-min strategy call"}
+    /* SLOT 06 — pov_take */
+    {
+      "kind":"pov_take",
+      "eyebrow":"<e.g. 'POV Guy · Take'>",
+      "label":"<≤32 char e.g. 'Why it matters'>",
+      "headline_parts":[
+        {"text":"This isn't a","style":"plain"},
+        {"text":"crash","style":"strike"},
+        {"text":"— it's","style":"plain"},
+        {"text":"price discovery.","style":"yellow"}
+      ],
+      "punch":"<≤180 char setup — sets up the punchline>",
+      "punch_bold":"<≤80 char punchline rendered in bold weight>",
+      "by":"Farhan Adenan · CEA R068636D"
+    },
+
+    /* SLOT 07 — second data beat (use stat OR list, not ranking) */
+    {
+      "kind":"stat",
+      "eyebrow":"<different angle than slot 3 — e.g. 'Volume Side'>",
+      "pre":"<setup>",
+      "value":"<number>",
+      "change":"<delta>",
+      "post":"<tail>",
+      "source":"<attribution>"
+    },
+
+    /* SLOT 08 — tip (quotable one-liner that screenshots well) */
+    {
+      "kind":"tip",
+      "eyebrow":"<e.g. 'POV Guy · Tip'>",
+      "quote_parts":[
+        {"text":"In a","style":"plain"},
+        {"text":"discovery market,","style":"yellow"},
+        {"style":"break"},
+        {"text":"the","style":"plain"},
+        {"text":"first","style":"strike"},
+        {"text":"third bid usually wins.","style":"plain"}
+      ],
+      "by":"Farhan Adenan · POV Guy Realtor"
+    },
+
+    /* SLOT 09 — cta (book the call) */
+    {
+      "kind":"cta",
+      "eyebrow":"<e.g. 'Your Move'>",
+      "pre":"<≤44 char setup e.g. 'Looking at landed in D4 / D9 / D10?'>",
+      "title":"<≤44 char e.g. 'Let's map your'>",
+      "title_accent":"<≤32 char e.g. 'next move.'>",
+      "sub":"<≤140 char e.g. '30-min strategy call. No pitch — just the data and the angles.'>",
+      "button_text":"Book a 30-min call →",
+      "url":"povguy.sg/strategy-call"
+    },
+
+    /* SLOT 10 — save (engagement close) */
+    {
+      "kind":"save",
+      "eyebrow":"<e.g. 'One last thing'>",
+      "title":"<≤44 char e.g. 'Save this for'>",
+      "title_accent":"<≤24 char e.g. 'your next chat'>",
+      "sub":"<≤140 char e.g. 'Forward to anyone in the market for landed in D4. Tag a friend who needs this data.'>"
+    }
   ],
   "caption": "<see CAPTION RULES below>",
   "hashtags": ["#sgproperty","#povguy","<3-5 niche tags>"],
-  "sources": ["URA","data.gov.sg",...]
+  "sources": ["URA","SRX","data.gov.sg",...]
 }
 
-SLIDE RULES
-- Total slides: 7-9. ALWAYS start with kind=cover, ALWAYS end with kind=cta.
-- Use kind=ranking when comparing 4 buckets (districts, flat types, etc.). Pick tones to tell the story (red = bad, green = good, gold = standout, blue = neutral).
-- Use kind=stat for the single biggest number of the day.
-- Use kind=list for a 3-5 point breakdown.
-- Use kind=tip for the punchline / "what this means for you".
-- Numbers must be EXACT, drawn from the source data. If you don't have an exact number, omit that slide rather than approximating.
-- Never mention "AI", "automated", "machine learning", or "language model".
-- Do NOT include WhatsApp, phone numbers, or any contact details inside slide copy
-  — the CTA template renders the meeting link + sign-off automatically.
+HARD RULES
+- Output EXACTLY 10 slides in the exact order above. Do NOT skip slots, do NOT
+  reorder, do NOT add extras. Slot 01 is always cover, slot 10 is always save.
+- For slot 07, choose either kind=stat or kind=list (NOT ranking — slot 5 has that).
+  The angle MUST be different from slot 3 — different metric, different cut, different
+  geography. If you can't find a second data beat that's genuinely different, use
+  kind=list with 3 bullets that don't repeat earlier slides.
+- Numbers must be EXACT, drawn from the source data. If you don't have an exact
+  number for a slot, use the nearest defensible figure and qualify in 'post' or 'sub'
+  (e.g. "approx. range, 30-day rolling"). Never invent precision you don't have.
 
-CAPTION RULES (this is what shows on Telegram, FB, IG, Threads — get it right)
+PARTS ARRAY RULES (title_parts / headline_parts / quote_parts / etc.)
+- Each part: { "text": "<word or short phrase>", "style": "plain"|"yellow"|"strike"|"em" }
+- Use { "style": "break" } (no text) to force a line break.
+- One yellow accent per heading max, two if absolutely earned. Yellow is for the
+  word that carries the punchline — usually a number, a contrast, or the surprise.
+- "strike" is for the OLD value being replaced by the NEW value (yellow). Used to
+  make a before/after pop without a chart. Use sparingly — 0-2 times per carousel.
+- Every text run is rendered with a single space between it and the next run.
+  Punctuation goes inside the text run (e.g. "discovery." not "discovery" + ".").
+- Keep total visible length per heading ≤ 90 chars (sum of all text runs).
+
+VOICE & CONTENT RULES
+- Never mention "AI", "automated", "machine learning", or "language model".
+- Do NOT include WhatsApp / phone / email inside slide copy — chrome handles it.
+- Cover title is 3 short lines max (use \\n{break} parts), each ≤ 30 chars.
+- pov_take headline should land like a tweet — opinionated, sharp, defensible.
+- tip quote should be screenshot-worthy — short, surprising, repeatable.
+
+CAPTION RULES (this is what shows on Telegram, FB, IG, Threads)
 - Total length ≤ 700 chars including hashtags.
 - Structure (with literal newlines):
 
-  <HOOK — ≤90 chars, punchy, leads with the surprise. Telegram only previews ~200 chars before "show more", so the hook MUST grab attention.>
+  <HOOK — ≤90 chars, punchy, leads with the surprise. Telegram only previews
+  ~200 chars before "show more", so the hook MUST grab attention.>
 
   • <Bullet 1, ≤90 chars, the core data point>
   • <Bullet 2, ≤90 chars, the contrast or "but">
@@ -107,7 +252,7 @@ CAPTION RULES (this is what shows on Telegram, FB, IG, Threads — get it right)
 
   <Single-line takeaway — what it means for the buyer/seller. ≤120 chars.>
 
-  📅 Book a 30-min strategy call → meeting.povguy.sg
+  📅 Book a 30-min strategy call → povguy.sg/strategy-call
 
   — Farhan · POVGUY.SG · +65 9236 1561
 
@@ -122,8 +267,6 @@ CAPTION RULES (this is what shows on Telegram, FB, IG, Threads — get it right)
 `.trim();
 
 async function loadSnapshot(theme, dropDate) {
-  // For now, look for snapshot at ../snapshots/<date>/<source>.json
-  // In production, content-engine pulls these from data-engine's release artifacts.
   const dir = path.join(process.cwd(), 'snapshots', dropDate);
   const data = {};
   if (!fs.existsSync(dir)) {
@@ -137,6 +280,77 @@ async function loadSnapshot(theme, dropDate) {
     }
   }
   return data;
+}
+
+/* ----- Defensive normalization ------------------------------------------- *
+ * Ensures the spec has the slot structure our pipeline depends on, even if
+ * the model drifts. We never replace creative content — only patch missing
+ * structural fields and pad/trim to exactly 10 slides.
+ * ------------------------------------------------------------------------- */
+function normalizeSpec(spec, theme) {
+  spec.slides = Array.isArray(spec.slides) ? spec.slides : [];
+
+  // 1. Force slot 1 = cover. If model returned non-cover first slide, prepend a stub.
+  if (!spec.slides[0] || spec.slides[0].kind !== 'cover') {
+    spec.slides.unshift({
+      kind: 'cover',
+      eyebrow: `POV GUY · ${theme.label.toUpperCase()}`,
+      title_parts: [
+        { text: spec.hook || theme.label, style: 'plain' },
+      ],
+      badge: theme.label,
+      sub: '',
+    });
+  }
+
+  // 2. Force slot 10 = save (was previously cta — now save closes the deck).
+  const last = spec.slides[spec.slides.length - 1];
+  if (!last || last.kind !== 'save') {
+    spec.slides.push({
+      kind: 'save',
+      eyebrow: 'One last thing',
+      title: 'Save this for',
+      title_accent: 'your next chat',
+      sub: 'Forward to anyone in the market right now. The data shifts every week.',
+    });
+  }
+
+  // 3. Force slot 9 = cta (immediately before save). If second-to-last isn't cta, insert one.
+  const idx9 = spec.slides.length - 2;
+  if (idx9 < 1 || spec.slides[idx9]?.kind !== 'cta') {
+    spec.slides.splice(spec.slides.length - 1, 0, {
+      kind: 'cta',
+      eyebrow: 'Your Move',
+      pre: 'Want the angle the dashboards miss?',
+      title: 'Let\'s map your',
+      title_accent: 'next move.',
+      sub: '30-min strategy call. No pitch — just the data and the angles.',
+      button_text: 'Book a 30-min call →',
+      url: 'povguy.sg/strategy-call',
+    });
+  }
+
+  // 4. Pad / trim to exactly 10 slides. If short, fill middle with a generic tip.
+  while (spec.slides.length < 10) {
+    // insert before the cta (which is at length-2)
+    spec.slides.splice(spec.slides.length - 2, 0, {
+      kind: 'tip',
+      eyebrow: 'POV Guy · Tip',
+      quote_parts: [
+        { text: 'Data without context is noise.', style: 'plain' },
+        { style: 'break' },
+        { text: 'Context without action is trivia.', style: 'yellow' },
+      ],
+      by: 'Farhan Adenan · POV Guy Realtor',
+    });
+  }
+  if (spec.slides.length > 10) {
+    // Trim from the middle (preserve cover at 0 and cta+save at end).
+    const overflow = spec.slides.length - 10;
+    spec.slides.splice(1, overflow);
+  }
+
+  return spec;
 }
 
 export async function generate(date = new Date()) {
@@ -157,18 +371,17 @@ Source data (truncate as needed for prompt budget):
 ${JSON.stringify(snapshot, null, 2).slice(0, 30_000)}
 \`\`\`
 
-Produce the carousel JSON now.
+Produce the 10-slide carousel JSON now. Remember: exactly 10 slides, slot 1 = cover,
+slot 10 = save, slot 9 = cta. Use parts arrays for title_parts / headline_parts /
+quote_parts. Every number must be exact.
 `.trim();
 
-  // Retry up to 3 times — Anthropic occasionally returns an empty content
-  // block on transient overload, and a silent JSON.parse fail on empty string
-  // takes the whole pipeline down.
   let response, text, spec, lastErr;
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
       response = await client.messages.create({
         model: 'claude-sonnet-4-6',
-        max_tokens: 8000,
+        max_tokens: 12000,
         system: SYSTEM_PROMPT,
         messages: [{ role: 'user', content: userPrompt }]
       });
@@ -182,7 +395,7 @@ Produce the carousel JSON now.
       if (!spec?.slides || !Array.isArray(spec.slides) || spec.slides.length === 0) {
         throw new Error(`spec missing slides[] (got keys: ${Object.keys(spec || {}).join(',')}, stop_reason=${response?.stop_reason})`);
       }
-      break; // success
+      break;
     } catch (e) {
       lastErr = e;
       console.error(`[generator] attempt ${attempt}/3 failed: ${e.message}`);
@@ -195,21 +408,16 @@ Produce the carousel JSON now.
     throw new Error(`generator failed after 3 attempts: ${lastErr?.message}`);
   }
 
-  // Defensive: ensure final slide is CTA, even if model forgot.
-  const last = spec.slides[spec.slides.length - 1];
-  if (!last || last.kind !== 'cta') {
-    spec.slides.push({
-      kind: 'cta',
-      title: 'Ready to make',
-      title_accent: 'your next move?',
-      primary_cta: 'Book a 30-min strategy call'
-    });
-  }
+  // Defensive normalization — guarantees exactly 10 slides with correct slot anchors.
+  spec = normalizeSpec(spec, theme);
 
+  console.error(`[generator] spec normalized: ${spec.slides.length} slides, kinds=${spec.slides.map(s => s.kind).join(',')}`);
   return spec;
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+// Robust ESM CLI guard — pathToFileURL handles paths with spaces.
+// (Bare `file://${process.argv[1]}` no-ops silently when cwd has spaces.)
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
   const result = await generate();
   console.log(JSON.stringify(result, null, 2));
 }
