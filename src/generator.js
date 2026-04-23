@@ -80,19 +80,30 @@ JSON shape:
   "theme": "<theme label e.g. Landed market>",
   "hook": "<10-12 word headline that earns the swipe>",
   "slides": [
-    /* SLOT 01 — cover */
+    /* SLOT 01 — cover
+       COVER TITLE RULES (CRITICAL — model has been getting this wrong):
+       - title_parts text TOTAL must be ≤ 7 words / ≤ 36 chars including spaces.
+         The slide is rendered at 162px and any longer wraps to 4+ lines and
+         overflows the canvas. SHORTER IS PUNCHIER.
+       - Exactly ONE word/phrase styled "yellow" — the punch word.
+       - NO trailing "...", NO "..." anywhere, NO partial words like "blink…".
+         If you can't fit the whole thought, REWRITE — never truncate.
+       - The cover earns the swipe. Treat it like a magazine headline.
+       ✅ GOOD: "Sentosa just printed sub-$2k psf"          (6 words, 30 chars)
+       ✅ GOOD: "Resale landed: who blinks first"          (5 words, 30 chars)
+       ✅ GOOD: "HDB upgraders are quietly retreating"     (5 words, 36 chars)
+       ❌ BAD:  "Brand new vs resale landed — who blink…"  (truncated, 39 chars)
+       ❌ BAD:  "Three things to know about D10 landed sales right now" (too long) */
     {
       "kind":"cover",
       "eyebrow":"<≤32 char brand line e.g. 'POV GUY · LANDED · APR 26'>",
       "title_parts":[
-        {"text":"Sentosa Cove just printed","style":"plain"},
-        {"style":"break"},
-        {"text":"its first","style":"plain"},
-        {"text":"sub-S$2k","style":"yellow"},
-        {"text":"psf sale","style":"plain"}
+        {"text":"Sentosa just printed","style":"plain"},
+        {"text":"sub-$2k","style":"yellow"},
+        {"text":"psf","style":"plain"}
       ],
       "badge":"<≤32 char tag e.g. 'Landed · Q2 2026'>",
-      "sub":"<≤120 char one-liner subhead>"
+      "sub":"<≤120 char one-liner subhead — the value behind the headline>"
     },
 
     /* SLOT 02 — context */

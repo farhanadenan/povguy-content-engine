@@ -55,22 +55,52 @@ const TARGET_H = 1350;
 //   "Wired magazine cover".
 
 const COMMON_TREATMENT = `
-EDITORIAL TREATMENT (CRITICAL — produce a STOP-THE-SCROLL premium photograph):
-- BOLD, SATURATED, PREMIUM. Vogue × Bloomberg Businessweek × Apple campaign energy.
-- Massive color pop. ONE dominant saturated accent (electric teal, hot magenta, golden amber, citrus orange, vivid coral, royal cobalt) playing against a clean luxe backdrop.
-- Hyperreal premium real-estate / architectural / still-life photography. Rich detail. Glossy surfaces. Natural light or dramatic key light.
-- Composition: asymmetric, magazine-cover quality. Negative space in upper-left or top-third (where the headline overlay sits).
-- Think: a Vogue editorial shoot inside a luxury Singapore property. Or a Bloomberg cover photographed by a fashion photographer. Or an Apple product launch image of a building.
-- Sharp focus on hero subject. Background may have soft falloff but NEVER drab.
-- Color must SING. Saturation cranked. Contrast crisp. Like an iPhone 15 Pro Max ad.
+SHOT BRIEF (treat this like a creative director hiring a real photographer):
 
-ABSOLUTELY FORBIDDEN:
-- NO horror, ghostly, dystopian, thermal-camera, brutalist, or "Wired magazine" treatment.
-- NO desaturated black-and-white-with-one-red-thing — that's been done, it reads as cheap and creepy.
-- NO people, no coffee cups, no Marina Bay Sands postcard, no Merlion, no infinity pool clichés.
-- NO text, watermarks, logos, captions, numbers, or graphs in the image — pure background visual only.
-- NO drone-shot skylines at blue hour. NO real-estate-listing flatness.
-- NO soft pastel washes (it's premium and saturated, not Wes Anderson).
+LIGHTING (mandatory): a single dramatic key light + a secondary colored rim/fill.
+NOT flat overhead light. NOT studio softbox. Think: low-angle golden-hour sunlight
+slicing across a surface, OR theatrical hard light from one side leaving the other
+in shadow, OR neon-spill from off-frame. Hard shadows are encouraged. Contrast HIGH.
+
+COLOR RULES:
+- ONE bold saturated accent dominates ~25-40% of the frame (vivid magenta, electric
+  teal, hot amber, citrus orange, fire red, royal cobalt, deep violet). Not
+  multiple — ONE.
+- Rest of frame is rich and tonal: deep blacks, warm browns, polished metal, glass,
+  marble, or a deep matte color — NOT grey, NOT beige, NOT muted.
+- Color must look like it was lit, not edited. No flat color washes.
+
+LENS / COMPOSITION:
+- Shoot like a 35mm or 50mm prime — shallow depth of field, hero subject sharp,
+  immediate background falloff to soft creamy bokeh.
+- Frame asymmetrically. Hero off-center. Negative space deliberately placed in the
+  TOP THIRD (where the headline overlay sits) — that area should be one continuous
+  tone or a clean darkening, not busy.
+- Macro details welcome: a single drop of condensation on glass, the grain of a
+  marble countertop, the patina on a brass handle.
+
+INSPIRATION (be literal — channel these photographers/directors, NOT "stock"):
+- Annie Leibovitz's Vanity Fair architectural portraits.
+- Iwan Baan's commissioned architecture photography (luxury residential).
+- The Apple iPhone 15 Pro launch shots — that black + amber + product-as-sculpture
+  energy.
+- A still from Wong Kar-wai (In the Mood for Love) — rich color, deep shadow,
+  intimate detail.
+- A Bloomberg Businessweek cover shot for a "future of cities" feature.
+
+ABSOLUTELY FORBIDDEN (these were the boring-stock-ish failures):
+- NO flat overall lighting / overcast daylight / "real-estate listing" look.
+- NO bright washes / over-exposed / blown-out highlights / "too bright to read".
+- NO grey skies, grey walls, drab beige interiors, dull pastel.
+- NO horror, ghostly, dystopian, thermal, brutalist, "Wired magazine" treatment.
+- NO desaturated B&W-with-one-red-thing. NO HDR over-processing. NO instagram
+  filter look.
+- NO people, no faces, no hands, no coffee cups, no Marina Bay Sands postcard,
+  no Merlion, no infinity pool clichés.
+- NO text, watermarks, logos, captions, numbers, brand marks, or graphs in the
+  image — PURE background visual only.
+- NO drone skyline at blue hour. NO wide cityscape. NO crowded compositions.
+- NO soft pastel washes (this is premium and saturated, not Wes Anderson).
 `.trim();
 
 // 7 prompts — one per theme, cover slide only (v4).
@@ -78,25 +108,25 @@ ABSOLUTELY FORBIDDEN:
 // no longer get AI backgrounds.
 const PROMPTS = {
   // ---- DISTRESS (Mon) ----
-  'distress-cover': `Hero shot of a luxury Singapore condo unit photographed from outside at golden hour. Floor-to-ceiling glass windows reflect a fiery saturated orange sunset. One window glows warm amber from inside, the rest of the building is sleek black glass. Architectural Digest meets Vogue editorial. Razor-sharp glass detail, glossy polish. Top-third sky empty for headline.`,
+  'distress-cover': `Macro detail shot of a single brass key resting on a slab of dark veined Calacatta marble. Hard amber key light rakes across from camera left at 30°, throwing one long sharp shadow across the marble grain. Background falls into deep black void. The key catches one molten orange highlight on its bow. Shot on a 50mm prime, f/2.8, hero key sharp, marble grain visible. Top third of frame: pure deep black for headline overlay. Annie Leibovitz × Apple product shoot energy. Single dominant accent: hot amber.`,
 
   // ---- HDB (Tue) ----
-  'hdb-cover': `Hero exterior shot of an iconic Singapore HDB block at sunrise — pastel facade in saturated peach, mint, and butter-yellow tones. Repeating geometric balconies catch the warm light. Crisp blue sky above. Wes-Anderson-symmetry meets Apple campaign cleanliness. Top-third sky empty for headline.`,
+  'hdb-cover': `Tight architectural shot looking UP at the underside of an iconic Singapore HDB block at golden hour. The repeating geometric balconies catch a low sun from one side — the lit faces glow saturated tangerine, the shadowed faces fall into deep blue-black. Sky in upper third is a clean unbroken twilight gradient (deep indigo to ember orange). Hard light, hard shadows, NO clouds. Shot on 35mm prime, sharp focus, no motion. Iwan Baan × Architectural Digest. Single dominant accent: vivid tangerine.`,
 
   // ---- RENTAL (Wed) ----
-  'rental-cover': `Hero shot of a luxury penthouse interior at sunset — floor-to-ceiling windows show a saturated magenta-and-amber Singapore skyline. Inside: one designer chair in vivid teal, polished concrete floor, single sculptural pendant light. Vogue Living × Apple ad. Top-third sky empty for headline.`,
+  'rental-cover': `Interior detail of an empty luxury penthouse at dusk. ONE single Wong Kar-wai style pool of warm amber spotlight falls on a polished concrete floor; the rest of the room sinks into rich teal-black shadow. Floor-to-ceiling window in the background shows a single magenta neon sign across the void of city night, deeply out of focus. NO furniture, NO people. Hard directional light, intimate, cinematic, sumptuous. 50mm, f/2, deep shadow, one warm pool. Top third is deep teal-black for overlay. Single dominant accent: amber pool against teal void.`,
 
   // ---- LANDED (Thu) ----
-  'landed-cover': `Hero shot of a Singapore black-and-white colonial bungalow at golden hour. Crisp white walls, glossy black shutters. A single cluster of vivid magenta bougainvillea spills over the entrance. Lush green tropical garden. Architectural Digest cover energy. Top-third sky empty for headline.`,
+  'landed-cover': `Macro hero shot of a single cluster of vivid hot-magenta bougainvillea flowers spilling over the edge of a glossy black-painted timber wall (a black-and-white bungalow detail). Hard golden-hour key light from camera right makes each petal glow translucent. Background: the wall surface fades into deep black shadow. Razor-sharp on the petals, immediate creamy bokeh. Shot on 100mm macro, f/2.8. The flowers are the ONLY saturated thing in frame. Top half: deep black wall for headline. Single dominant accent: electric hot magenta.`,
 
   // ---- WRAP / WEEKEND (Fri/Sat/Sun) ----
-  'wrap-cover': `Hero aerial shot of Singapore at twilight — saturated coral-and-gold sunset reflecting off the dense skyline. One iconic skyscraper catches a vivid magenta highlight. Crisp clean composition, like an Apple ad. Top-third sky empty for headline.`,
+  'wrap-cover': `Tight long-lens (200mm) shot of ONE single skyscraper in Singapore at the exact moment after sunset — sky behind is a clean unbroken gradient from deep cobalt at top to ember coral at horizon. The building's glass facade catches one molten amber highlight down its spine; the rest of the building is silhouette black. NO other buildings visible. NO crowded skyline. Asymmetric composition: building in the right third, left two-thirds is pure cobalt-to-coral sky for the headline. Apple iPhone Pro launch shot energy. Single dominant accent: molten amber against cobalt.`,
 
   // ---- MASTERPLAN (Sat) ----
-  'masterplan-cover': `Hero shot of an architectural model of a future Singapore district on a clean white plinth, photographed under dramatic studio lighting. The model glows with saturated golden interior lights. Background is a clean luxe gradient in deep cobalt to magenta. Apple-campaign × MoMA-exhibit energy. Top-third negative space.`,
+  'masterplan-cover': `Studio shot of a single architect's model building (white card / balsa) sitting on a slab of polished black marble. ONE hard cobalt-blue spotlight rakes from camera-left throwing the model's shadow long across the marble. Inside the model, tiny windows glow warm amber as if lit from within. Background falls to deep black. NOT a wide cityscape — just ONE model object, hero. 50mm prime, f/2.8. Top third: deep black for overlay. MoMA exhibit × Apple product photography. Single dominant accent: cobalt spotlight + amber interior glow.`,
 
   // ---- GEOPOLITICS (Sun) ----
-  'geopolitics-cover': `Hero macro shot of a single Singapore-dollar coin standing upright on a polished marble surface, lit dramatically with one magenta key light from the left and one teal rim light from the right. Coin metal grain hyperreal, edge-of-frame bokeh in saturated colors. Apple-product-shoot energy. Top-third negative space.`,
+  'geopolitics-cover': `Extreme macro of a single Singapore one-dollar coin standing upright on its edge on a slab of dark wet slate. One hard violet key light from camera left, one teal rim light from camera right. Coin metal hyper-detailed: every micro-scratch and milled edge visible. Background: deep black with the slate's wet sheen catching faint highlights. Razor-sharp on the coin, edge-of-frame bokeh in violet+teal. Shot on 100mm macro, f/4. Top half: deep black slate void for overlay. Apple-product-shoot × Bloomberg cover energy. Single dominant accent: violet+teal cross-light.`,
 };
 
 function buildPrompt(theme, kind) {
@@ -160,14 +190,19 @@ async function generateBackground(theme, kind) {
 // headlines/footers stay readable even when AI returns a hot, saturated image.
 // SVG is generated lazily so we can swap intensity without reprocessing.
 function buildScrimSvg() {
+  // Heavier top + bottom than v4. Cover headline sits in top-third + bottom 30%
+  // (badge → h1 → sub → footer). Middle (~30-65%) stays lighter so the AI
+  // photograph still reads. Numbers tuned 2026-04-23 after Farhan reported
+  // "too bright to read text" on a tip-slice render.
   return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${TARGET_W}" height="${TARGET_H}">
   <defs>
     <linearGradient id="scrim" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%"   stop-color="#000" stop-opacity="0.62"/>
-      <stop offset="22%"  stop-color="#000" stop-opacity="0.32"/>
-      <stop offset="50%"  stop-color="#000" stop-opacity="0.08"/>
-      <stop offset="78%"  stop-color="#000" stop-opacity="0.32"/>
-      <stop offset="100%" stop-color="#000" stop-opacity="0.62"/>
+      <stop offset="0%"   stop-color="#000" stop-opacity="0.78"/>
+      <stop offset="18%"  stop-color="#000" stop-opacity="0.45"/>
+      <stop offset="38%"  stop-color="#000" stop-opacity="0.18"/>
+      <stop offset="62%"  stop-color="#000" stop-opacity="0.30"/>
+      <stop offset="82%"  stop-color="#000" stop-opacity="0.62"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.88"/>
     </linearGradient>
   </defs>
   <rect width="100%" height="100%" fill="url(#scrim)"/>
