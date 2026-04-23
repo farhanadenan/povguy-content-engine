@@ -1,7 +1,7 @@
 {
   "drop_id": "2026-04-23-landed",
   "theme": "Landed market",
-  "hook": "Brand new vs resale landed: the data shows who blinks first",
+  "hook": "Resale landed is still trading — but the price gap is widening fast",
   "slides": [
     {
       "kind": "cover",
@@ -12,54 +12,54 @@
           "style": "plain"
         },
         {
-          "text": "who",
+          "text": "who blinks",
           "style": "yellow"
         },
         {
-          "text": "blinks first?",
+          "text": "first?",
           "style": "plain"
         }
       ],
       "badge": "Landed · Q2 2026",
-      "sub": "Brand new vs resale — the caveats show where sellers are holding firm and where they're folding."
+      "sub": "Brand new vs resale this week — who is still selling, where, and at what discount to peak."
     },
     {
       "kind": "context",
       "eyebrow": "What just happened",
-      "lead": "Faber Hills semi-Ds are still moving — but pricing has quietly slipped.",
+      "lead": "Resale landed deals are closing — but sellers are giving ground on price.",
       "headline_parts": [
         {
-          "text": "Sep 2025 Faber Hills semi-D cleared at",
+          "text": "Coral Island detached closed at",
           "style": "plain"
         },
         {
-          "text": "S$6.6M,",
+          "text": "S$14.8M",
           "style": "yellow"
         },
         {
-          "text": "vs",
+          "text": "in Feb 2025 —",
           "style": "plain"
         },
         {
-          "text": "S$7.8M",
+          "text": "S$17.4M",
           "style": "strike"
         },
         {
-          "text": "in Nov 2024 — same street.",
+          "text": "at its Feb 2023 peak.",
           "style": "plain"
         }
       ],
       "chips": [
         {
-          "text": "District 05",
+          "text": "District 4",
           "hot": false
         },
         {
-          "text": "Semi-Detached",
+          "text": "Sentosa Cove",
           "hot": false
         },
         {
-          "text": "-15% in 10mo",
+          "text": "-15% from peak",
           "hot": true
         }
       ],
@@ -67,98 +67,105 @@
     },
     {
       "kind": "stat",
-      "eyebrow": "Faber Hills Slide",
-      "pre": "Faber Hills semi-D — peak vs latest print",
-      "pre_accent": "peak vs latest",
-      "value": "S$6.6M",
+      "eyebrow": "Coral Island PSF",
+      "pre": "Coral Island detached — Feb 2025 transacted PSF",
+      "pre_accent": "Feb 2025",
+      "value": "S$20,081",
       "change": "-15%",
       "value_color": "yellow",
-      "post": "Sep 2025 caveat at S$6.6M vs S$7.8M Nov 2024 — largest 10-month drop in the project's recent history.",
-      "source": "URA caveats · Faber Ave, D05 · POV Guy"
+      "post": "vs S$23,790 psf at Feb 2023 peak — same street, similar land area (737 sqm both deals)",
+      "source": "URA caveats · POV Guy analysis"
     },
     {
       "kind": "list",
       "eyebrow": "Why this matters",
-      "title": "Three signals in the D05 data",
-      "title_accent": "D05 data",
+      "title": "Three things the data is telling us",
+      "title_accent": "data is telling us",
       "items": [
         {
-          "body": "Faber Hills semi-Ds: 6 transactions in 2024, avg S$7.26M — now printing S$6.45M–S$6.6M in 2025. Sellers moving first."
+          "body": "Sentosa Cove detached fell from S$17.4M (Feb 2023) to S$14.8M (Feb 2025) — a S$2.6M giveback on the same street."
         },
         {
-          "body": "Springwood terraces (D05 RCR freehold) held S$4.09M–S$5.58M across 2024–2026, showing stickier asking floors than OCR."
+          "body": "Faber Hills semi-Ds are also softening: S$8M (Feb 2023) → S$7.1M (Jan 2025), off ~11% in 24 months."
         },
         {
-          "body": "Coral Island (Sentosa Cove) Feb 2025: S$14.8M on 737 sqm — PSF of S$20,081. Down from S$23,581 peak in Dec 2022."
+          "body": "Springwood terrace (D05 RCR) bucked the trend — Mar 2026 print of S$5.58M beats Jun 2022's S$5.03M by 11%."
         }
       ],
-      "source": "URA caveats · POV Guy analysis · Apr 2026"
+      "source": "URA caveats · POV Guy analysis"
     },
     {
       "kind": "ranking",
       "eyebrow": "Ranked · Recent Prints",
-      "title": "D05 landed — latest caveat PSF",
-      "title_accent": "latest caveat PSF",
+      "title": "Resale landed deals — latest by district",
+      "title_accent": "latest by district",
       "items": [
         {
-          "label": "Springwood Terrace",
-          "sub": "D05 RCR freehold · Mar 2026",
-          "value": "S$21,664"
+          "label": "Coral Island D04",
+          "sub": "Detached, 737 sqm, Feb 2025",
+          "value": "S$14.8M"
         },
         {
-          "label": "Faber Hills Semi-D",
-          "sub": "D05 OCR freehold · Sep 2025",
-          "value": "S$12,261"
+          "label": "Faber Hills D05",
+          "sub": "Semi-D, 372 sqm, Jan 2025",
+          "value": "S$7.1M"
         },
         {
-          "label": "Faber Hills Semi-D",
-          "sub": "D05 OCR freehold · Jul 2025",
-          "value": "S$19,454"
+          "label": "Springwood D05",
+          "sub": "Terrace, 258 sqm, Mar 2026",
+          "value": "S$5.58M"
         },
         {
-          "label": "Coral Island GCB",
-          "sub": "D04 CCR 99yr · Feb 2025",
-          "value": "S$20,081"
+          "label": "Zehnder Rd D05",
+          "sub": "Semi-D, 308 sqm, Sep 2021",
+          "value": "S$5.2M"
         }
       ],
-      "source": "URA caveats (land area basis) · POV Guy"
+      "source": "URA caveats · POV Guy analysis"
     },
     {
       "kind": "pov_take",
       "eyebrow": "POV Guy · Take",
-      "label": "The real story",
+      "label": "What the gap means",
       "headline_parts": [
         {
-          "text": "Sellers aren't",
+          "text": "This isn't a",
           "style": "plain"
         },
         {
-          "text": "panicking —",
+          "text": "crash",
+          "style": "strike"
+        },
+        {
+          "text": "— it's",
           "style": "plain"
         },
         {
-          "text": "they're",
-          "style": "plain"
-        },
-        {
-          "text": "quietly repricing.",
+          "text": "price discovery.",
           "style": "yellow"
         }
       ],
-      "punch": "Faber Hills has seen consistent transaction flow through 2024–2025, but the pricing curve has bent. The Nov 2024 S$7.8M print was the local ceiling — every deal since has come in below it.",
-      "punch_bold": "When volume holds but price slips, that's not a crash. That's a market finding its floor.",
+      "punch": "Coral Island gave back 15% in 24 months. Faber Hills semi-Ds shed ~11%. But D05 freehold terraces on Jalan Mat Jambol are printing higher than 2022. The market isn't falling uniformly — it's bifurcating by tenure, location, and seller urgency.",
+      "punch_bold": "The deals getting done are the ones where sellers accept the new reality.",
       "by": "Farhan Adenan · CEA R068636D"
     },
     {
-      "kind": "stat",
-      "eyebrow": "Sentosa PSF Drift",
-      "pre": "Coral Island GCB median PSF — 2022 peak vs 2025",
-      "pre_accent": "2022 peak vs 2025",
-      "value": "-15%",
-      "change": "",
-      "value_color": "yellow",
-      "post": "Peak: S$23,581 psf (Sep 2022, 1,048 sqm lot). Feb 2025 print: S$20,081 psf (737 sqm). Gap widening as tenure clock ticks.",
-      "source": "URA caveats · Coral Island, D04 · POV Guy"
+      "kind": "list",
+      "eyebrow": "Volume Side",
+      "title": "Where deals are still closing in 2025–26",
+      "title_accent": "still closing",
+      "items": [
+        {
+          "body": "Faber Hills (D05 OCR): 4 semi-D deals since Apr 2024, range S$6.88M–S$8.39M — sellers who priced right transacted within 90 days."
+        },
+        {
+          "body": "Springwood (D05 RCR): 5 terrace deals since Jul 2025, S$3.9M–S$6.2M — freehold terraces absorbing demand from D09/D10 priced-out buyers."
+        },
+        {
+          "body": "Coral Island (D04 CCR): only 1 deal since Jan 2024 — thin volume signals buyers are waiting for further price concessions."
+        }
+      ],
+      "source": "URA caveats · POV Guy analysis"
     },
     {
       "kind": "tip",
@@ -169,7 +176,7 @@
           "style": "plain"
         },
         {
-          "text": "repricing market,",
+          "text": "discovery market,",
           "style": "yellow"
         },
         {
@@ -184,7 +191,7 @@
           "style": "strike"
         },
         {
-          "text": "third bid sets the new floor.",
+          "text": "realistic bid usually wins.",
           "style": "plain"
         }
       ],
@@ -193,10 +200,10 @@
     {
       "kind": "cta",
       "eyebrow": "Your Move",
-      "pre": "Watching landed in D04 / D05 / D10?",
+      "pre": "Looking at landed in D04 / D05 / D10?",
       "title": "Let's map your",
       "title_accent": "next move.",
-      "sub": "30-min strategy call. No pitch — just the caveats, the comps, and where the floor actually is right now.",
+      "sub": "30-min strategy call. No pitch — just the data, the discount ranges, and the angles worth acting on.",
       "url": "povguy.sg/strategy-call",
       "button_sub": "type into your browser ↑"
     },
@@ -205,10 +212,10 @@
       "eyebrow": "One last thing",
       "title": "Forward this to",
       "title_accent": "someone deciding.",
-      "sub": "If you know anyone weighing a landed purchase in D04 or D05 this quarter, send them this."
+      "sub": "If you know anyone weighing resale vs new landed this quarter, send them this."
     }
   ],
-  "caption": "Resale landed sellers are repricing — quietly. Here's what the caveats show. 📉\n\n• Faber Hills semi-Ds dropped from S$7.8M (Nov 2024) to S$6.6M (Sep 2025) — same street, -15% in 10 months\n• Springwood freehold terraces in D05 RCR are holding S$5.5M–S$5.9M into Q1 2026 — stickier floors\n• Coral Island GCBs (Sentosa Cove) off -15% from 2022 peak, now printing ~S$20,000 psf on land area\n\nVolume is still there — but pricing has bent. This is a market finding its floor, not falling off a cliff.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
+  "caption": "📉 Resale landed is still trading — but sellers are giving up serious ground.\n\n• Coral Island detached: S$14.8M in Feb 2025 vs S$17.4M at peak — a S$2.6M giveback\n• Faber Hills semi-Ds off ~11% in 24 months; thin Sentosa volume signals more to come\n• D05 freehold terraces bucking the trend — Springwood Mar 2026 beat 2022 prints by 11%\n\nThe market isn't falling uniformly — it's bifurcating by tenure, location, and seller urgency. The deals closing are where sellers accept the new reality first.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
   "sources": [
     "URA caveats",
     "POV Guy analysis"
