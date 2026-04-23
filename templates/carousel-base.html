@@ -579,7 +579,9 @@
        ranking:  { title, title_accent, items:[{label, sub, value}] }
        pov_take: { label, headline_parts:[{text,style}], punch, punch_bold, by }
        tip:      { quote_parts:[{text,style}], by }
-       cta:      { pre, title, title_accent, sub, button_text, url }
+       cta:      { pre, title, title_accent, sub, url, button_sub }
+                 // NOTE: no action-words on the button — pill renders ${url} →
+                 //       because IG/social images can't link out
        save:     { title, title_accent, sub }
      ================================================================= */
 
@@ -789,8 +791,10 @@
             ${data.pre ? `<div class="pre">${esc(data.pre)}</div>` : ''}
             <h2>${titleParts}</h2>
             ${data.sub ? `<p class="sub">${esc(data.sub)}</p>` : ''}
-            <a class="btn" href="#">${esc(data.button_text || 'Book a 30-min call →')}</a>
-            <div class="url"><span class="prompt">&gt;_</span>${esc(data.url || MEETING)}</div>
+            <!-- IG/social images aren't clickable → button text MUST be the URL itself,
+                 never action-words like "Book a call". User has to type/remember the URL. -->
+            <span class="btn">${esc(data.url || MEETING)} →</span>
+            ${data.button_sub ? `<div class="url">${esc(data.button_sub)}</div>` : ''}
           </div>
           <div class="signoff">
             <span>${esc(SIGNOFF)} · ${esc(CEA)}</span>
