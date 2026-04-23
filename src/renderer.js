@@ -43,10 +43,11 @@ async function renderDrop(dropDir) {
     await page.screenshot({ path: out, type: 'png', omitBackground: false });
     console.log(`[renderer] ${out}`);
 
-    // For slides we plan to AI-enhance (cover, stat, tip): also emit a
-    // transparent-bg overlay PNG (text/UI only) so cover-enhancer can composite
-    // the overlay on top of the AI-generated background.
-    if (slide.kind === 'cover' || slide.kind === 'stat' || slide.kind === 'tip') {
+    // Cover-only AI enhancement (v4): emit a transparent-bg overlay PNG for the
+    // cover slide so cover-enhancer can composite text/UI over the AI background.
+    // Stat + tip used to get overlays too, but the AI imagery fought with the
+    // text — they're back to the clean dark template in v4.
+    if (slide.kind === 'cover') {
       await gotoSlide({ ...basePayload, _overlay: true });
       const overlayOut = path.join(dropDir, `slide-${i + 1}-overlay.png`);
       await page.screenshot({ path: overlayOut, type: 'png', omitBackground: true });

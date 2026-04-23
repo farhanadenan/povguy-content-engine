@@ -1,20 +1,27 @@
 /**
- * Nanobanana SLIDE enhancer (v3 — color-pop direction).
+ * Nanobanana SLIDE enhancer (v4 — cover-only direction).
  *
- * Goal: produce STOP-THE-SCROLL visuals across THREE slides per drop:
- *   1. cover  (slide-1)
- *   2. stat   (first slide where kind === 'stat')
- *   3. tip    (first slide where kind === 'tip')
+ * Goal: produce ONE STOP-THE-SCROLL visual per drop — the COVER slide.
+ *
+ * History: v3 also enhanced the first stat + tip slides, but Farhan flagged
+ * (2026-04-23) that AI imagery on data-heavy slides "fights with the words" —
+ * the giant numbers and quote text need uncluttered backgrounds to read. From
+ * v4 onward only the cover slide gets the AI treatment; stats and tips stay
+ * on the clean dark template where text dominates.
  *
  * Visual direction (Farhan, 2026-04-23): "Vogue × Bloomberg Businessweek × Apple
  * campaign" — provocative, BOLD, saturated, premium photography that wows.
  * NOT moody, NOT desaturated, NOT horror, NOT dystopian. Massive color pop.
  *
  * Pipeline (per slide):
- *   1. Read slide-N.png (the v5 base render Playwright produced).
- *   2. Send slide-N.png as STYLE REFERENCE for color palette only; ask Nano Banana
- *      to generate a new BACKGROUND (no text) per a per-(theme,kind) prompt.
- *   3. sharp: resize AI output to 1080x1350 (cover-fit, center).
+ *   1. Ask Nano Banana for a NEW BACKGROUND from a per-(theme,kind) text prompt.
+ *      We do NOT pass the base render in as a reference — Gemini's image-edit model
+ *      treats any input image as material to edit, not as a style cue, which caused
+ *      the original slide text to bleed into the AI output and double up when the
+ *      overlay PNG was composited on top (2026-04-23 stat-slide bug).
+ *   2. sharp: resize AI output to 1080x1350 (cover-fit, center).
+ *   3. sharp: composite a top+bottom dark gradient scrim — preserves text
+ *      legibility even when AI returns very bright imagery (2026-04-23 tip bug).
  *   4. sharp: composite slide-N-overlay.png (transparent text/UI from renderer)
  *      on top — gives back headline/badge/number/brand strips.
  *   5. Write final slide-N.png (overwrites base).
@@ -66,43 +73,30 @@ ABSOLUTELY FORBIDDEN:
 - NO soft pastel washes (it's premium and saturated, not Wes Anderson).
 `.trim();
 
-// 21 prompts: 7 themes × 3 slide kinds (cover, stat, tip)
-// Naming: ${theme}-${kind}
+// 7 prompts — one per theme, cover slide only (v4).
+// Naming: ${theme}-cover. Stat/tip kind variants removed in v4 — those slides
+// no longer get AI backgrounds.
 const PROMPTS = {
   // ---- DISTRESS (Mon) ----
   'distress-cover': `Hero shot of a luxury Singapore condo unit photographed from outside at golden hour. Floor-to-ceiling glass windows reflect a fiery saturated orange sunset. One window glows warm amber from inside, the rest of the building is sleek black glass. Architectural Digest meets Vogue editorial. Razor-sharp glass detail, glossy polish. Top-third sky empty for headline.`,
-  'distress-stat':  `An ultra-premium close-up of a single luxury condo balcony — designer chair in vivid coral, glass railing, polished marble floor — against a backdrop of saturated sunset sky in magenta and burnt orange. Vogue Living shoot. Top-third sky negative space.`,
-  'distress-tip':   `A flatlay overhead of a Cartier watch, a brass key on a velvet tray, and a glossy Singapore architecture book on a slab of green-veined marble. Lit by a single dramatic shaft of golden light. Saturated, glossy, Bloomberg Businessweek still-life. Top half mostly empty marble for headline overlay.`,
 
   // ---- HDB (Tue) ----
   'hdb-cover': `Hero exterior shot of an iconic Singapore HDB block at sunrise — pastel facade in saturated peach, mint, and butter-yellow tones. Repeating geometric balconies catch the warm light. Crisp blue sky above. Wes-Anderson-symmetry meets Apple campaign cleanliness. Top-third sky empty for headline.`,
-  'hdb-stat':  `An extreme close-up of a single HDB balcony rendered in vivid saturated pastels — turquoise laundry, terracotta planter, golden afternoon sun on the ledge. Geometric, graphic, magazine-cover composition. Top-third negative space for the giant number overlay.`,
-  'hdb-tip':   `A flatlay of two BTO keys on a coral lanyard, an HDB resale flyer, and an iced kopi on a marble countertop. Saturated bright daylight, glossy condensation on the glass. Editorial food-photography energy. Top half empty marble for headline overlay.`,
 
   // ---- RENTAL (Wed) ----
   'rental-cover': `Hero shot of a luxury penthouse interior at sunset — floor-to-ceiling windows show a saturated magenta-and-amber Singapore skyline. Inside: one designer chair in vivid teal, polished concrete floor, single sculptural pendant light. Vogue Living × Apple ad. Top-third sky empty for headline.`,
-  'rental-stat':  `A single condo window glowing electric teal-cyan against a vivid magenta-orange sunset sky. The building facade is glossy black. The teal window pops as the only cool color in a warm-saturated frame. Bold editorial architectural close-up. Top-third negative space.`,
-  'rental-tip':   `An overhead flatlay: a set of luxury keys, a leather card-holder, a glossy black coffee-table book on Singapore design, and a sprig of orchid in saturated magenta. Polished marble surface, dramatic golden side-light. Vogue still-life. Top half empty marble.`,
 
   // ---- LANDED (Thu) ----
   'landed-cover': `Hero shot of a Singapore black-and-white colonial bungalow at golden hour. Crisp white walls, glossy black shutters. A single cluster of vivid magenta bougainvillea spills over the entrance. Lush green tropical garden. Architectural Digest cover energy. Top-third sky empty for headline.`,
-  'landed-stat':  `An extreme close-up of one section of a black-and-white bungalow facade — pristine white louvers, glossy black trim, and one bright coral hibiscus flower in sharp focus in the foreground. Magazine-cover crisp. Top-third negative space.`,
-  'landed-tip':   `A flatlay overhead of a brass door knocker, an ornate antique key, and a cream-colored architecture monograph on a slab of polished teak wood. One vivid orange marigold off to the side. Warm dramatic light. Vogue × Architectural Digest still-life. Top half empty wood.`,
 
   // ---- WRAP / WEEKEND (Fri/Sat/Sun) ----
   'wrap-cover': `Hero aerial shot of Singapore at twilight — saturated coral-and-gold sunset reflecting off the dense skyline. One iconic skyscraper catches a vivid magenta highlight. Crisp clean composition, like an Apple ad. Top-third sky empty for headline.`,
-  'wrap-stat':  `An overhead photograph of a saturated cocktail in vivid orange and magenta on a polished marble bar, with a Singapore skyline blurred warmly in the background. Bloomberg Pursuits editorial. Top-third sky-blur negative space.`,
-  'wrap-tip':   `A flatlay overhead of a glossy weekend-edition newspaper, a fountain pen, an espresso in a saturated cobalt cup, and a slice of citrus on a marble surface. Premium, saturated, Vogue still-life. Top half mostly empty marble.`,
 
   // ---- MASTERPLAN (Sat) ----
   'masterplan-cover': `Hero shot of an architectural model of a future Singapore district on a clean white plinth, photographed under dramatic studio lighting. The model glows with saturated golden interior lights. Background is a clean luxe gradient in deep cobalt to magenta. Apple-campaign × MoMA-exhibit energy. Top-third negative space.`,
-  'masterplan-stat':  `An extreme close-up of an architectural blueprint with one tower outlined in vivid hot-pink ink against crisp white drafting paper. Sharp, graphic, editorial. Polished brass drafting tools partly in frame. Top-third white-space negative space.`,
-  'masterplan-tip':   `A flatlay overhead of an architect's leather-bound notebook open to a hand-drawn Singapore district sketch, a vivid amber pencil, brass dividers, and a coral coffee cup. Polished walnut desk. Premium editorial still-life. Top half empty desk.`,
 
   // ---- GEOPOLITICS (Sun) ----
   'geopolitics-cover': `Hero macro shot of a single Singapore-dollar coin standing upright on a polished marble surface, lit dramatically with one magenta key light from the left and one teal rim light from the right. Coin metal grain hyperreal, edge-of-frame bokeh in saturated colors. Apple-product-shoot energy. Top-third negative space.`,
-  'geopolitics-stat':  `Macro close-up of a stack of crisp Singapore-dollar notes fanned out on a glossy black marble surface, with one note glowing under a dramatic shaft of golden light. Bloomberg Markets cover energy. Top-third dark-marble negative space.`,
-  'geopolitics-tip':   `A flatlay overhead of a luxury fountain pen, a folded Financial Times, a glossy globe paperweight, and a glass of amber whisky on a polished walnut desk. Warm dramatic side-light, saturated jewel tones. Bloomberg Pursuits still-life. Top half empty walnut.`,
 };
 
 function buildPrompt(theme, kind) {
@@ -113,17 +107,20 @@ function buildPrompt(theme, kind) {
 
 // ---- AI CALL ------------------------------------------------------------
 
-async function generateBackground(theme, kind, baseImage) {
+async function generateBackground(theme, kind) {
   if (!process.env.GEMINI_API_KEY) {
     console.warn(`[enhance:${kind}] GEMINI_API_KEY missing — skipping enhancement`);
     return null;
   }
   const prompt = buildPrompt(theme, kind);
+  // Pure text-to-image. We deliberately do NOT pass the slide render as input —
+  // Gemini's image model edits whatever you hand it, which caused slide text to
+  // be reproduced in the AI output and then doubled when the overlay was layered
+  // on top. Our prompts are color/composition specific enough on their own.
   const body = {
     contents: [{
       parts: [
         { text: prompt },
-        { inline_data: { mime_type: 'image/png', data: baseImage.toString('base64') } }
       ]
     }],
     generationConfig: { responseModalities: ['TEXT', 'IMAGE'] }
@@ -159,14 +156,29 @@ async function generateBackground(theme, kind, baseImage) {
 
 // ---- PUBLIC API ---------------------------------------------------------
 
-export async function enhanceSlide({ baseImagePath, overlayImagePath, theme, kind, outPath }) {
-  if (!fs.existsSync(baseImagePath)) {
-    console.warn(`[enhance:${kind}] base image missing: ${baseImagePath} — skipping`);
-    return null;
-  }
-  const baseImage = fs.readFileSync(baseImagePath);
+// Top+bottom heavy dark scrim. Sits between the AI bg and the text overlay so
+// headlines/footers stay readable even when AI returns a hot, saturated image.
+// SVG is generated lazily so we can swap intensity without reprocessing.
+function buildScrimSvg() {
+  return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${TARGET_W}" height="${TARGET_H}">
+  <defs>
+    <linearGradient id="scrim" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#000" stop-opacity="0.62"/>
+      <stop offset="22%"  stop-color="#000" stop-opacity="0.32"/>
+      <stop offset="50%"  stop-color="#000" stop-opacity="0.08"/>
+      <stop offset="78%"  stop-color="#000" stop-opacity="0.32"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0.62"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#scrim)"/>
+</svg>`);
+}
 
-  const aiBuffer = await generateBackground(theme, kind, baseImage);
+export async function enhanceSlide({ baseImagePath, overlayImagePath, theme, kind, outPath }) {
+  // baseImagePath is no longer required to call Gemini (we generate from text
+  // alone) but we still need outPath to be writable. We keep the param in the
+  // signature so callers don't have to change.
+  const aiBuffer = await generateBackground(theme, kind);
   if (!aiBuffer) return null;
 
   // Resize AI output to 1080x1350. cover-fit (crop, no letterboxing) so the
@@ -182,21 +194,32 @@ export async function enhanceSlide({ baseImagePath, overlayImagePath, theme, kin
     return null;
   }
 
-  // Composite the transparent overlay (text/badge/ghost-number) on top.
-  // If overlay is missing (older render or partial run), fall back to AI alone.
-  let composited = aiResized;
+  // Layer 1 → Layer 2: composite the dark scrim onto the AI bg.
+  let withScrim = aiResized;
+  try {
+    withScrim = await sharp(aiResized)
+      .composite([{ input: buildScrimSvg(), top: 0, left: 0 }])
+      .png()
+      .toBuffer();
+  } catch (e) {
+    console.warn(`[enhance:${kind}] scrim composite failed: ${e.message} — using AI-only`);
+  }
+
+  // Layer 3: composite the transparent text/badge overlay on top of (bg + scrim).
+  // If overlay is missing (older render or partial run), fall back to AI+scrim.
+  let composited = withScrim;
   if (overlayImagePath && fs.existsSync(overlayImagePath)) {
     try {
-      composited = await sharp(aiResized)
+      composited = await sharp(withScrim)
         .composite([{ input: overlayImagePath, top: 0, left: 0 }])
         .png()
         .toBuffer();
       console.log(`[enhance:${kind}] composited overlay: ${overlayImagePath}`);
     } catch (e) {
-      console.warn(`[enhance:${kind}] composite failed: ${e.message} — using AI-only`);
+      console.warn(`[enhance:${kind}] composite failed: ${e.message} — using AI+scrim only`);
     }
   } else {
-    console.warn(`[enhance:${kind}] overlay PNG not found at ${overlayImagePath} — using AI-only`);
+    console.warn(`[enhance:${kind}] overlay PNG not found at ${overlayImagePath} — using AI+scrim only`);
   }
 
   fs.writeFileSync(outPath, composited);
@@ -223,7 +246,8 @@ async function main() {
 
   // For each kind we want to enhance, find the FIRST slide of that kind.
   // Render output is 1-indexed (slide-1.png, slide-2.png, ...).
-  const KINDS_TO_ENHANCE = ['cover', 'stat', 'tip'];
+  // Cover only (v4 — see file header). Stat + tip stay on clean dark template.
+  const KINDS_TO_ENHANCE = ['cover'];
 
   for (const kind of KINDS_TO_ENHANCE) {
     const slideIdx = spec.slides.findIndex(s => s.kind === kind);
