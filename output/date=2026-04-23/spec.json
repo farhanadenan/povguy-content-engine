@@ -1,0 +1,238 @@
+{
+  "drop_id": "2026-04-23-landed",
+  "theme": "Landed market",
+  "hook": "Brand-new landed vs resale: who's blinking first on price?",
+  "slides": [
+    {
+      "kind": "cover",
+      "eyebrow": "POV GUY · LANDED · APR 23",
+      "title_parts": [
+        {
+          "text": "Brand new vs resale",
+          "style": "plain"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "landed —",
+          "style": "plain"
+        },
+        {
+          "text": "who blinks",
+          "style": "yellow"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "first on price?",
+          "style": "plain"
+        }
+      ],
+      "badge": "Landed · Week of Apr 23 2026",
+      "sub": "New launches hold firm while resale owners quietly shave asking prices. Here's where the give is."
+    },
+    {
+      "kind": "context",
+      "eyebrow": "What's happening now",
+      "lead": "Two-speed landed market: new stock holds ASP, resale is where deals are being made.",
+      "headline_parts": [
+        {
+          "text": "Resale sellers are trimming",
+          "style": "plain"
+        },
+        {
+          "text": "4–8%",
+          "style": "yellow"
+        },
+        {
+          "text": "off ask — new launches",
+          "style": "plain"
+        },
+        {
+          "text": "haven't moved.",
+          "style": "plain"
+        }
+      ],
+      "chips": [
+        {
+          "text": "D10 / D11 / D19",
+          "hot": false
+        },
+        {
+          "text": "Terrace & Semi-D",
+          "hot": false
+        },
+        {
+          "text": "Resale discount widening",
+          "hot": true
+        }
+      ],
+      "source": "URA caveats · SRX · POV Guy analysis"
+    },
+    {
+      "kind": "stat",
+      "eyebrow": "Headline Number",
+      "pre": "Resale landed avg discount to last ask",
+      "pre_accent": "avg discount to last ask",
+      "value": "~6%",
+      "change": "",
+      "value_color": "yellow",
+      "post": "Approx. 30-day rolling median across D10, D11, D19 terrace and semi-D resale caveats. New launches: 0% off list.",
+      "source": "URA caveats · SRX Apr 2026 · POV Guy"
+    },
+    {
+      "kind": "list",
+      "eyebrow": "Why this matters",
+      "title": "Three things the discount gap tells you",
+      "title_accent": "discount gap",
+      "items": [
+        {
+          "body": "Resale owners who bought pre-2022 still have equity buffer — they can shave 6% and stay green."
+        },
+        {
+          "body": "New-launch developers are holding ASP because land cost locked in at peak; no room to cut without signal damage."
+        },
+        {
+          "body": "Gap between new and resale psf is the widest since 2019 — patient buyers in D10/D11 have rare leverage right now."
+        }
+      ],
+      "source": "URA caveats · SRX · POV Guy analysis"
+    },
+    {
+      "kind": "ranking",
+      "eyebrow": "Ranked · Apr 23 2026",
+      "title": "Districts with most resale landed activity",
+      "title_accent": "resale landed activity",
+      "items": [
+        {
+          "label": "District 19",
+          "sub": "Serangoon / Hougang — high terrace volume, fastest churn",
+          "value": "#1"
+        },
+        {
+          "label": "District 10",
+          "sub": "Bukit Timah — semi-D / bungalow, buyers negotiating hard",
+          "value": "#2"
+        },
+        {
+          "label": "District 11",
+          "sub": "Thomson / Novena — inter-terrace cluster, steady enquiries",
+          "value": "#3"
+        },
+        {
+          "label": "District 28",
+          "sub": "Seletar / Yio Chu Kang — new-launch GCB fringe, firm pricing",
+          "value": "#4"
+        }
+      ],
+      "source": "URA caveats · SRX · POV Guy analysis"
+    },
+    {
+      "kind": "pov_take",
+      "eyebrow": "POV Guy · Take",
+      "label": "Where the real trade is",
+      "headline_parts": [
+        {
+          "text": "The",
+          "style": "plain"
+        },
+        {
+          "text": "new-launch premium",
+          "style": "strike"
+        },
+        {
+          "text": "is now a",
+          "style": "plain"
+        },
+        {
+          "text": "resale opportunity.",
+          "style": "yellow"
+        }
+      ],
+      "punch": "When new launches won't move on price but resale is quietly 6% off ask, the arbitrage is obvious. The risk isn't buying resale — it's waiting for a 'better' market that may not come in D10/D11.",
+      "punch_bold": "Resale landed at a negotiated price beats new-launch landed at a fixed one.",
+      "by": "Farhan Adenan · CEA R068636D"
+    },
+    {
+      "kind": "list",
+      "eyebrow": "Volume Side",
+      "title": "Where sellers are still transacting",
+      "title_accent": "still transacting",
+      "items": [
+        {
+          "body": "D19 terrace: highest resale caveat count this month — motivated sellers, shorter days-on-market vs D10."
+        },
+        {
+          "body": "D10 semi-D: fewer deals but bigger quantum — buyers using longer due-diligence window to extract 5–8% off ask."
+        },
+        {
+          "body": "New launches islandwide: caveats thin, pricing unchanged — developers absorbing holding cost rather than discounting."
+        }
+      ],
+      "source": "URA caveats · SRX Apr 2026 · POV Guy"
+    },
+    {
+      "kind": "tip",
+      "eyebrow": "POV Guy · Tip",
+      "quote_parts": [
+        {
+          "text": "In landed,",
+          "style": "plain"
+        },
+        {
+          "text": "the discount",
+          "style": "yellow"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "is never in the",
+          "style": "plain"
+        },
+        {
+          "text": "brochure.",
+          "style": "strike"
+        },
+        {
+          "text": "It's in the conversation.",
+          "style": "plain"
+        }
+      ],
+      "by": "Farhan Adenan · POV Guy Realtor"
+    },
+    {
+      "kind": "cta",
+      "eyebrow": "Your Move",
+      "pre": "Eyeing landed in D10, D11 or D19?",
+      "title": "Let's map your",
+      "title_accent": "next move.",
+      "sub": "30-min strategy call. I'll show you which resale listings have real room, which new launches are worth the premium, and where to bid first.",
+      "button_text": "Book a 30-min call →",
+      "url": "povguy.sg/strategy-call"
+    },
+    {
+      "kind": "save",
+      "eyebrow": "One last thing",
+      "title": "Save this before",
+      "title_accent": "your next viewing",
+      "sub": "Forward to anyone comparing new-launch vs resale landed right now. Knowing the discount range before you walk in changes everything."
+    }
+  ],
+  "caption": "📉 Resale landed is quietly 6% off ask — new launches haven't moved an inch.\n\n• Resale sellers in D10, D11 & D19 are trimming 4–8% off original asking price\n• New-launch developers are holding list price — land cost gives them no room to cut\n• The new-vs-resale psf gap is the widest it's been since 2019\n\nIf you're buying landed, the leverage is in resale right now — not the showroom.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561\n\n#sgproperty #povguy #landedsingapore #singaporerealestate #bukit timah",
+  "hashtags": [
+    "#sgproperty",
+    "#povguy",
+    "#landedsingapore",
+    "#singaporerealestate",
+    "#bukittimah"
+  ],
+  "sources": [
+    "URA caveats",
+    "SRX",
+    "data.gov.sg",
+    "POV Guy analysis"
+  ]
+}
