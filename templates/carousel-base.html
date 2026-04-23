@@ -243,6 +243,11 @@
     line-height: 0.9;
     letter-spacing: -0.055em;
     color: var(--text);
+    /* Numbers must always render on a single line. The auto-fit JS shrinks
+       font-size after render until scrollWidth fits container width. */
+    white-space: nowrap;
+    max-width: 100%;
+    overflow: visible;
   }
   .stat .number.yellow { color: var(--accent); }
   .stat .number small {
@@ -631,6 +636,22 @@
     }).join(' ').replace(/\s*<br>\s*/g, '<br>');
   }
 
+  /* Title + accent renderer. Handles BOTH conventions:
+     - title_accent IS a substring of title → highlight in place
+       e.g. title="3 Rental Truths", accent="Truths" → "3 Rental <yellow>Truths</yellow>"
+     - title_accent is a SEPARATE phrase → append it after title with a space
+       e.g. title="Let's map your", accent="next move." → "Let's map your <yellow>next move.</yellow>"
+     Without this, the second form silently drops the accent and the title looks cut off. */
+  function fmtTitle(title, accent) {
+    const t = esc(title || '');
+    if (!accent) return t;
+    const a = esc(accent);
+    if (t.includes(a)) {
+      return t.replace(a, `<span class="yellow">${a}</span>`);
+    }
+    return `${t} <span class="yellow">${a}</span>`;
+  }
+
   function chromeEyebrow(text) {
     return `<div class="eyebrow"><span class="dot"></span>${esc(text || '')}</div>`;
   }
@@ -711,9 +732,7 @@
         const num = String(i + 1).padStart(2, '0');
         return `<li><span class="num">${num}</span><span class="body">${esc(body)}</span></li>`;
       }).join('');
-      const titleParts = data.title_accent
-        ? `${esc(data.title || '').replace(esc(data.title_accent), `<span class="yellow">${esc(data.title_accent)}</span>`)}`
-        : esc(data.title || '');
+      const titleParts = fmtTitle(data.title, data.title_accent);
       html = `
         <div class="slide list">
           ${chromeEyebrow(data.eyebrow || 'Why This Matters')}
@@ -736,9 +755,7 @@
           <div class="val">${esc(it.value || '')}</div>
         </div>`;
       }).join('');
-      const titleParts = data.title_accent
-        ? `${esc(data.title || '').replace(esc(data.title_accent), `<span class="yellow">${esc(data.title_accent)}</span>`)}`
-        : esc(data.title || '');
+      const titleParts = fmtTitle(data.title, data.title_accent);
       html = `
         <div class="slide ranking">
           ${chromeEyebrow(data.eyebrow || 'Ranked · This Week')}
@@ -781,9 +798,7 @@
 
     /* ===== CTA — yellow pill button ===== */
     else if (k === 'cta') {
-      const titleParts = data.title_accent
-        ? `${esc(data.title || '').replace(esc(data.title_accent), `<span class="yellow">${esc(data.title_accent)}</span>`)}`
-        : esc(data.title || '');
+      const titleParts = fmtTitle(data.title, data.title_accent);
       html = `
         <div class="slide cta">
           ${chromeEyebrow(data.eyebrow || 'Your Move')}
@@ -805,9 +820,7 @@
 
     /* ===== SAVE — engagement close (slot 10) ===== */
     else if (k === 'save') {
-      const titleParts = data.title_accent
-        ? `${esc(data.title || '').replace(esc(data.title_accent), `<span class="yellow">${esc(data.title_accent)}</span>`)}`
-        : esc(data.title || '');
+      const titleParts = fmtTitle(data.title, data.title_accent);
       html = `
         <div class="slide save">
           ${chromeEyebrow(data.eyebrow || 'One last thing')}
@@ -833,6 +846,29 @@
     }
 
     root.innerHTML = html;
+    // Post-render fit pass: ensure giant stat numbers stay on a single line.
+    // The CSS sets a generous starting font-size; this shrinks it until the
+    // text fits the container width. Done in JS (not CSS) because container
+    // queries can't condition on text length.
+    fitOneLine();
+  }
+
+  /* Shrink any element with class .fit-one-line until its scrollWidth fits the
+     parent. Currently used for .stat .number (values like "S$14.85M" must not
+     wrap). Steps down 4% per iteration; bails after 20 iterations as a safety. */
+  function fitOneLine() {
+    const targets = root.querySelectorAll('.stat .number');
+    targets.forEach(el => {
+      const parent = el.parentElement;
+      if (!parent) return;
+      const parentWidth = parent.clientWidth;
+      let size = parseFloat(getComputedStyle(el).fontSize);
+      let safety = 20;
+      while (el.scrollWidth > parentWidth && size > 60 && safety-- > 0) {
+        size *= 0.94;
+        el.style.fontSize = size + 'px';
+      }
+    });
   }
 
   /* Re-render on hashchange — Playwright nav uses page.goto(template#payload)
