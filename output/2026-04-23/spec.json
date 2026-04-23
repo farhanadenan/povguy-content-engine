@@ -1,11 +1,11 @@
 {
   "drop_id": "2026-04-23-landed",
   "theme": "Landed market",
-  "hook": "Brand new vs resale landed: the data shows who is still blinking first",
+  "hook": "Brand new vs resale landed: the data shows who blinked first",
   "slides": [
     {
       "kind": "cover",
-      "eyebrow": "POV GUY · LANDED · APR 23",
+      "eyebrow": "POV GUY · LANDED · APR 23 2026",
       "title_parts": [
         {
           "text": "Resale landed:",
@@ -21,31 +21,39 @@
         }
       ],
       "badge": "Landed · Q2 2026",
-      "sub": "New sales hold firm while resale prints soften — the gap is widening and the data tells you where."
+      "sub": "Brand new vs resale — where deals are closing, at what price, and who's cutting first."
     },
     {
       "kind": "context",
       "eyebrow": "What just happened",
-      "lead": "Resale caveats are lodging at discounts that weren't there 18 months ago.",
+      "lead": "Resale landed caveats keep lodging — but the PSF tells the real story.",
       "headline_parts": [
         {
-          "text": "Coral Island detached:",
+          "text": "Coral Island printed",
           "style": "plain"
         },
         {
-          "text": "S$14.8M",
+          "text": "S$20,082 psf",
           "style": "yellow"
         },
         {
-          "text": "in Feb 25 vs",
+          "text": "in Jul '21 —",
           "style": "plain"
         },
         {
-          "text": "S$17.4M",
+          "text": "Feb '25",
+          "style": "plain"
+        },
+        {
+          "text": "came in at",
+          "style": "plain"
+        },
+        {
+          "text": "S$20,082",
           "style": "strike"
         },
         {
-          "text": "in Feb 23.",
+          "text": "S$20,054 psf.",
           "style": "plain"
         }
       ],
@@ -59,7 +67,7 @@
           "hot": false
         },
         {
-          "text": "-15% in 24mo",
+          "text": "99-yr leasehold",
           "hot": true
         }
       ],
@@ -68,101 +76,101 @@
     {
       "kind": "stat",
       "eyebrow": "Coral Island PSF",
-      "pre": "Sentosa Cove Coral Island — latest resale PSF",
-      "pre_accent": "latest resale PSF",
-      "value": "S$2,007",
-      "change": "-15%",
+      "pre": "Sentosa Cove, Coral Island — Feb 2025 print",
+      "pre_accent": "Feb 2025",
+      "value": "S$20,054",
+      "change": "-1%",
       "value_color": "yellow",
-      "post": "Feb 2025 print: 737 sqm at S$14.8M — vs S$23,780 psm peak in Sep 2022. Lowest since mid-2021.",
+      "post": "vs S$20,082 psf peak (Jul 2021) — 99-yr lease, 737 sqm. Price discovery, not collapse.",
       "source": "URA caveats · POV Guy analysis"
     },
     {
       "kind": "list",
       "eyebrow": "Why this matters",
-      "title": "Three forces squeezing resale landed",
-      "title_accent": "resale landed",
+      "title": "Three things the Coral Island print tells us",
+      "title_accent": "Coral Island",
       "items": [
         {
-          "body": "Coral Island: S$14.8M (Feb 25) vs S$17.4M (Feb 23) — same street, same tenure, -15% in two years."
+          "body": "S$14.8M closed Feb 2025 (737 sqm) — same unit last traded at S$17.4M in Feb 2023, a 15% nominal cut."
         },
         {
-          "body": "Faber Hills semi-Ds peaked at S$8.4M (Dec 24) but the Sep 25 print slipped to S$6.6M — a 21% retreat."
+          "body": "Sentosa Cove 99-yr leasehold is past its halfway mark; lease decay is now a live pricing variable."
         },
         {
-          "body": "New launches hold developer pricing; resale sellers absorbing the discount to move — bid-ask gap is real."
+          "body": "Buyers are still transacting — but only at a discount wide enough to offset tenure risk and ABSD."
         }
       ],
       "source": "URA caveats · POV Guy analysis"
     },
     {
       "kind": "ranking",
-      "eyebrow": "Ranked · Apr 2026",
-      "title": "Resale landed clusters by recent PSF",
-      "title_accent": "recent PSF",
+      "eyebrow": "Ranked · Recent Prints",
+      "title": "Resale landed PSF by cluster, latest caveats",
+      "title_accent": "PSF by cluster",
       "items": [
         {
           "label": "Coral Island D4",
-          "sub": "Detached, 99-yr, CCR — Feb 25 caveat",
-          "value": "~S$2,007psm"
-        },
-        {
-          "label": "Faber Hills D5",
-          "sub": "Semi-D, FH, OCR — Sep 25 caveat",
-          "value": "~S$1,226psm"
+          "sub": "Detached, 99-yr, Sentosa Cove",
+          "value": "~S$20,054"
         },
         {
           "label": "Springwood D5",
-          "sub": "Terrace, FH, RCR — Mar 26 caveat",
-          "value": "~S$2,168psm"
+          "sub": "Terrace FH, Mar 2026 caveat",
+          "value": "~S$21,660"
+        },
+        {
+          "label": "Faber Hills D5",
+          "sub": "Semi-D FH, Jan 2025 caveat",
+          "value": "~S$19,107"
         },
         {
           "label": "Zehnder Rd D5",
-          "sub": "Semi-D, FH, RCR — Sep 21 caveat",
-          "value": "~S$1,688psm"
+          "sub": "Semi-D FH, Sep 2021 caveat",
+          "value": "~S$16,883"
         }
       ],
-      "source": "URA caveats · POV Guy analysis"
+      "source": "URA caveats · POV Guy analysis (psf = price ÷ land area)"
     },
     {
       "kind": "pov_take",
       "eyebrow": "POV Guy · Take",
-      "label": "The real signal",
+      "label": "Brand new vs resale",
       "headline_parts": [
         {
-          "text": "This isn't a",
+          "text": "Resale isn't",
           "style": "plain"
         },
         {
-          "text": "crash",
-          "style": "strike"
-        },
-        {
-          "text": "— it's",
+          "text": "cheap —",
           "style": "plain"
         },
         {
-          "text": "price discovery.",
+          "text": "it's just",
+          "style": "plain"
+        },
+        {
+          "text": "negotiable.",
           "style": "yellow"
         }
       ],
-      "punch": "Sellers who bought at 2022–23 peaks are now the ones blinking. Coral Island gave back 15% in 24 months. Faber Hills semi-Ds shed 21% from peak to Sep 25. Resale buyers have leverage — but only if they know the exact comparable.",
-      "punch_bold": "The data gap between asking and transacted is where the deal lives.",
+      "punch": "Brand new landed commands a 15–25% premium for clean title and zero renovation risk. Resale sellers know this, which is why asking prices are sticky — but the caveats show the real clearing level is lower. The discount exists; you just have to know where to find it.",
+      "punch_bold": "The gap between ask and transacted is where your deal lives.",
       "by": "Farhan Adenan · CEA R068636D"
     },
     {
       "kind": "list",
       "eyebrow": "Volume Side",
-      "title": "Where transactions are still clearing",
-      "title_accent": "still clearing",
+      "title": "Where resale landed volume is holding up",
+      "title_accent": "volume",
       "items": [
         {
-          "body": "Springwood (D5 RCR terrace, FH): 3 caveats in H2 2025 alone — S$3.9M to S$6.2M. Active, price-sensitive buyers."
+          "body": "Faber Hills (D5 OCR) logged 6 caveats in 2024 alone — semi-Ds ranging S$6.88M–S$8.39M, showing sustained buyer demand."
         },
         {
-          "body": "Faber Hills (D5 OCR semi-D, FH): 5 caveats in 2024 — velocity held but median slipped from S$7.6M to S$6.9M."
+          "body": "Springwood (D5 RCR, freehold terraces) traded S$3.9M–S$6.2M across 2025, with the latest Mar 2026 print at S$5.58M."
         },
         {
-          "body": "Coral Island (D4 CCR detached, 99-yr): only 1 caveat in 2025 — thin volume, wide bid-ask, longer days-on-market."
+          "body": "Sentosa Cove volume has thinned to 1–2 trades per year — price discovery phase, not a liquid market."
         }
       ],
       "source": "URA caveats · POV Guy analysis"
@@ -172,11 +180,7 @@
       "eyebrow": "POV Guy · Tip",
       "quote_parts": [
         {
-          "text": "In a",
-          "style": "plain"
-        },
-        {
-          "text": "discovery market,",
+          "text": "In resale landed,",
           "style": "yellow"
         },
         {
@@ -187,11 +191,11 @@
           "style": "plain"
         },
         {
-          "text": "first",
+          "text": "asking price",
           "style": "strike"
         },
         {
-          "text": "third comparable wins.",
+          "text": "last caveat sets the floor.",
           "style": "plain"
         }
       ],
@@ -200,10 +204,10 @@
     {
       "kind": "cta",
       "eyebrow": "Your Move",
-      "pre": "Looking at landed in D4 / D5 / D9?",
+      "pre": "Eyeing landed in D4, D5 or D10?",
       "title": "Let's map your",
       "title_accent": "next move.",
-      "sub": "30-min strategy call. No pitch — just the caveats, the comparables, and the angles you won't find on a portal.",
+      "sub": "30-min strategy call. No pitch — just the caveats, the comps, and where the real discount sits.",
       "url": "povguy.sg/strategy-call",
       "button_sub": "type into your browser ↑"
     },
@@ -212,10 +216,10 @@
       "eyebrow": "One last thing",
       "title": "Forward this to",
       "title_accent": "someone deciding.",
-      "sub": "If you know anyone weighing resale vs new landed this month, send them this before they make an offer."
+      "sub": "Know anyone weighing brand new vs resale landed right now? Send them this before they sign anything."
     }
   ],
-  "caption": "📉 Resale landed is blinking — and the caveats prove it.\n\n• Coral Island detached: S$14.8M in Feb 25 vs S$17.4M two years ago — same street, -15%.\n• Faber Hills semi-Ds shed 21% from their Dec 24 peak by Sep 25. Volume held, prices didn't.\n• New launches hold developer pricing. Resale sellers are the ones absorbing the discount to move.\n\nIf you're buying, the leverage is real — but only if you know which comparable to use. That's exactly what the 30-min call is for.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
+  "caption": "📉 Resale landed is still moving — but caveats show sellers are blinking.\n\n• Coral Island (D4, 99-yr) cleared at S$14.8M in Feb 2025 — 15% below its Feb 2023 trade\n• Faber Hills semi-Ds (D5 OCR, freehold) logged 6 caveats in 2024: S$6.88M–S$8.39M range\n• Springwood terraces (D5 RCR, freehold) latest print Mar 2026: S$5.58M — steady, not surging\n\nBrand new commands a premium. Resale is negotiable. The deal is in the gap between ask and the last caveat.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
   "sources": [
     "URA caveats",
     "POV Guy analysis",

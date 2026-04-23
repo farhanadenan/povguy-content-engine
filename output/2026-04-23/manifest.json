@@ -1,14 +1,14 @@
 {
   "drop_id": "2026-04-23-landed",
   "theme": "Landed market",
-  "hook": "Brand new vs resale landed: the data shows who is still blinking first",
+  "hook": "Brand new vs resale landed: the data shows who blinked first",
   "slide_count": 10,
   "sources": [
     "URA caveats",
     "POV Guy analysis",
     "data.gov.sg"
   ],
-  "rendered_at": "2026-04-23T05:44:22.894Z",
+  "rendered_at": "2026-04-23T06:15:17.434Z",
   "image_urls": [
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-01.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-23/slide-02.png",
