@@ -55,20 +55,18 @@ async function renderDrop(dropDir) {
   }
   await browser.close();
 
-  // Write caption.txt (full — used by Telegram/FB/Threads publishers)
+  // Write caption.txt (full — used by Telegram/FB/Threads publishers AND IG).
+  // We no longer emit a hashtag block (per Farhan, 2026-04-23). The caption is
+  // identical across channels now, so caption-ig.txt is just an alias for
+  // caption.txt — kept around so any publisher script that referenced the
+  // older filename keeps working.
   fs.writeFileSync(path.join(dropDir, 'caption.txt'), spec.caption);
-
-  // Write IG-specific helpers for manual posting (used while Meta App Review pending):
-  //   - hashtags.txt    — just the hashtags, for paste into IG first comment
-  //   - caption-ig.txt  — caption with hashtag block stripped, for the IG caption itself
-  const hashtagLine = (spec.hashtags || []).join(' ');
-  fs.writeFileSync(path.join(dropDir, 'hashtags.txt'), hashtagLine);
-  // Strip the hashtag line (and any trailing blank line before it) from the caption.
-  // Heuristic: remove the last paragraph if it looks like a #-only block.
-  const captionStripped = (spec.caption || '')
+  // Defensive: strip any hashtag line if the model ever sneaks one in, then
+  // trim trailing whitespace.
+  const captionClean = (spec.caption || '')
     .replace(/\n\n#[^\n]*$/m, '')
     .trimEnd();
-  fs.writeFileSync(path.join(dropDir, 'caption-ig.txt'), captionStripped);
+  fs.writeFileSync(path.join(dropDir, 'caption-ig.txt'), captionClean);
 
   // Construct jsDelivr CDN URLs for each slide.
   // These URLs become live AFTER the workflow commits dist/<date>/ to output/<date>/ in this repo.
@@ -87,7 +85,6 @@ async function renderDrop(dropDir) {
     theme: spec.theme,
     hook: spec.hook,
     slide_count: spec.slides.length,
-    hashtags: spec.hashtags,
     sources: spec.sources,
     rendered_at: new Date().toISOString(),
     image_urls: imageUrls,

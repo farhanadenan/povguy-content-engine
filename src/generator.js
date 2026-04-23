@@ -8,9 +8,12 @@
  *     hook: "Sentosa Cove just printed its first sub-S$2k psf sale",
  *     slides: [ {kind, ...}, ... ],   // exactly 10 slides
  *     caption: "...",
- *     hashtags: [...],
  *     sources: [...]
  *   }
+ *
+ * NOTE: We deliberately do NOT generate hashtags. Per Farhan (2026-04-23),
+ * hashtags are a 2024 pattern and don't drive reach for our long-form
+ * Singapore property captions. Captions end with the signoff line, not "#tag".
  *
  * SLIDE KIND PAYLOADS (must match content-engine/templates/carousel-base.html)
  *   cover    { title_parts:[{text,style}], badge, sub, eyebrow? }
@@ -20,7 +23,7 @@
  *   ranking  { eyebrow?, title, title_accent?, items:[{label, sub?, value}], source? }
  *   pov_take { eyebrow?, label?, headline_parts:[{text,style}], punch?, punch_bold?, by? }
  *   tip      { eyebrow?, quote_parts:[{text,style}], by? }
- *   cta      { eyebrow?, pre?, title, title_accent?, sub?, button_text?, url? }
+ *   cta      { eyebrow?, pre?, title, title_accent?, sub?, url, button_sub? }
  *   save     { eyebrow?, title, title_accent?, sub? }
  *
  * `parts` is an array of inline runs, each `{ text, style }` where style is
@@ -36,7 +39,10 @@
  *   07 stat / list — second data beat (different metric than slot 3)
  *   08 tip         — quotable one-liner that screenshots well
  *   09 cta         — book the call
- *   10 save        — engagement close ("save / share if useful")
+ *   10 save        — engagement close: ONE-line "forward this" prompt
+ *                    (kind name is historical; copy is forward-framed,
+ *                    never "save this". Save is a low-effort ask; forwarding
+ *                    is what spreads the data and gets new opt-ins.)
  *
  * Caption rules: see CAPTION RULES inside the system prompt below.
  */
@@ -184,7 +190,11 @@ Return EXACTLY this JSON shape (no prose, no markdown fences, no commentary):
       "by":"Farhan Adenan · POV Guy Realtor"
     },
 
-    /* SLOT 09 — cta (book the call) */
+    /* SLOT 09 — cta (URL CTA — NOT a clickable button)
+       NOTE: There is NO "button_text" with action-words. IG/social images can't link
+       out, so the prominent yellow pill MUST display the URL itself (the user has to
+       type it). The renderer constructs the button as "<url> →" automatically.
+       Optionally provide "button_sub" for a tiny line beneath (e.g. "type into your browser ↑"). */
     {
       "kind":"cta",
       "eyebrow":"<e.g. 'Your Move'>",
@@ -192,21 +202,23 @@ Return EXACTLY this JSON shape (no prose, no markdown fences, no commentary):
       "title":"<≤44 char e.g. 'Let's map your'>",
       "title_accent":"<≤32 char e.g. 'next move.'>",
       "sub":"<≤140 char e.g. '30-min strategy call. No pitch — just the data and the angles.'>",
-      "button_text":"Book a 30-min call →",
-      "url":"povguy.sg/strategy-call"
+      "url":"povguy.sg/strategy-call",
+      "button_sub":"<optional ≤40 char hint e.g. 'type into your browser ↑' — leave empty if redundant>"
     },
 
-    /* SLOT 10 — save (engagement close) */
+    /* SLOT 10 — save (engagement close: FORWARD framing, never "save")
+       The kind is named "save" for legacy template routing, but the COPY must be
+       a forward-this prompt. One short sentence, one ask. Never "save this for
+       later" — that's a 2023 IG pattern. Forwarding is what grows the audience. */
     {
       "kind":"save",
       "eyebrow":"<e.g. 'One last thing'>",
-      "title":"<≤44 char e.g. 'Save this for'>",
-      "title_accent":"<≤24 char e.g. 'your next chat'>",
-      "sub":"<≤140 char e.g. 'Forward to anyone in the market for landed in D4. Tag a friend who needs this data.'>"
+      "title":"<≤32 char e.g. 'Forward this to'>",
+      "title_accent":"<≤24 char e.g. 'someone deciding.'>",
+      "sub":"<≤90 char ONE sentence — e.g. 'If you know anyone weighing landed in D4 this week, send them this.'>"
     }
   ],
   "caption": "<see CAPTION RULES below>",
-  "hashtags": ["#sgproperty","#povguy","<3-5 niche tags>"],
   "sources": ["URA","SRX","data.gov.sg",...]
 }
 
@@ -240,7 +252,9 @@ VOICE & CONTENT RULES
 - tip quote should be screenshot-worthy — short, surprising, repeatable.
 
 CAPTION RULES (this is what shows on Telegram, FB, IG, Threads)
-- Total length ≤ 700 chars including hashtags.
+- Total length ≤ 600 chars.
+- DO NOT include any hashtags. Captions end with the signoff line — that's the
+  last thing readers see. Hashtags are a 2024 pattern and dilute the brand.
 - Structure (with literal newlines):
 
   <HOOK — ≤90 chars, punchy, leads with the surprise. Telegram only previews
@@ -256,11 +270,10 @@ CAPTION RULES (this is what shows on Telegram, FB, IG, Threads)
 
   — Farhan · POVGUY.SG · +65 9236 1561
 
-  #sgproperty #povguy <3-5 niche tags>
-
 - Use real bullet character "•" not "-" or "*".
-- Blank line BETWEEN each block (hook / bullets / takeaway / CTA / signoff / hashtags).
+- Blank line BETWEEN each block (hook / bullets / takeaway / CTA / signoff).
 - No markdown formatting (no **bold**, no _italic_, no headers).
+- No hashtags anywhere — not at the end, not inline, not in the bullets.
 - Hook should NOT start with the literal word "Hook:" — just the line itself.
 - If the data justifies an emoji like 📈 📉 🏠 💰 use ONE at most in the hook line.
 - Never use "trade secrets" / "0.1%" framing in published copy — internal positioning only.
@@ -303,15 +316,15 @@ function normalizeSpec(spec, theme) {
     });
   }
 
-  // 2. Force slot 10 = save (was previously cta — now save closes the deck).
+  // 2. Force slot 10 = save (forward-framed close — historical kind name).
   const last = spec.slides[spec.slides.length - 1];
   if (!last || last.kind !== 'save') {
     spec.slides.push({
       kind: 'save',
       eyebrow: 'One last thing',
-      title: 'Save this for',
-      title_accent: 'your next chat',
-      sub: 'Forward to anyone in the market right now. The data shifts every week.',
+      title: 'Forward this to',
+      title_accent: 'someone deciding.',
+      sub: 'If you know anyone weighing a move this week, send it their way.',
     });
   }
 
@@ -325,8 +338,8 @@ function normalizeSpec(spec, theme) {
       title: 'Let\'s map your',
       title_accent: 'next move.',
       sub: '30-min strategy call. No pitch — just the data and the angles.',
-      button_text: 'Book a 30-min call →',
       url: 'povguy.sg/strategy-call',
+      button_sub: 'type into your browser ↑',
     });
   }
 
