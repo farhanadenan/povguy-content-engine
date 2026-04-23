@@ -1,16 +1,15 @@
 {
   "drop_id": "2026-04-23-landed",
   "theme": "Landed market",
-  "hook": "Brand-new or resale landed — which side is blinking first in April 2026?",
+  "hook": "Brand new vs resale landed: the gap is wider than you think",
   "slide_count": 10,
   "sources": [
     "URA caveats",
-    "SRX landed index",
     "Developer price lists",
-    "MAS ABSD records",
-    "data.gov.sg"
+    "POV Guy analysis",
+    "SRX"
   ],
-  "rendered_at": "2026-04-23T04:55:46.623Z",
+  "rendered_at": "2026-04-23T05:24:26.719Z",
   "image_urls": [
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-01.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-02.png",

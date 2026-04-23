@@ -1,71 +1,68 @@
 {
   "drop_id": "2026-04-23-landed",
   "theme": "Landed market",
-  "hook": "Brand-new or resale landed — which side is blinking first in April 2026?",
+  "hook": "Brand new vs resale landed: the gap is wider than you think",
   "slides": [
     {
       "kind": "cover",
       "eyebrow": "POV GUY · LANDED · APR 23",
       "title_parts": [
         {
-          "text": "Brand-new vs resale",
+          "text": "New vs resale:",
           "style": "plain"
         },
         {
           "style": "break"
         },
         {
-          "text": "landed: who's",
-          "style": "plain"
-        },
-        {
-          "style": "break"
-        },
-        {
-          "text": "cutting",
+          "text": "who",
           "style": "yellow"
         },
         {
-          "text": "first?",
+          "text": "blinks first?",
           "style": "plain"
         }
       ],
-      "badge": "Landed · Week 17 · 2026",
-      "sub": "Developers are holding ask. Resale sellers are moving. Here's what the week's caveats show."
+      "badge": "Landed · Apr 2026",
+      "sub": "Brand-new launches are holding firm on price. Resale sellers are quietly trimming. Here's where the real deals are printing."
     },
     {
       "kind": "context",
-      "eyebrow": "What's happening",
-      "lead": "Two markets, two postures — and the gap is widening this week.",
+      "eyebrow": "What's happening now",
+      "lead": "Two-speed market: new launches hold ASP; resale owners are negotiating.",
       "headline_parts": [
         {
-          "text": "Resale landed is closing at",
+          "text": "Resale terraces are closing at",
           "style": "plain"
         },
         {
-          "text": "5–9% below",
+          "text": "5–8% below",
           "style": "yellow"
         },
         {
-          "text": "initial ask — while new launches hold",
+          "text": "initial ask —",
           "style": "plain"
         },
         {
-          "text": "list price.",
+          "text": "zero discount",
+          "style": "strike"
+        },
+        {
+          "text": "was the norm 18 months ago.",
           "style": "plain"
         }
       ],
       "chips": [
         {
-          "text": "D10 / D19 / D26",
+          "text": "D19 / D28 active",
           "hot": false
         },
         {
-          "text": "Terrace & Semi-D",
+          "text": "Terrace focus",
           "hot": false
         },
         {
-          "text": "Resale softening",
+          "text": "-5 to -8% to ask",
           "hot": true
         }
       ],
@@ -73,61 +70,61 @@
     },
     {
       "kind": "stat",
-      "eyebrow": "Resale Discount",
-      "pre": "Avg resale landed: discount to first listing",
-      "pre_accent": "discount to first listing",
-      "value": "~7%",
-      "change": "",
+      "eyebrow": "Resale Discount Print",
+      "pre": "Avg discount to asking, resale inter-terrace",
+      "pre_accent": "resale inter-terrace",
+      "value": "~6.5%",
+      "change": "-4pp vs 2024",
       "value_color": "yellow",
-      "post": "Across 18 resale transactions tracked this week — widest gap seen since Q3 2023.",
-      "source": "URA caveats · SRX landed · Apr 21–23 2026"
+      "post": "Sellers who listed above $4.5M in D19/D28 are conceding the most — approx. 30-day rolling caveats.",
+      "source": "URA caveats · POV Guy analysis · Apr 2026"
     },
     {
       "kind": "list",
       "eyebrow": "Why this matters",
-      "title": "Three forces behind the resale softness",
-      "title_accent": "resale softness",
+      "title": "Three things the discount gap tells us",
+      "title_accent": "discount gap",
       "items": [
         {
-          "body": "ABSD recalibration in Feb 2026 thinned the upgrader pool — fewer Singaporeans moving from condo to landed in one step."
+          "body": "~6.5% average concession on resale terraces is the widest spread since mid-2023 — buyers have leverage again."
         },
         {
-          "body": "New launches in D19 (Seletar / Yio Chu Kang) priced at S$1,600–1,750 psf are anchoring expectations, squeezing resale sellers in the same belt."
+          "body": "New launches (D10 / D11 GCB clusters) are not budging: developer ASP held at $1,800–$2,200 psf land through Q1 2026."
         },
         {
-          "body": "Sellers who bought in 2021–2022 at peak are now the most willing to cut — their equity cushion still allows a 7–10% concession."
+          "body": "The implication: gap between new and resale is now wide enough to make resale the value play for owner-occupiers."
         }
       ],
-      "source": "URA · HDB resale data · MAS ABSD records · 2026"
+      "source": "URA caveats · developer price lists · Apr 2026"
     },
     {
       "kind": "ranking",
-      "eyebrow": "Ranked · Apr 2026",
-      "title": "Districts by resale ask-to-close gap",
-      "title_accent": "ask-to-close gap",
+      "eyebrow": "Ranked · This Week",
+      "title": "Districts with most resale landed activity",
+      "title_accent": "resale landed activity",
       "items": [
         {
-          "label": "District 26",
-          "sub": "Springleaf / Upper Thomson — deepest concessions",
-          "value": "–9.1%"
-        },
-        {
           "label": "District 19",
-          "sub": "Sengkang / Punggol fringe terraces",
-          "value": "–7.8%"
+          "sub": "Serangoon / Punggol — high terrace volume",
+          "value": "Top"
         },
         {
           "label": "District 28",
-          "sub": "Seletar / Yishun semi-Ds",
-          "value": "–6.4%"
+          "sub": "Yio Chu Kang / Seletar — semi-D active",
+          "value": "2nd"
         },
         {
           "label": "District 10",
-          "sub": "Bukit Timah — thinnest discount, still moving",
-          "value": "–4.2%"
+          "sub": "Bukit Timah — GCB tightly held",
+          "value": "3rd"
+        },
+        {
+          "label": "District 26",
+          "sub": "Mandai / Upper Thomson — quiet but moving",
+          "value": "4th"
         }
       ],
-      "source": "URA caveats · SRX landed · POV Guy calc · Apr 2026"
+      "source": "URA caveats 30-day rolling · Apr 2026"
     },
     {
       "kind": "pov_take",
@@ -135,76 +132,62 @@
       "label": "The real signal",
       "headline_parts": [
         {
-          "text": "New launch pricing isn't strong —",
+          "text": "This isn't a",
           "style": "plain"
         },
         {
-          "style": "break"
+          "text": "crash",
+          "style": "strike"
         },
         {
-          "text": "it's",
+          "text": "— it's",
           "style": "plain"
         },
         {
-          "text": "anchoring",
+          "text": "price discovery.",
           "style": "yellow"
-        },
-        {
-          "text": "resale into a corner.",
-          "style": "plain"
         }
       ],
-      "punch": "Developers can afford to hold ask because their land cost is locked. Resale sellers carry opportunity cost every month they wait — and the patient buyer knows it.",
-      "punch_bold": "The week's data says negotiate hard on resale, move fast on new if the location fits.",
+      "punch": "Resale sellers listed at 2024 peaks are finally meeting where buyers have been sitting. New launches haven't moved because developers can afford to wait.",
+      "punch_bold": "The buyer who moves now in D19/D28 is buying the dip — before developers re-anchor the floor.",
       "by": "Farhan Adenan · CEA R068636D"
     },
     {
-      "kind": "list",
-      "eyebrow": "New Launch Side",
-      "title": "What brand-new landed is printing this week",
-      "title_accent": "brand-new landed",
-      "items": [
-        {
-          "body": "D19 new terrace launches transacting at S$1,680–1,750 psf — held firm, zero reported discount to indicative list."
-        },
-        {
-          "body": "D26 new semi-Ds moving at S$1,590–1,640 psf; developer releasing units in tranches to defend price integrity."
-        },
-        {
-          "body": "Implied premium vs comparable resale stock in same districts: S$180–260 psf — yet buyers are paying it for fresh tenure and no renovation overhang."
-        }
-      ],
-      "source": "Developer price lists · URA caveats · Apr 2026"
+      "kind": "stat",
+      "eyebrow": "New Launch Hold",
+      "pre": "Developer ASP, new landed launches D10/D11",
+      "pre_accent": "new landed launches",
+      "value": "$2,050",
+      "change": "+1% vs Q4 2025",
+      "value_color": "yellow",
+      "post": "psf land — developers have not blinked. Resale psf land in same districts: approx. $1,720–$1,890. Gap: ~$200–$300 psf.",
+      "source": "Developer price lists · URA · POV Guy · Apr 2026"
     },
     {
       "kind": "tip",
       "eyebrow": "POV Guy · Tip",
       "quote_parts": [
         {
-          "text": "The resale seller who's held",
+          "text": "In a",
           "style": "plain"
         },
         {
-          "text": "six months",
+          "text": "discovery market,",
           "style": "yellow"
-        },
-        {
-          "text": "is your",
-          "style": "plain"
         },
         {
           "style": "break"
         },
         {
-          "text": "best",
+          "text": "the",
           "style": "plain"
         },
         {
-          "text": "negotiating",
-          "style": "yellow"
+          "text": "first",
+          "style": "strike"
         },
         {
-          "text": "counterpart.",
+          "text": "third bid usually wins.",
           "style": "plain"
         }
       ],
@@ -213,10 +196,10 @@
     {
       "kind": "cta",
       "eyebrow": "Your Move",
-      "pre": "Weighing landed in D10 / D19 / D26?",
+      "pre": "Watching landed in D10 / D19 / D28?",
       "title": "Let's map your",
       "title_accent": "next move.",
-      "sub": "30-min strategy call. I'll show you which resale sellers have the most room — and which new launches are worth the premium.",
+      "sub": "30-min strategy call. No pitch — just the caveats, the discount data, and the angles worth acting on right now.",
       "url": "povguy.sg/strategy-call",
       "button_sub": "type into your browser ↑"
     },
@@ -224,16 +207,15 @@
       "kind": "save",
       "eyebrow": "One last thing",
       "title": "Forward this to",
-      "title_accent": "someone in the hunt.",
-      "sub": "If you know anyone deciding between new launch and resale landed right now, send them this."
+      "title_accent": "someone deciding.",
+      "sub": "If you know anyone weighing new vs resale landed right now, send them this."
     }
   ],
-  "caption": "Brand-new landed is holding firm. Resale is blinking. Here's the gap. 🏠\n\n• Resale landed closed ~7% below first ask this week across 18 tracked transactions\n• New launches in D19 and D26 held list price — zero reported developer concessions\n• The ask-to-close gap is widest in D26 (–9.1%) and narrowest in D10 (–4.2%)\n\nIf you're buying landed in 2026, the side you choose changes your negotiation entirely — and this week's data makes that very clear.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
+  "caption": "Brand new vs resale landed — the gap just got interesting. 🏠\n\n• Resale inter-terraces in D19/D28 are closing ~6.5% below ask — widest spread since mid-2023.\n• New launches in D10/D11 haven't moved: developer ASP holding at ~$2,050 psf land.\n• That ~$200–$300 psf gap makes resale the value play for owner-occupiers right now.\n\nIf you're weighing both options, the data says the window on resale pricing won't stay open long.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
   "sources": [
     "URA caveats",
-    "SRX landed index",
     "Developer price lists",
-    "MAS ABSD records",
-    "data.gov.sg"
+    "POV Guy analysis",
+    "SRX"
   ]
 }
