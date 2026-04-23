@@ -83,6 +83,7 @@
   .footer {
     position: absolute; bottom: 5.5%; left: 7%; right: 7%;
     display: flex; justify-content: space-between; align-items: end;
+    gap: 2cqw;
     font-family: var(--mono);
     font-size: 3.2cqw;
     letter-spacing: 0.12em;
@@ -91,8 +92,22 @@
     pointer-events: none;
     z-index: 4;
   }
-  .footer span { white-space: nowrap; }
-  .footer .num { color: var(--accent); font-weight: 500; }
+  /* Source on the LEFT can shrink/ellipsis. Slide num on the RIGHT must NEVER
+     be clipped — it's the only nav cue. Long source strings like
+     "URA CAVEATS · SRX · POV GUY ANALYSIS" used to push "05 / 10" off-screen. */
+  .footer .src {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .footer .num {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    color: var(--accent);
+    font-weight: 500;
+  }
 
   /* ===== Cover — image-bg + scrim (only the cover uses image background) ===== */
   .cover-img {
@@ -155,7 +170,7 @@
   .cover h1 {
     font-family: var(--display);
     font-weight: 800;
-    font-size: 13cqw;          /* base; fitCoverTitle() shrinks if it overflows .stage */
+    font-size: 15cqw;          /* base; fitCoverTitle() shrinks ONLY when needed */
     line-height: 0.94;
     letter-spacing: -0.04em;
     color: var(--text);
@@ -659,7 +674,8 @@
   function chromeFooter(left) {
     const { idx, tot } = ctx();
     const numText = String(idx).padStart(2,'0') + ' / ' + String(tot).padStart(2,'0');
-    return `<div class="footer"><span>${esc(left || SITE)}</span><span class="num">${numText}</span></div>`;
+    // .src ellipsis-truncates if too long. .num is fixed-width and never clips.
+    return `<div class="footer"><span class="src">${esc(left || SITE)}</span><span class="num">${numText}</span></div>`;
   }
 
   function render() {
@@ -873,11 +889,12 @@
     });
   }
 
-  /* Cover h1 can run anywhere from a 3-word punch to a 10-word headline. The
-     CSS sets a generous starting font-size; if the rendered headline overflows
-     the .stage box (vertically OR horizontally), shrink until it fits. The
-     cover .stage uses justify-content: flex-end so the title sits at the
-     bottom — overflow at the top reads as the title falling off the slide. */
+  /* Cover h1 starts large (15cqw ≈ 162px) for stop-the-scroll punch. We shrink
+     ONLY if the rendered headline overflows the .stage box. Floor: ~119px
+     (≈11cqw) — anything smaller and the cover loses impact vs slides 2-3 and
+     starts to look "smaller than the rest" (Farhan's complaint, 2026-04-23).
+     If the title still overflows at the floor, the source copy is too long —
+     the right fix is shorter copy, not smaller type. */
   function fitCoverTitle() {
     const h1 = root.querySelector('.cover h1');
     if (!h1) return;
@@ -890,11 +907,12 @@
                     + (sub   ? sub.getBoundingClientRect().height   + 16 : 0);
     const maxH = stage.clientHeight - reservedH - 8;
     const maxW = stage.clientWidth;
+    const FLOOR = 119; // ≈11cqw on 1080w canvas
     let size = parseFloat(getComputedStyle(h1).fontSize);
-    let safety = 25;
-    while ((h1.scrollHeight > maxH || h1.scrollWidth > maxW) && size > 48 && safety-- > 0) {
-      size *= 0.93;
-      h1.style.fontSize = size + 'px';
+    let safety = 12;
+    while ((h1.scrollHeight > maxH || h1.scrollWidth > maxW) && size > FLOOR && safety-- > 0) {
+      size *= 0.95;
+      h1.style.fontSize = Math.max(FLOOR, size) + 'px';
     }
   }
 
