@@ -155,11 +155,12 @@
   .cover h1 {
     font-family: var(--display);
     font-weight: 800;
-    font-size: 16cqw;
-    line-height: 0.92;
+    font-size: 13cqw;          /* base; fitCoverTitle() shrinks if it overflows .stage */
+    line-height: 0.94;
     letter-spacing: -0.04em;
     color: var(--text);
     text-shadow: 0 4px 32px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.8);
+    max-width: 100%;
   }
   .cover h1 .strike {
     color: var(--muted); text-decoration: line-through;
@@ -714,7 +715,7 @@
         : esc(data.pre || '');
       html = `
         <div class="slide stat ${overlayMode ? 'overlay-mode' : ''}">
-          ${chromeEyebrow(data.eyebrow || 'Headline Number')}
+          ${chromeEyebrow(data.eyebrow || (ctx().drop.theme || 'The Number'))}
           <div class="stage">
             ${data.pre ? `<p class="pre">${pre}</p>` : ''}
             <div class="number ${valueYellow}">${esc(data.value || '')}</div>
@@ -846,11 +847,12 @@
     }
 
     root.innerHTML = html;
-    // Post-render fit pass: ensure giant stat numbers stay on a single line.
-    // The CSS sets a generous starting font-size; this shrinks it until the
-    // text fits the container width. Done in JS (not CSS) because container
-    // queries can't condition on text length.
+    // Post-render fit pass: ensure giant stat numbers stay on a single line,
+    // and the cover h1 fits inside its .stage box even with long titles.
+    // Both done in JS (not CSS) because container queries can't condition on
+    // text length / line count.
     fitOneLine();
+    fitCoverTitle();
   }
 
   /* Shrink any element with class .fit-one-line until its scrollWidth fits the
@@ -869,6 +871,31 @@
         el.style.fontSize = size + 'px';
       }
     });
+  }
+
+  /* Cover h1 can run anywhere from a 3-word punch to a 10-word headline. The
+     CSS sets a generous starting font-size; if the rendered headline overflows
+     the .stage box (vertically OR horizontally), shrink until it fits. The
+     cover .stage uses justify-content: flex-end so the title sits at the
+     bottom — overflow at the top reads as the title falling off the slide. */
+  function fitCoverTitle() {
+    const h1 = root.querySelector('.cover h1');
+    if (!h1) return;
+    const stage = h1.parentElement;
+    if (!stage) return;
+    // Allow some breathing room for badge above + sub below if present.
+    const badge = stage.querySelector('.badge');
+    const sub   = stage.querySelector('.sub');
+    const reservedH = (badge ? badge.getBoundingClientRect().height + 16 : 0)
+                    + (sub   ? sub.getBoundingClientRect().height   + 16 : 0);
+    const maxH = stage.clientHeight - reservedH - 8;
+    const maxW = stage.clientWidth;
+    let size = parseFloat(getComputedStyle(h1).fontSize);
+    let safety = 25;
+    while ((h1.scrollHeight > maxH || h1.scrollWidth > maxW) && size > 48 && safety-- > 0) {
+      size *= 0.93;
+      h1.style.fontSize = size + 'px';
+    }
   }
 
   /* Re-render on hashchange — Playwright nav uses page.goto(template#payload)
