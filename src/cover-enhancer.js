@@ -249,13 +249,17 @@ async function main() {
   // Cover only (v4 — see file header). Stat + tip stay on clean dark template.
   const KINDS_TO_ENHANCE = ['cover'];
 
+  // Match renderer.js zero-pad scheme so we read slide-01.png, slide-02.png, etc.
+  // (See renderer.js for why padding matters — downstream sort correctness.)
+  const pad = (n) => String(n).padStart(2, '0');
+
   for (const kind of KINDS_TO_ENHANCE) {
     const slideIdx = spec.slides.findIndex(s => s.kind === kind);
     if (slideIdx === -1) {
       console.log(`[enhance:${kind}] no slide of this kind in spec — skipping`);
       continue;
     }
-    const slideNum = slideIdx + 1;
+    const slideNum = pad(slideIdx + 1);
     const basePath    = path.join(dropDir, `slide-${slideNum}.png`);
     const overlayPath = path.join(dropDir, `slide-${slideNum}-overlay.png`);
 

@@ -35,11 +35,18 @@ async function renderDrop(dropDir) {
     await page.waitForTimeout(200);
   }
 
+  // Zero-pad slide numbers so filenames sort lexicographically the same as they
+  // sort numerically (slide-01.png ... slide-10.png). Without this, downstream
+  // consumers that do fs.readdirSync(...).sort() — e.g. publisher/src/index.js —
+  // get slide-1, slide-10, slide-2, slide-3, ... and post page 10 in slot 2.
+  const pad = (n) => String(n).padStart(2, '0');
+
   for (let i = 0; i < spec.slides.length; i++) {
     const slide = spec.slides[i];
+    const slideNum = pad(i + 1);
     const basePayload = { ...slide, _index: i + 1, _total: spec.slides.length, _drop: spec };
     await gotoSlide(basePayload);
-    const out = path.join(dropDir, `slide-${i + 1}.png`);
+    const out = path.join(dropDir, `slide-${slideNum}.png`);
     await page.screenshot({ path: out, type: 'png', omitBackground: false });
     console.log(`[renderer] ${out}`);
 
@@ -49,7 +56,7 @@ async function renderDrop(dropDir) {
     // text — they're back to the clean dark template in v4.
     if (slide.kind === 'cover') {
       await gotoSlide({ ...basePayload, _overlay: true });
-      const overlayOut = path.join(dropDir, `slide-${i + 1}-overlay.png`);
+      const overlayOut = path.join(dropDir, `slide-${slideNum}-overlay.png`);
       await page.screenshot({ path: overlayOut, type: 'png', omitBackground: true });
       console.log(`[renderer] ${overlayOut} (transparent overlay)`);
     }
@@ -78,7 +85,7 @@ async function renderDrop(dropDir) {
   const cdnPrefix  = process.env.IMAGE_CDN_PREFIX  || 'output';
   const dateSegment = path.basename(dropDir);
   const imageUrls = Array.from({ length: spec.slides.length }, (_, i) =>
-    `https://cdn.jsdelivr.net/gh/${cdnOwner}/${cdnRepo}@${cdnBranch}/${cdnPrefix}/${dateSegment}/slide-${i + 1}.png`
+    `https://cdn.jsdelivr.net/gh/${cdnOwner}/${cdnRepo}@${cdnBranch}/${cdnPrefix}/${dateSegment}/slide-${pad(i + 1)}.png`
   );
 
   fs.writeFileSync(path.join(dropDir, 'manifest.json'), JSON.stringify({
