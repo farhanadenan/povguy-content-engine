@@ -545,29 +545,79 @@
     display: flex; justify-content: space-between;
   }
 
-  /* ===== Save — engagement close (slot 10) ===== */
+  /* ===== Save — engagement close (slot 10), portrait-bg version =====
+     Full-bleed Farhan portrait + heavy bottom scrim so the close feels
+     personally signed. Pattern mirrors the cover (cover-img + cover-scrim)
+     so the brand language is consistent at slide 1 and slide 10. */
+  .save-img {
+    position: absolute; inset: 0;
+    background-color: #0a0610;
+    background-image: url('portrait.jpg');
+    background-size: cover;
+    background-position: center 25%;  /* bias toward face — adjust if photo crops oddly */
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+  .save-scrim {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to bottom,
+        rgba(10,6,16,0.55) 0%,
+        rgba(10,6,16,0.30) 30%,
+        rgba(10,6,16,0.45) 50%,
+        rgba(10,6,16,0.88) 75%,
+        rgba(10,6,16,0.97) 100%);
+    z-index: 1;
+  }
   .save .stage {
     position: absolute; top: 16%; bottom: 13%; left: 7%; right: 7%;
-    display: flex; flex-direction: column; justify-content: center;
-    align-items: center; text-align: center;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    z-index: 2;
   }
   .save .arrow {
-    font-family: var(--display); font-size: 22cqw; line-height: 1;
-    color: var(--accent); margin-bottom: 3cqw;
+    font-family: var(--display); font-size: 14cqw; line-height: 1;
+    color: var(--accent); margin-bottom: 2cqw;
     transform: rotate(-15deg);
+    text-shadow: 0 4px 24px rgba(0,0,0,0.6);
+    align-self: flex-start;
   }
   .save h2 {
     font-family: var(--display); font-weight: 800;
-    font-size: 13cqw; line-height: 0.92;
+    font-size: 12cqw; line-height: 0.94;
     letter-spacing: -0.035em; color: var(--text);
-    margin-bottom: 3cqw;
+    margin-bottom: 2.5cqw;
+    text-shadow: 0 4px 32px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.85);
   }
-  .save h2 .yellow { color: var(--accent); }
+  .save h2 .yellow {
+    color: var(--accent);
+    text-shadow: 0 4px 32px rgba(0,0,0,0.65), 0 0 24px var(--accent-glow);
+  }
   .save .sub {
     font-family: var(--body); font-weight: 400;
-    font-size: 3.6cqw; color: var(--muted);
-    line-height: 1.5; max-width: 80%;
+    font-size: 3.4cqw; color: #d8d6e0;
+    line-height: 1.5; max-width: 90%;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.7);
+    margin-bottom: 4cqw;
   }
+  .save .signature {
+    margin-top: 1cqw;
+    padding-top: 2cqw;
+    border-top: 1px solid rgba(251,191,36,0.35);
+    font-family: var(--mono);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+  }
+  .save .sig-name {
+    font-size: 2.8cqw; font-weight: 600; color: var(--accent);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  }
+  .save .sig-cea {
+    font-size: 2.2cqw; color: var(--muted);
+    margin-top: 0.6cqw;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+  }
+  .save .eyebrow, .save .footer { z-index: 3; }
+  .save .eyebrow, .save .footer span { text-shadow: 0 0 12px rgba(0,0,0,0.6); }
 
   /* ===== OVERFLOW SAFETY — three layers to prevent copy crashes ===== */
   .slide h1, .slide h2, .slide blockquote, .slide .number,
@@ -594,7 +644,7 @@
   .tip blockquote  { display: -webkit-box; -webkit-line-clamp: 6; -webkit-box-orient: vertical; overflow: hidden; }
   .cta h2          { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .cta .sub        { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-  .save h2         { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .save h2         { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 </style>
 </head>
 <body>
@@ -847,16 +897,25 @@
         </div>`;
     }
 
-    /* ===== SAVE — engagement close (slot 10) ===== */
+    /* ===== SAVE — engagement close (slot 10), portrait-bg edition =====
+       Portrait fills the slide, dark scrim ensures text legibility, the
+       arrow + headline + sub stack at the bottom-third, signature pinned
+       below as the personal close. */
     else if (k === 'save') {
       const titleParts = fmtTitle(data.title, data.title_accent);
       html = `
         <div class="slide save">
+          <div class="save-img"></div>
+          <div class="save-scrim"></div>
           ${chromeEyebrow(data.eyebrow || 'One last thing')}
           <div class="stage">
             <div class="arrow">↗</div>
             <h2>${titleParts}</h2>
             ${data.sub ? `<p class="sub">${esc(data.sub)}</p>` : ''}
+            <div class="signature">
+              <div class="sig-name">${esc(SIGNOFF)}</div>
+              <div class="sig-cea">${esc(CEA)}</div>
+            </div>
           </div>
           ${chromeFooter(SITE)}
         </div>`;
