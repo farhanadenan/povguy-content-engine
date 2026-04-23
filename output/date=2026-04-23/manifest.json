@@ -1,32 +1,26 @@
 {
   "drop_id": "2026-04-23-landed",
   "theme": "Landed market",
-  "hook": "Brand-new landed vs resale: who's blinking first on price?",
+  "hook": "Brand-new or resale landed — which side is blinking first in April 2026?",
   "slide_count": 10,
-  "hashtags": [
-    "#sgproperty",
-    "#povguy",
-    "#landedsingapore",
-    "#singaporerealestate",
-    "#bukittimah"
-  ],
   "sources": [
     "URA caveats",
-    "SRX",
-    "data.gov.sg",
-    "POV Guy analysis"
+    "SRX landed index",
+    "Developer price lists",
+    "MAS ABSD records",
+    "data.gov.sg"
   ],
-  "rendered_at": "2026-04-23T00:48:36.708Z",
+  "rendered_at": "2026-04-23T04:55:46.623Z",
   "image_urls": [
-    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-1.png",
-    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-2.png",
-    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-3.png",
-    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-4.png",
-    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-5.png",
-    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-6.png",
-    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-7.png",
-    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-8.png",
-    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-9.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-01.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-02.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-03.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-04.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-05.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-06.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-07.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-08.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-09.png",
     "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/date=2026-04-23/slide-10.png"
   ],
   "image_cdn": {
