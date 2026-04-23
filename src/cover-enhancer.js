@@ -137,6 +137,29 @@ function buildPrompt(theme, kind) {
 
 // ---- AI CALL ------------------------------------------------------------
 
+// Detect transient/retryable Gemini errors. These are capacity/network issues
+// that usually clear in seconds. Hard errors (auth, quota exceeded, safety
+// block) are NOT retryable — those need a different fix and shouldn't burn
+// retry budget. Patterns observed in production (Farhan, 2026-04-23):
+//   "This model is currently experiencing high demand"
+//   "The model is overloaded"
+//   "RESOURCE_EXHAUSTED" (sometimes transient, sometimes quota — treat as
+//                        retryable since one extra try is cheap)
+function isTransientGeminiError(msg) {
+  if (!msg) return false;
+  const m = msg.toLowerCase();
+  return m.includes('high demand')
+      || m.includes('overload')
+      || m.includes('resource_exhausted')
+      || m.includes('unavailable')
+      || m.includes('try again later')
+      || m.includes('try later')
+      || m.includes('rate limit')
+      || m.includes('timeout');
+}
+
+const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
 async function generateBackground(theme, kind) {
   if (!process.env.GEMINI_API_KEY) {
     console.warn(`[enhance:${kind}] GEMINI_API_KEY missing — skipping enhancement`);
@@ -156,32 +179,62 @@ async function generateBackground(theme, kind) {
     generationConfig: { responseModalities: ['TEXT', 'IMAGE'] }
   };
 
-  let res, data;
-  try {
-    res = await fetch(`${ENDPOINT}?key=${process.env.GEMINI_API_KEY}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
-    });
-    data = await res.json();
-  } catch (e) {
-    console.warn(`[enhance:${kind}] network error: ${e.message} — skipping`);
-    return null;
-  }
+  // 3-attempt retry loop with exponential backoff for transient errors.
+  // Backoff: 0s, 8s, 24s. Hard errors short-circuit (no point retrying).
+  const MAX_ATTEMPTS = 3;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    let res, data;
+    try {
+      res = await fetch(`${ENDPOINT}?key=${process.env.GEMINI_API_KEY}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      data = await res.json();
+    } catch (e) {
+      // Network errors are usually transient — retry.
+      if (attempt < MAX_ATTEMPTS) {
+        const wait = attempt * 8000;
+        console.warn(`[enhance:${kind}] network error (attempt ${attempt}/${MAX_ATTEMPTS}): ${e.message} — retrying in ${wait/1000}s`);
+        await sleep(wait);
+        continue;
+      }
+      console.warn(`[enhance:${kind}] network error after ${MAX_ATTEMPTS} attempts: ${e.message} — skipping`);
+      return null;
+    }
 
-  if (data.error) {
-    console.warn(`[enhance:${kind}] Gemini error: ${data.error.message} — skipping`);
-    return null;
+    if (data.error) {
+      const errMsg = data.error.message || '';
+      if (isTransientGeminiError(errMsg) && attempt < MAX_ATTEMPTS) {
+        const wait = attempt * 8000;
+        console.warn(`[enhance:${kind}] Gemini transient error (attempt ${attempt}/${MAX_ATTEMPTS}): ${errMsg} — retrying in ${wait/1000}s`);
+        await sleep(wait);
+        continue;
+      }
+      console.warn(`[enhance:${kind}] Gemini error: ${errMsg} — skipping`);
+      return null;
+    }
+
+    const parts = data?.candidates?.[0]?.content?.parts || [];
+    const part = parts.find(p => p.inlineData || p.inline_data);
+    if (!part) {
+      const finishReason = data?.candidates?.[0]?.finishReason || 'unknown';
+      // OTHER finishReason can be transient (model gave up); SAFETY is hard.
+      if (finishReason === 'OTHER' && attempt < MAX_ATTEMPTS) {
+        const wait = attempt * 8000;
+        console.warn(`[enhance:${kind}] no image (finishReason=OTHER, attempt ${attempt}/${MAX_ATTEMPTS}) — retrying in ${wait/1000}s`);
+        await sleep(wait);
+        continue;
+      }
+      console.warn(`[enhance:${kind}] no image returned (finishReason=${finishReason}) — skipping`);
+      return null;
+    }
+
+    const inlineData = part.inlineData || part.inline_data;
+    if (attempt > 1) console.log(`[enhance:${kind}] succeeded on attempt ${attempt}/${MAX_ATTEMPTS}`);
+    return Buffer.from(inlineData.data, 'base64');
   }
-  const parts = data?.candidates?.[0]?.content?.parts || [];
-  const part = parts.find(p => p.inlineData || p.inline_data);
-  if (!part) {
-    const finishReason = data?.candidates?.[0]?.finishReason || 'unknown';
-    console.warn(`[enhance:${kind}] no image returned (finishReason=${finishReason}) — skipping`);
-    return null;
-  }
-  const inlineData = part.inlineData || part.inline_data;
-  return Buffer.from(inlineData.data, 'base64');
+  return null; // unreachable but keeps TypeScript-style flow analysis happy
 }
 
 // ---- PUBLIC API ---------------------------------------------------------
