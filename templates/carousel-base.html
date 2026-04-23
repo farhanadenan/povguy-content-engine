@@ -58,6 +58,15 @@
     container-type: inline-size;
   }
   .slide.overlay-mode { background: transparent; }
+  /* Overlay mode is used by cover-enhancer to capture ONLY the text/badge/sub/
+     footer on a transparent canvas so it can be composited on top of the
+     Nano Banana AI background. The cover's own background layers (.cover-img
+     placeholder gradient + .cover-scrim dark gradient) MUST be hidden in
+     overlay mode — otherwise they paint into the overlay PNG and completely
+     cover the AI photo when composited (Farhan, 2026-04-23: "AI bg didn't
+     output" — it did, but the overlay was painting the placeholder over it). */
+  .slide.cover.overlay-mode .cover-img,
+  .slide.cover.overlay-mode .cover-scrim { display: none !important; }
 
   /* ===== Common chrome — eyebrow + footer + slide-num ===== */
   .eyebrow {
@@ -241,6 +250,9 @@
   .stat .stage {
     position: absolute; top: 16%; bottom: 13%; left: 7%; right: 7%;
     display: flex; flex-direction: column; justify-content: center;
+    /* Belt-and-braces: even if fitOneLine misses (font load race, edge case),
+       the number can never bleed past the stage box onto the slide chrome. */
+    overflow: hidden;
   }
   .stat .pre {
     font-family: var(--body);
@@ -867,22 +879,32 @@
     // and the cover h1 fits inside its .stage box even with long titles.
     // Both done in JS (not CSS) because container queries can't condition on
     // text length / line count.
-    fitOneLine();
-    fitCoverTitle();
+    //
+    // CRITICAL: wait for fonts to load BEFORE measuring. Google Fonts arrive
+    // async; if we measure pre-load with the fallback (narrower) font we get a
+    // false "fits" reading, exit the loop, then the real font arrives wider
+    // and bleeds off the slide edge. (Bug 2026-04-23: "S$2,050" rendered as
+    // "S$2,05C" with the last 0 cut off ~30px past the slide.)
+    const runFits = () => { fitOneLine(); fitCoverTitle(); };
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(runFits);
+    }
+    runFits(); // also run immediately as a best-effort first pass
   }
 
-  /* Shrink any element with class .fit-one-line until its scrollWidth fits the
-     parent. Currently used for .stat .number (values like "S$14.85M" must not
-     wrap). Steps down 4% per iteration; bails after 20 iterations as a safety. */
+  /* Shrink .stat .number until its scrollWidth fits 96% of the parent stage
+     (4% safety margin for letter-spacing / sub-pixel rounding so a barely-wide
+     number doesn't bleed past the slide edge). Steps down 4% per iteration,
+     bails after 20 iterations or once below 60px font-size. */
   function fitOneLine() {
     const targets = root.querySelectorAll('.stat .number');
     targets.forEach(el => {
       const parent = el.parentElement;
       if (!parent) return;
-      const parentWidth = parent.clientWidth;
+      const targetWidth = parent.clientWidth * 0.96;
       let size = parseFloat(getComputedStyle(el).fontSize);
       let safety = 20;
-      while (el.scrollWidth > parentWidth && size > 60 && safety-- > 0) {
+      while (el.scrollWidth > targetWidth && size > 60 && safety-- > 0) {
         size *= 0.94;
         el.style.fontSize = size + 'px';
       }
