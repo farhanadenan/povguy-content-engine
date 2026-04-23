@@ -1,136 +1,224 @@
 {
-  "drop_id": "2026-04-22-rental",
-  "theme": "Rental Market · HDB & Condo Yields",
-  "hook": "Some Singapore landlords are quietly clearing 5% net — here's where",
+  "drop_id": "2026-04-23-landed",
+  "theme": "Landed market",
+  "hook": "Resale landed is still moving — but sellers are blinking first",
   "slides": [
     {
       "kind": "cover",
-      "title": "Rental Yields 2026",
-      "subtitle": "Which districts and flat types are delivering landlord ROI above 5% net right now.",
-      "badge": "Rental · Apr 2026",
-      "ghost_number": "5%"
+      "eyebrow": "POV GUY · LANDED · APR 23",
+      "title_parts": [
+        {
+          "text": "Resale landed:",
+          "style": "plain"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "who's still",
+          "style": "plain"
+        },
+        {
+          "text": "selling,",
+          "style": "yellow"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "and at what price.",
+          "style": "plain"
+        }
+      ],
+      "badge": "Landed · Apr 2026",
+      "sub": "Brand new vs resale this week — the districts still transacting and where sellers are moving first."
+    },
+    {
+      "kind": "context",
+      "eyebrow": "What's happening",
+      "lead": "Resale landed volume is holding, but the price gap is widening by district.",
+      "headline_parts": [
+        {
+          "text": "Faber Hills semis peaked at",
+          "style": "plain"
+        },
+        {
+          "text": "S$8.8M",
+          "style": "strike"
+        },
+        {
+          "text": "in 2022 — latest print is",
+          "style": "plain"
+        },
+        {
+          "text": "S$6.45M.",
+          "style": "yellow"
+        }
+      ],
+      "chips": [
+        {
+          "text": "District 05",
+          "hot": false
+        },
+        {
+          "text": "Semi-detached",
+          "hot": false
+        },
+        {
+          "text": "-27% off peak",
+          "hot": true
+        }
+      ],
+      "source": "URA caveats · POV Guy analysis"
     },
     {
       "kind": "stat",
-      "tag": "Market Pulse",
-      "headline": "Median condo gross yield island-wide, Q1 2026",
-      "value": "3.8%",
-      "change": "+0.2%",
-      "footnote": "URA Rental Index + SRX condo transaction data, Q1 2026. Net yield ~2.9% after sinking fund, maintenance & property tax.",
-      "value_color": "blue"
-    },
-    {
-      "kind": "stat",
-      "tag": "HDB Rental",
-      "headline": "Median HDB gross yield island-wide, Q1 2026",
-      "value": "4.6%",
-      "change": "+0.3%",
-      "footnote": "HDB rental registrations via data.gov.sg, Q1 2026. Net yield ~4.1% after town council fees & property tax.",
-      "value_color": "green"
-    },
-    {
-      "kind": "ranking",
-      "tag": "Condo · Top Districts",
-      "title": "Gross Yield by District (Condo)",
-      "items": [
-        {
-          "label": "D19 · Punggol/Sengkang",
-          "value": "5.1%",
-          "sub": "Newer OCR stock, lower entry price, strong tenant demand from young families",
-          "tone": "gold"
-        },
-        {
-          "label": "D18 · Tampines/Pasir Ris",
-          "value": "4.9%",
-          "sub": "Cross-island MRT uplift sustaining rental demand; mid-tier pricing keeps yields elevated",
-          "tone": "green"
-        },
-        {
-          "label": "D14 · Geylang/Eunos",
-          "value": "4.7%",
-          "sub": "High tenant turnover keeps gross yield up; net yield compressed by older building costs",
-          "tone": "blue"
-        },
-        {
-          "label": "D9/10 · Orchard/Bukit Timah",
-          "value": "2.6%",
-          "sub": "Capital values too rich relative to rent; yield drag despite absolute rents being high",
-          "tone": "red"
-        }
-      ],
-      "footnote": "SRX + EdgeProp district-level rental data, Q1 2026. Gross yield = annualised rent ÷ median transaction price."
-    },
-    {
-      "kind": "ranking",
-      "tag": "HDB · Flat Type Yield",
-      "title": "Gross Yield by HDB Flat Type",
-      "items": [
-        {
-          "label": "3-Room",
-          "value": "5.4%",
-          "sub": "Lowest entry price relative to rent; consistently strongest yield across all towns",
-          "tone": "gold"
-        },
-        {
-          "label": "4-Room",
-          "value": "4.9%",
-          "sub": "Sweet spot for tenant demand; broadest pool of prospective renters island-wide",
-          "tone": "green"
-        },
-        {
-          "label": "5-Room",
-          "value": "4.3%",
-          "sub": "Yield compressed as capital values outpaced rent growth over past 24 months",
-          "tone": "blue"
-        },
-        {
-          "label": "Executive / Jumbo",
-          "value": "3.7%",
-          "sub": "Thin tenant pool for large units; void periods eat into headline yield quickly",
-          "tone": "red"
-        }
-      ],
-      "footnote": "HDB resale transaction data (data.gov.sg) + HDB rental registrations, Q1 2026."
+      "eyebrow": "Headline Number",
+      "pre": "Faber Hills semi-detached — Jul 2025 transaction",
+      "pre_accent": "Jul 2025",
+      "value": "S$6.45M",
+      "change": "-27%",
+      "value_color": "yellow",
+      "post": "vs S$8.80M peak in Jul 2022 — same estate, same product type, freehold OCR D05",
+      "source": "URA caveats · POV Guy analysis"
     },
     {
       "kind": "list",
-      "tag": "Why OCR Beats CCR Now",
-      "title": "3 Reasons Outside Central Wins in 2026",
+      "eyebrow": "Why this matters",
+      "title": "Three things the data is telling us",
+      "title_accent": "data is telling us",
       "items": [
-        "Cross Island Line Phase 1 opened late 2025 — D18/D19 catchment rents jumped 8–10% YoY as commute times collapsed.",
-        "OCR condo median psf sits ~$1,450 vs CCR's $2,900; same absolute rent dollar means almost double the yield percentage.",
-        "HDB subletting approvals in mature OCR estates (Tampines, Bishan) run 15% higher volume than CCR equivalents — faster re-let cycles reduce void risk."
-      ]
+        {
+          "body": "Faber Hills has transacted 7 times in 2024 alone — volume is healthy but price is softening steadily from the 2022 peak."
+        },
+        {
+          "body": "Sentosa Cove (D04, 99-yr) saw a Feb 2025 deal at S$14.8M — that's the same unit that last moved at S$17.4M in Feb 2023, a -15% haircut."
+        },
+        {
+          "body": "Springwood terraces (D05, freehold RCR) closed at S$5.58M in Mar 2026 — up from S$5.03M in Jun 2022, showing pockets of resilience."
+        }
+      ],
+      "source": "URA caveats · POV Guy analysis"
+    },
+    {
+      "kind": "ranking",
+      "eyebrow": "Ranked · By Recent PSF",
+      "title": "D05 resale landed — latest PSF by type",
+      "title_accent": "latest PSF by type",
+      "items": [
+        {
+          "label": "Springwood Terrace",
+          "sub": "D05 FH RCR · Mar 2026 · 257.6 sqm",
+          "value": "S$2,166"
+        },
+        {
+          "label": "Faber Hills Semi",
+          "sub": "D05 FH OCR · Jul 2025 · 331.6 sqm",
+          "value": "S$1,945"
+        },
+        {
+          "label": "Springwood Terrace",
+          "sub": "D05 FH RCR · Jun 2025 · 340.9 sqm",
+          "value": "S$1,819"
+        },
+        {
+          "label": "Faber Hills Semi",
+          "sub": "D05 FH OCR · Sep 2025 · 538.2 sqm",
+          "value": "S$1,226"
+        }
+      ],
+      "source": "URA caveats · POV Guy analysis"
+    },
+    {
+      "kind": "pov_take",
+      "eyebrow": "POV Guy · Take",
+      "label": "The real signal",
+      "headline_parts": [
+        {
+          "text": "Sellers aren't",
+          "style": "plain"
+        },
+        {
+          "text": "distressed —",
+          "style": "plain"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "they're just",
+          "style": "plain"
+        },
+        {
+          "text": "done waiting.",
+          "style": "yellow"
+        }
+      ],
+      "punch": "The Faber Hills and Sentosa Cove prints show owners who bought 2021–2022 at peak are taking 15–27% off rather than holding indefinitely. That's not panic — that's rational repricing.",
+      "punch_bold": "The buyer who moves in Q2 2026 is buying someone else's patience.",
+      "by": "Farhan Adenan · CEA R068636D"
+    },
+    {
+      "kind": "stat",
+      "eyebrow": "Sentosa Cove Side",
+      "pre": "Coral Island detached — Feb 2025 caveat",
+      "pre_accent": "Feb 2025",
+      "value": "S$14.8M",
+      "change": "-15%",
+      "post": "Same unit transacted at S$17.39M in Feb 2023 — D04, 99-yr leasehold, 737 sqm land",
+      "source": "URA caveats · POV Guy analysis"
     },
     {
       "kind": "tip",
-      "tag": "POV Guy Tip",
-      "title": "Where the Net 5% Threshold Lives",
-      "body": "Net yield above 5% in 2026 means one thing: HDB 3- and 4-room flats in D18/D19/D22, bought at or below median resale price. Condo investors chasing that number must go OCR, buy below $1.3M, and keep maintenance below $400/month. CCR condos are wealth stores, not yield plays — stop confusing the two.",
-      "quote": "Buy the yield, not the postcode prestige.",
-      "signoff": "Farhan Adenan"
+      "eyebrow": "POV Guy · Tip",
+      "quote_parts": [
+        {
+          "text": "In a",
+          "style": "plain"
+        },
+        {
+          "text": "repricing market,",
+          "style": "yellow"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "the seller who moves",
+          "style": "plain"
+        },
+        {
+          "text": "first",
+          "style": "plain"
+        },
+        {
+          "text": "sets the new floor.",
+          "style": "plain"
+        }
+      ],
+      "by": "Farhan Adenan · POV Guy Realtor"
     },
     {
       "kind": "cta",
-      "title": "Ready to make",
-      "title_accent": "your next move?",
-      "primary_cta": "Book a 30-min strategy call"
+      "eyebrow": "Your Move",
+      "pre": "Eyeing landed in D04, D05 or D10?",
+      "title": "Let's map your",
+      "title_accent": "entry point.",
+      "sub": "30-min strategy call. No pitch — just the caveats, the PSF trend, and the negotiation angle that fits your budget.",
+      "url": "povguy.sg/strategy-call",
+      "button_sub": "type into your browser ↑"
+    },
+    {
+      "kind": "save",
+      "eyebrow": "One last thing",
+      "title": "Forward this to",
+      "title_accent": "someone deciding.",
+      "sub": "If you know anyone weighing a landed purchase this quarter, send them this before they overpay."
     }
   ],
-  "caption": "Singapore landlords clearing 5% net in 2026 — it's not where you think. 📈\n\n• HDB 3-room flats yield 5.4% gross island-wide; D19 condos hit 5.1% gross\n• CCR condos (D9/10) average just 2.6% gross — capital drag, not income play\n• Cross Island Line uplift pushed D18/D19 rents 8–10% YoY in 12 months\n\nIf your rental property isn't clearing 4%+ net, the asset is costing you opportunity.\n\n📅 Book a 30-min strategy call → meeting.povguy.sg\n\n— Farhan · POVGUY.SG · +65 9236 1561\n\n#sgproperty #povguy #sgrentals #hdbinvesting #condoyield #ocrcondo",
-  "hashtags": [
-    "#sgproperty",
-    "#povguy",
-    "#sgrentals",
-    "#hdbinvesting",
-    "#condoyield",
-    "#ocrcondo"
-  ],
+  "caption": "Resale landed is still transacting — but sellers are repricing, not holding.\n\n• Faber Hills semis hit S$8.8M in 2022. Latest print: S$6.45M — a 27% drop from peak.\n• Sentosa Cove (Coral Island): same unit, S$17.4M in Feb 2023 vs S$14.8M in Feb 2025.\n• Springwood terraces in D05 RCR are holding firmer — S$5.58M in Mar 2026 vs S$5.03M in 2022.\n\nThe sellers moving now aren't distressed — they're done waiting. That's the entry window for buyers who've done the homework.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
   "sources": [
-    "URA Rental Index Q1 2026",
-    "SRX District Rental Data Q1 2026",
-    "EdgeProp Singapore Q1 2026",
-    "HDB Rental Registrations via data.gov.sg Q1 2026",
-    "HDB Resale Transaction Data via data.gov.sg Q1 2026"
+    "URA caveats",
+    "POV Guy analysis"
   ]
 }
