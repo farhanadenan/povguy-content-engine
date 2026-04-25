@@ -1,0 +1,33 @@
+{
+  "drop_id": "2026-04-25-masterplan",
+  "theme": "URA Masterplan + Policy",
+  "hook": "URA's latest moves are quietly reshaping where Singapore's value flows next",
+  "slide_count": 10,
+  "sources": [
+    "URA Masterplan 2025",
+    "MND",
+    "MAS",
+    "HDB",
+    "MOF",
+    "POV Guy analysis"
+  ],
+  "rendered_at": "2026-04-25T08:48:07.774Z",
+  "image_urls": [
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-25/slide-01.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-25/slide-02.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-25/slide-03.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-25/slide-04.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-25/slide-05.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-25/slide-06.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-25/slide-07.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-25/slide-08.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-25/slide-09.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-04-25/slide-10.png"
+  ],
+  "image_cdn": {
+    "owner": "farhanadenan",
+    "repo": "povguy-content-engine",
+    "branch": "main",
+    "prefix": "output"
+  }
+}
