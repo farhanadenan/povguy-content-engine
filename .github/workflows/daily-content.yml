@@ -1,148 +1,96 @@
-name: Daily Publish
-# nudge 2026-04-23: re-register workflow_dispatch trigger
+name: Daily Content Generation
+
 on:
   schedule:
-    # 18:00 SGT preview drop (10:00 UTC same day) — silent-veto window opens
-    - cron: '0 10 * * *'
-    # 10:00 SGT next-day live publish (02:00 UTC) — publishes YESTERDAY-SGT's drop
-    - cron: '0 2 * * *'
+    # 05:00 SGT (21:00 UTC previous day) — run BEFORE publisher's 06:00 preview
+    - cron: '0 8 * * *'
   workflow_dispatch:
     inputs:
-      mode:
-        description: 'Publishing mode'
-        required: true
-        default: 'dry-run'
-        type: choice
-        options:
-          - dry-run
-          - preview-only
-          - publish
       date:
         description: 'Drop date (YYYY-MM-DD), defaults to today'
         required: false
+      force_theme:
+        description: 'Override theme (distress|hdb|rental|landed|wrap|masterplan|geopolitics)'
+        required: false
+
 jobs:
-  publish:
+  generate:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to commit output/<date>/ back so jsDelivr can serve it
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-      - name: Install deps
-        run: npm install --production
-      - name: Pull latest content drop from content-engine
+          fetch-depth: 0
+          token: ${{ secrets.GH_PAT }}   # PAT so the push triggers no other workflows by default
+      - uses: actions/setup-node@v4
+        with: { node-version: '20' }
+
+      - name: Install
+        run: |
+          npm install
+          npx playwright install --with-deps chromium
+
+      - name: Pull latest data snapshot
         env:
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           DATE="${{ github.event.inputs.date || '' }}"
-          if [ -z "$DATE" ]; then
-            HOUR_UTC=$(date -u +%H)
-            if [ "$HOUR_UTC" = "02" ]; then
-              # 02:00 UTC = 10:00 SGT publish cron — publish YESTERDAY-SGT's drop
-              # (the one that was previewed at 18:00 SGT the previous evening)
-              DATE=$(TZ=Asia/Singapore date -d 'yesterday' +%Y-%m-%d)
-            else
-              # Preview cron (10:00 UTC = 18:00 SGT) or manual run — today SGT
-              DATE=$(TZ=Asia/Singapore date +%Y-%m-%d)
-            fi
-          fi
+          [ -z "$DATE" ] && DATE=$(TZ=Asia/Singapore date +%Y-%m-%d)
           echo "DROP_DATE=$DATE" >> $GITHUB_ENV
-          mkdir -p drops/$DATE
-          BASE="https://raw.githubusercontent.com/farhanadenan/povguy-content-engine/main/output/$DATE"
-          MANIFEST_URL="$BASE/manifest.json"
-          # Retry up to 3x with exponential backoff. raw.githubusercontent.com has
-          # Fastly cache that can serve stale 404 for a few minutes after a fresh
-          # commit. 30s + 60s + 90s = 3-min window covers cache propagation.
-          MANIFEST_OK=0
-          for attempt in 1 2 3; do
-            if curl -sf -H "Authorization: token $GH_TOKEN" -o drops/$DATE/manifest.json "$MANIFEST_URL"; then
-              MANIFEST_OK=1
-              break
-            fi
-            echo "[publisher] manifest fetch attempt $attempt failed — retrying in $((attempt * 30))s"
-            sleep $((attempt * 30))
-          done
-          if [ "$MANIFEST_OK" = "1" ]; then
-            echo "[publisher] pulling drop from content-engine repo @ output/$DATE/"
-            SLIDE_COUNT=$(jq -r '.slide_count' drops/$DATE/manifest.json)
-            curl -sf -H "Authorization: token $GH_TOKEN" -o drops/$DATE/caption.txt "$BASE/caption.txt"
-            # Zero-pad slide numbers (slide-01.png, slide-02.png, ...) to match the
-            # renderer's output naming. The renderer pads so any downstream lex sort
-            # stays in narrative order (slide-1, slide-10, slide-2 was the bug).
-            for i in $(seq 1 "$SLIDE_COUNT"); do
-              num=$(printf "%02d" "$i")
-              curl -sf -H "Authorization: token $GH_TOKEN" -o "drops/$DATE/slide-$num.png" "$BASE/slide-$num.png"
-            done
-          else
-            echo "[publisher] no committed drop after 3 retries — falling back to artifact download"
-            gh api repos/farhanadenan/povguy-content-engine/actions/artifacts \
-              --jq ".artifacts[] | select(.name == \"drop-$DATE\") | .archive_download_url" \
-              | head -1 | xargs -I{} curl -L -H "Authorization: token $GH_TOKEN" -o drops/$DATE.zip {}
-            if [ ! -s drops/$DATE.zip ]; then
-              echo "[publisher] artifact also missing — drop $DATE not yet rendered. Aborting cleanly."
-              exit 78
-            fi
-            unzip -o drops/$DATE.zip -d drops/$DATE
-          fi
-          ls -la drops/$DATE/
-      - name: Determine mode from cron schedule
-        id: mode
-        run: |
-          MODE="${{ github.event.inputs.mode || '' }}"
-          if [ -z "$MODE" ]; then
-            HOUR=$(date -u +%H)
-            if [ "$HOUR" = "10" ]; then MODE="preview-only"
-            elif [ "$HOUR" = "02" ]; then MODE="publish"
-            else MODE="dry-run"; fi
-          fi
-          echo "mode=$MODE" >> $GITHUB_OUTPUT
-      - name: Restore preview-state from prior preview run
-        if: steps.mode.outputs.mode == 'publish'
-        env:
-          GH_TOKEN: ${{ secrets.GH_PAT }}
-        run: |
-          set -e
-          # The preview-state.json that records the kill-marker message ID is
-          # written on a different ephemeral runner during the 18:00 SGT preview.
-          # Without this step, the 10:00 SGT publish runner has no way to check
-          # if KILL was replied — it would either crash on missing file or fail
-          # safe and abort. Here we pull the most recent preview artifact so the
-          # publisher's kill check has the data it needs.
-          ARTIFACT_NAME="publish-result-${DROP_DATE}-preview-only"
-          echo "[publisher] looking for artifact: $ARTIFACT_NAME"
-          RUN_ID=$(gh api "repos/${{ github.repository }}/actions/artifacts?per_page=100" \
-            --jq ".artifacts[] | select(.name == \"$ARTIFACT_NAME\" and .expired == false) | .workflow_run.id" \
-            | head -1)
-          if [ -z "$RUN_ID" ]; then
-            echo "[publisher] no preview artifact found for $DROP_DATE — publisher will fail-safe abort"
-            exit 0
-          fi
-          echo "[publisher] found preview artifact in run $RUN_ID — downloading"
-          mkdir -p drops/$DROP_DATE
-          gh run download "$RUN_ID" \
-            --repo ${{ github.repository }} \
-            --name "$ARTIFACT_NAME" \
-            --dir drops/$DROP_DATE/
-          ls -la drops/$DROP_DATE/
+          mkdir -p snapshots/$DATE
+          # Fetch latest release tarball from data-engine and extract relevant theme files
+          gh release download --repo farhanadenan/povguy-data-engine --pattern "snapshot-*.tar.gz" --dir /tmp || echo "No snapshot yet — using stub data"
+          [ -f /tmp/snapshot-*.tar.gz ] && tar -xzf /tmp/snapshot-*.tar.gz -C snapshots/$DATE/ || true
 
-      - name: Run publisher
+      - name: Generate spec via Claude
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_MAIN_CHAT_ID: ${{ secrets.TELEGRAM_MAIN_CHAT_ID }}
-          TELEGRAM_STAGING_CHAT_ID: ${{ secrets.TELEGRAM_STAGING_CHAT_ID }}
-          META_PAGE_ACCESS_TOKEN: ${{ secrets.META_PAGE_ACCESS_TOKEN }}
-          META_PAGE_ID: ${{ secrets.META_PAGE_ID }}
-          META_INSTAGRAM_BUSINESS_ID: ${{ secrets.META_INSTAGRAM_BUSINESS_ID }}
-          META_THREADS_USER_ID: ${{ secrets.META_THREADS_USER_ID }}
-          META_APP_ID: ${{ secrets.META_APP_ID }}
-          META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
-          ENABLE_INSTAGRAM_LIVE: ${{ secrets.ENABLE_INSTAGRAM_LIVE }}
-          CONTENT_DROP_DIR: ./drops
-        run: node src/index.js --${{ steps.mode.outputs.mode }} --date $DROP_DATE
-      - name: Upload publish results as artifact
-        if: always()
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          FORCE_THEME: ${{ github.event.inputs.force_theme }}
+          DROPS_DIR: ./dist
+        run: |
+          mkdir -p dist/$DROP_DATE
+          node src/generator.js > dist/$DROP_DATE/spec.json
+          cat dist/$DROP_DATE/spec.json | jq -r '.hook' || true
+
+      - name: Render slides via Playwright
+        env:
+          DROPS_DIR: ./dist
+        run: node src/renderer.js $DROP_DATE
+
+      - name: Enhance cover slide via Nanobanana (optional)
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          DROPS_DIR: ./dist
+        continue-on-error: true
+        run: node src/cover-enhancer.js $DROP_DATE
+
+      - name: Commit drop output back to repo (for jsDelivr CDN)
+        # This is what makes the slide PNGs publicly addressable via:
+        #   https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/<date>/slide-N.png
+        # Publisher reads these URLs (from manifest.image_urls) for FB/Threads/IG.
+        run: |
+          mkdir -p output/$DROP_DATE
+          cp -r dist/$DROP_DATE/* output/$DROP_DATE/
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name  "github-actions[bot]"
+          git add output/$DROP_DATE
+          if git diff --staged --quiet; then
+            echo "no new files to commit"
+          else
+            git commit -m "drop: $DROP_DATE — automated content engine output"
+            git push origin HEAD:main
+          fi
+
+      - name: Upload drop as artifact (also kept for publisher artifact-pull path)
         uses: actions/upload-artifact@v4
         with:
-          name: publish-result-${{ env.DROP_DATE }}-${{ steps.mode.outputs.mode }}
-          path: drops/${{ env.DROP_DATE }}/{publish-result,preview-state}.json
-          if-no-files-found: ignore
+          name: drop-${{ env.DROP_DATE }}
+          path: dist/${{ env.DROP_DATE }}/
+          retention-days: 30
+          
+        run: |
+          gh workflow run daily-publish.yml \
+            --repo farhanadenan/povguy-publisher \
+            -f mode=preview-only \
+            -f date=$DROP_DATE
