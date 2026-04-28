@@ -88,9 +88,3 @@ jobs:
           name: drop-${{ env.DROP_DATE }}
           path: dist/${{ env.DROP_DATE }}/
           retention-days: 30
-          
-        run: |
-          gh workflow run daily-publish.yml \
-            --repo farhanadenan/povguy-publisher \
-            -f mode=preview-only \
-            -f date=$DROP_DATE
