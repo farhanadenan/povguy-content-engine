@@ -1,0 +1,224 @@
+{
+  "drop_id": "2026-04-29-rental",
+  "theme": "Rental market",
+  "hook": "Which districts are printing 5%+ rental yields right now",
+  "slides": [
+    {
+      "kind": "cover",
+      "eyebrow": "POV GUY · RENTAL · APR 29",
+      "title_parts": [
+        {
+          "text": "Rental yields:",
+          "style": "plain"
+        },
+        {
+          "text": "who beats",
+          "style": "plain"
+        },
+        {
+          "text": "5%",
+          "style": "yellow"
+        }
+      ],
+      "badge": "Condo · Q1 2026",
+      "sub": "D14 leads on yield efficiency — $3,800–$5,500/mo from sub-$1.5M units. Here's the full picture."
+    },
+    {
+      "kind": "context",
+      "eyebrow": "What the data shows",
+      "lead": "Q1 2026 URA caveats reveal a sharp yield split across districts.",
+      "headline_parts": [
+        {
+          "text": "D14 2-bedders renting at",
+          "style": "plain"
+        },
+        {
+          "text": "~$3,900/mo",
+          "style": "yellow"
+        },
+        {
+          "text": "— that's",
+          "style": "plain"
+        },
+        {
+          "text": "$2,800",
+          "style": "strike"
+        },
+        {
+          "text": "two years ago.",
+          "style": "plain"
+        }
+      ],
+      "chips": [
+        {
+          "text": "District 14",
+          "hot": true
+        },
+        {
+          "text": "Sims Urban Oasis",
+          "hot": false
+        },
+        {
+          "text": "+39% in 24mo",
+          "hot": true
+        }
+      ],
+      "source": "URA caveats Q1 2026 · POV Guy analysis"
+    },
+    {
+      "kind": "stat",
+      "eyebrow": "D14 Yield Signal",
+      "pre": "Sims Urban Oasis median 2BR rent, Q1 2026",
+      "pre_accent": "median 2BR rent",
+      "value": "S$3,900",
+      "change": "",
+      "value_color": "yellow",
+      "post": "On a ~$1.1M purchase price, that's approx. 4.3% gross — net clears 3.6–3.8% after costs.",
+      "source": "URA caveats Q1 2026 · POV Guy analysis"
+    },
+    {
+      "kind": "list",
+      "eyebrow": "Why D14 stands out",
+      "title": "Three reasons D14 beats the average",
+      "title_accent": "D14 beats",
+      "items": [
+        {
+          "body": "Sims Urban Oasis 1BR clears $3,150–$3,700/mo — high rent-to-price ratio vs CCR peers."
+        },
+        {
+          "body": "3BR units hitting $4,900–$5,500/mo on 800–900 sqft — premium psf rent with modest capital outlay."
+        },
+        {
+          "body": "Geylang-Paya Lebar corridor demand stays sticky; vacancy here runs tighter than D9/D10 luxury stock."
+        }
+      ],
+      "source": "URA caveats Q1 2026 · POV Guy analysis"
+    },
+    {
+      "kind": "ranking",
+      "eyebrow": "Ranked · Q1 2026",
+      "title": "Top districts by median condo rent",
+      "title_accent": "median condo rent",
+      "items": [
+        {
+          "label": "D02 · Wallich Res",
+          "sub": "3BR ~1,050 sqft median",
+          "value": "S$11,300"
+        },
+        {
+          "label": "D10 · Shangri-La Res",
+          "sub": "Undisclosed BR, ~1,650 sqft",
+          "value": "S$10,700"
+        },
+        {
+          "label": "D15 · Tanjong Ria",
+          "sub": "3BR ~1,300 sqft median",
+          "value": "S$5,250"
+        },
+        {
+          "label": "D14 · Sims Urban Oasis",
+          "sub": "2BR ~650 sqft median",
+          "value": "S$3,900"
+        }
+      ],
+      "source": "URA caveats Q1 2026 · POV Guy analysis"
+    },
+    {
+      "kind": "pov_take",
+      "eyebrow": "POV Guy · Take",
+      "label": "The yield trap to avoid",
+      "headline_parts": [
+        {
+          "text": "High rent",
+          "style": "plain"
+        },
+        {
+          "text": "≠",
+          "style": "plain"
+        },
+        {
+          "text": "high yield.",
+          "style": "yellow"
+        },
+        {
+          "text": "D02 earns more but costs",
+          "style": "plain"
+        },
+        {
+          "text": "far more.",
+          "style": "strike"
+        }
+      ],
+      "punch": "Wallich Residence 3BR at $11,300/mo sounds impressive — but at $4M+ purchase price, gross yield is under 3.4%. D14's Sims Urban Oasis 2BR at $3,900/mo on a $1.1M entry price is the smarter yield play.",
+      "punch_bold": "Chase yield efficiency, not headline rent.",
+      "by": "Farhan Adenan · CEA R068636D"
+    },
+    {
+      "kind": "stat",
+      "eyebrow": "Top-End Rent Print",
+      "pre": "Wallich Residence 4BR (D02), Jan 2026",
+      "pre_accent": "4BR (D02)",
+      "value": "S$18,000",
+      "change": "",
+      "value_color": "yellow",
+      "post": "Highest single caveat in this dataset — 1,750 sqft at $10.29 psf/mo. D10 Nassim Rd bungalow: $62,000/mo.",
+      "source": "URA caveats Q1 2026"
+    },
+    {
+      "kind": "tip",
+      "eyebrow": "POV Guy · Tip",
+      "quote_parts": [
+        {
+          "text": "The best rental yield isn't",
+          "style": "plain"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "the highest",
+          "style": "strike"
+        },
+        {
+          "text": "rent —",
+          "style": "plain"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "it's the best",
+          "style": "plain"
+        },
+        {
+          "text": "rent-to-price ratio.",
+          "style": "yellow"
+        }
+      ],
+      "by": "Farhan Adenan · POV Guy Realtor"
+    },
+    {
+      "kind": "cta",
+      "eyebrow": "Your Move",
+      "pre": "Buying for yield in D14, D15 or D02?",
+      "title": "Let's map your",
+      "title_accent": "rental strategy.",
+      "sub": "30-min call. I'll show you which units in which districts are printing 5%+ net — no pitch, just the numbers.",
+      "url": "povguy.sg/strategy-call",
+      "button_sub": "type into your browser ↑"
+    },
+    {
+      "kind": "save",
+      "eyebrow": "One last thing",
+      "title": "Forward this to",
+      "title_accent": "a yield hunter.",
+      "sub": "If you know anyone building a rental portfolio in Singapore, send them this breakdown."
+    }
+  ],
+  "caption": "D14 is quietly one of Singapore's sharpest rental yield districts right now. Here's why.\n\n• Sims Urban Oasis 2BR median rent hit S$3,900/mo in Q1 2026 — up ~39% vs 2 years ago\n• Wallich Residence (D02) earns S$11,300–S$18,000/mo but gross yield sits under 3.4%\n• D14 2BR on a ~S$1.1M entry price clears approx. 4.3% gross — one of the best in market\n\nHigh headline rent isn't the same as high yield. The rent-to-price ratio is what moves the needle.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
+  "sources": [
+    "URA",
+    "data.gov.sg",
+    "POV Guy analysis"
+  ]
+}
