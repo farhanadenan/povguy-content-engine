@@ -1,0 +1,221 @@
+{
+  "drop_id": "2026-04-30-landed",
+  "theme": "Landed market",
+  "hook": "Brand new vs resale landed: the data shows who blinks first",
+  "slides": [
+    {
+      "kind": "cover",
+      "eyebrow": "POV GUY · LANDED · APR 30 2026",
+      "title_parts": [
+        {
+          "text": "Resale landed:",
+          "style": "plain"
+        },
+        {
+          "text": "who blinks",
+          "style": "yellow"
+        },
+        {
+          "text": "first?",
+          "style": "plain"
+        }
+      ],
+      "badge": "Landed · Q2 2026",
+      "sub": "Brand new vs resale: prices, discounts, and which sellers are still moving units right now."
+    },
+    {
+      "kind": "context",
+      "eyebrow": "What just happened",
+      "lead": "Resale landed transactions are closing — but the price gap is widening.",
+      "headline_parts": [
+        {
+          "text": "Coral Island printed",
+          "style": "plain"
+        },
+        {
+          "text": "S$14.8M",
+          "style": "yellow"
+        },
+        {
+          "text": "in Feb 2025 —",
+          "style": "plain"
+        },
+        {
+          "text": "S$17.4M",
+          "style": "strike"
+        },
+        {
+          "text": "was the Feb 2023 comp.",
+          "style": "plain"
+        }
+      ],
+      "chips": [
+        {
+          "text": "District 4",
+          "hot": false
+        },
+        {
+          "text": "99-yr Leasehold",
+          "hot": false
+        },
+        {
+          "text": "-15% in 24mo",
+          "hot": true
+        }
+      ],
+      "source": "URA caveats · POV Guy analysis"
+    },
+    {
+      "kind": "stat",
+      "eyebrow": "Coral Island PSF",
+      "pre": "Sentosa Cove Coral Island — Feb 2025 transaction",
+      "pre_accent": "Feb 2025",
+      "value": "S$20,081",
+      "change": "-15%",
+      "value_color": "yellow",
+      "post": "psf on 737 sqm detached — lowest Coral Island print since mid-2021, down from S$23,798 psf in Feb 2023",
+      "source": "URA caveats · POV Guy analysis"
+    },
+    {
+      "kind": "list",
+      "eyebrow": "Why this matters",
+      "title": "Three signals in the resale data",
+      "title_accent": "Three signals",
+      "items": [
+        {
+          "body": "Coral Island: 3 deals in 2025 YTD — all below S$15M, all below 2022–23 peak prints of S$20M–S$22.8M."
+        },
+        {
+          "body": "Faber Hills semi-Ds: Jan 2025 closed at S$7.1M vs S$7.8M in Nov 2024 — sellers trimming 9% in 2 months."
+        },
+        {
+          "body": "Springwood terraces (D5 RCR freehold): Mar 2026 closed at S$5.58M — a 14-month high, bucking the softening trend."
+        }
+      ],
+      "source": "URA caveats · POV Guy analysis"
+    },
+    {
+      "kind": "ranking",
+      "eyebrow": "Ranked · Apr 2026",
+      "title": "Resale landed — recent closes by PSF",
+      "title_accent": "PSF",
+      "items": [
+        {
+          "label": "Coral Island D4",
+          "sub": "Detached, 99-yr, 737 sqm — Feb 2025",
+          "value": "S$20,081"
+        },
+        {
+          "label": "Springwood D5",
+          "sub": "Terrace, FH, 257 sqm — Mar 2026",
+          "value": "S$21,712"
+        },
+        {
+          "label": "Faber Hills D5",
+          "sub": "Semi-D, FH, 372 sqm — Jan 2025",
+          "value": "S$19,087"
+        },
+        {
+          "label": "Faber Hills D5",
+          "sub": "Semi-D, FH, 538 sqm — Sep 2025",
+          "value": "S$12,263"
+        }
+      ],
+      "source": "URA caveats · POV Guy analysis"
+    },
+    {
+      "kind": "pov_take",
+      "eyebrow": "POV Guy · Take",
+      "label": "Brand new vs resale",
+      "headline_parts": [
+        {
+          "text": "Sellers aren't",
+          "style": "plain"
+        },
+        {
+          "text": "desperate —",
+          "style": "plain"
+        },
+        {
+          "text": "but the",
+          "style": "plain"
+        },
+        {
+          "text": "discount window",
+          "style": "yellow"
+        },
+        {
+          "text": "is open.",
+          "style": "plain"
+        }
+      ],
+      "punch": "Coral Island is off 15% from peak. Faber Hills semi-Ds shed 9% in two months. But Springwood terraces in D5 just printed a 14-month high — location and freehold tenure still command a premium.",
+      "punch_bold": "The best resale buys are from sellers who bought at the 2022 peak and need to move now.",
+      "by": "Farhan Adenan · CEA R068636D"
+    },
+    {
+      "kind": "stat",
+      "eyebrow": "Freehold Terrace Trend",
+      "pre": "Springwood D5 RCR freehold terrace — Mar 2026 vs Jun 2022 median",
+      "pre_accent": "Mar 2026",
+      "value": "S$5.58M",
+      "change": "+11%",
+      "value_color": "yellow",
+      "post": "Freehold RCR terraces holding value — up ~11% from Jun 2022 comps at S$4.05M–S$5.03M; bucking broader resale softness",
+      "source": "URA caveats · POV Guy analysis"
+    },
+    {
+      "kind": "tip",
+      "eyebrow": "POV Guy · Tip",
+      "quote_parts": [
+        {
+          "text": "In a",
+          "style": "plain"
+        },
+        {
+          "text": "discovery market,",
+          "style": "yellow"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "the",
+          "style": "plain"
+        },
+        {
+          "text": "asking price",
+          "style": "strike"
+        },
+        {
+          "text": "is just the opening bid.",
+          "style": "plain"
+        }
+      ],
+      "by": "Farhan Adenan · POV Guy Realtor"
+    },
+    {
+      "kind": "cta",
+      "eyebrow": "Your Move",
+      "pre": "Eyeing landed in D4, D5, or D10?",
+      "title": "Let's map your",
+      "title_accent": "next move.",
+      "sub": "30-min strategy call. No pitch — just the data, the comps, and the discount angles that matter right now.",
+      "url": "povguy.sg/strategy-call",
+      "button_sub": "type into your browser ↑"
+    },
+    {
+      "kind": "save",
+      "eyebrow": "One last thing",
+      "title": "Forward this to",
+      "title_accent": "someone deciding.",
+      "sub": "If you know anyone weighing resale landed this month, send them this before they make an offer."
+    }
+  ],
+  "caption": "📉 Resale landed is softening — but not evenly. Here's where the data sits right now.\n\n• Coral Island (D4): Feb 2025 closed at S$14.8M — down 15% from the S$17.4M Feb 2023 comp\n• Faber Hills semi-Ds: S$7.1M in Jan 2025 vs S$7.8M in Nov 2024 — sellers trimming 9% in 2 months\n• Springwood terraces (D5 RCR freehold): Mar 2026 printed S$5.58M — a 14-month high, holding firm\n\nFreehold tenure and RCR location are doing the heavy lifting. Leasehold CCR sellers are making the real concessions.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
+  "sources": [
+    "URA caveats",
+    "POV Guy analysis",
+    "EdgeProp"
+  ]
+}
