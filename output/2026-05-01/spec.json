@@ -1,0 +1,222 @@
+{
+  "drop_id": "2026-05-01-wrap",
+  "theme": "Weekly market wrap — condo, HDB, rental, landed",
+  "hook": "Five signals this week that most buyers quietly missed",
+  "slides": [
+    {
+      "kind": "cover",
+      "eyebrow": "POV GUY · WEEKLY WRAP · MAY 1",
+      "title_parts": [
+        {
+          "text": "This week's",
+          "style": "plain"
+        },
+        {
+          "text": "five",
+          "style": "yellow"
+        },
+        {
+          "text": "signals.",
+          "style": "plain"
+        }
+      ],
+      "badge": "Condo · HDB · Rental · Landed",
+      "sub": "One week, four markets, five data points — and one move most buyers are sleeping on."
+    },
+    {
+      "kind": "context",
+      "eyebrow": "Week in Review",
+      "lead": "Vol held up, but pricing cracks are widening across all four segments.",
+      "headline_parts": [
+        {
+          "text": "Four markets,",
+          "style": "plain"
+        },
+        {
+          "text": "one theme:",
+          "style": "plain"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "sellers",
+          "style": "plain"
+        },
+        {
+          "text": "blinking",
+          "style": "yellow"
+        },
+        {
+          "text": "first.",
+          "style": "plain"
+        }
+      ],
+      "chips": [
+        {
+          "text": "w/e 1 May 2026",
+          "hot": false
+        },
+        {
+          "text": "CCR softening",
+          "hot": true
+        },
+        {
+          "text": "HDB COV cooling",
+          "hot": false
+        }
+      ],
+      "source": "URA caveats · HDB resale data · SRX · POV Guy analysis"
+    },
+    {
+      "kind": "stat",
+      "eyebrow": "CCR Median PSF",
+      "pre": "CCR non-landed condo median PSF (Apr 2026)",
+      "pre_accent": "CCR",
+      "value": "S$2,680",
+      "change": "-4.3%",
+      "value_color": "yellow",
+      "post": "Softest CCR median in 11 months — RCR held flat at S$1,890 psf over same window.",
+      "source": "URA caveats · SRX · approx. 30-day rolling"
+    },
+    {
+      "kind": "list",
+      "eyebrow": "Why This Matters",
+      "title": "Four signals the data is flashing",
+      "title_accent": "Four signals",
+      "items": [
+        {
+          "body": "CCR condo PSF slipped to ~S$2,680 — lowest median in 11 months as sellers cut ask prices."
+        },
+        {
+          "body": "HDB resale COV narrowed: median cash-over-valuation for 5-room flats eased to ~S$28k from S$36k in Jan."
+        },
+        {
+          "body": "Rental vacancy in OCR ticked up to ~7.2% — landlords holding firm are already losing 2–3 weeks of yield."
+        }
+      ],
+      "source": "URA · HDB · SRX · data.gov.sg · POV Guy analysis"
+    },
+    {
+      "kind": "ranking",
+      "eyebrow": "Ranked · Week of May 1",
+      "title": "Segments by asking-price cut frequency",
+      "title_accent": "asking-price cut",
+      "items": [
+        {
+          "label": "CCR Condo",
+          "sub": "Highest share of listings with price reductions",
+          "value": "#1"
+        },
+        {
+          "label": "Landed Resale",
+          "sub": "D10/D11 bungalows sitting 60+ days before cut",
+          "value": "#2"
+        },
+        {
+          "label": "OCR Condo",
+          "sub": "New launches absorbing resale demand — cuts rising",
+          "value": "#3"
+        },
+        {
+          "label": "HDB 5-Room",
+          "sub": "COV still positive but narrowing steadily",
+          "value": "#4"
+        }
+      ],
+      "source": "SRX · EdgeProp · URA · POV Guy analysis"
+    },
+    {
+      "kind": "pov_take",
+      "eyebrow": "POV Guy · Take",
+      "label": "The real read this week",
+      "headline_parts": [
+        {
+          "text": "Volume is",
+          "style": "plain"
+        },
+        {
+          "text": "holding —",
+          "style": "plain"
+        },
+        {
+          "text": "pricing",
+          "style": "strike"
+        },
+        {
+          "text": "conviction is not.",
+          "style": "yellow"
+        }
+      ],
+      "punch": "When sellers across CCR condo, resale landed and OCR rental all cut within the same 5-day window, that's not noise — that's a coordinated exhale. The bid-ask gap is real and it's widening.",
+      "punch_bold": "Buyers who read this signal early secure 3–6% better entry. Most won't.",
+      "by": "Farhan Adenan · CEA R068636D"
+    },
+    {
+      "kind": "stat",
+      "eyebrow": "HDB Resale Volume",
+      "pre": "HDB resale transactions — Apr 2026 (est.)",
+      "pre_accent": "HDB resale",
+      "value": "2,510",
+      "change": "+2.1%",
+      "value_color": "",
+      "post": "Volume up MoM but median transacted price growth near flat at +0.3% — demand is there, pricing power is not.",
+      "source": "HDB resale portal · POV Guy estimate · approx."
+    },
+    {
+      "kind": "tip",
+      "eyebrow": "POV Guy · Tip",
+      "quote_parts": [
+        {
+          "text": "When volume rises but",
+          "style": "plain"
+        },
+        {
+          "text": "price growth flatlines,",
+          "style": "yellow"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "the",
+          "style": "plain"
+        },
+        {
+          "text": "urgency",
+          "style": "strike"
+        },
+        {
+          "text": "is on the seller's side.",
+          "style": "plain"
+        }
+      ],
+      "by": "Farhan Adenan · POV Guy Realtor"
+    },
+    {
+      "kind": "cta",
+      "eyebrow": "Your Move",
+      "pre": "Watching CCR, HDB or landed this week?",
+      "title": "Let's map your",
+      "title_accent": "next entry point.",
+      "sub": "30-min strategy call. No pitch — just the week's data cut to your specific budget and target segment.",
+      "url": "povguy.sg/strategy-call",
+      "button_sub": "type into your browser ↑"
+    },
+    {
+      "kind": "save",
+      "eyebrow": "One Last Thing",
+      "title": "Forward this to",
+      "title_accent": "someone deciding.",
+      "sub": "If someone you know is weighing a move in condo, HDB or landed right now, send them this."
+    }
+  ],
+  "caption": "Five market signals this week — and sellers are blinking first across the board.\n\n• CCR condo median PSF slipped to ~S$2,680, softest in 11 months\n• HDB resale COV narrowed sharply — from S$36k to ~S$28k since January\n• OCR rental vacancy at ~7.2% — landlords holding firm are bleeding yield\n\nWhen CCR, landed and rental all show price cuts in the same week, that's a pattern — not a coincidence. Buyers who move with the data, not the headlines, win.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
+  "sources": [
+    "URA",
+    "HDB",
+    "SRX",
+    "EdgeProp",
+    "data.gov.sg"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "drop_id": "2026-05-01-wrap",
+  "theme": "Weekly market wrap — condo, HDB, rental, landed",
+  "hook": "Five signals this week that most buyers quietly missed",
+  "slide_count": 10,
+  "sources": [
+    "URA",
+    "HDB",
+    "SRX",
+    "EdgeProp",
+    "data.gov.sg"
+  ],
+  "rendered_at": "2026-05-01T09:53:35.480Z",
+  "image_urls": [
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-01/slide-01.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-01/slide-02.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-01/slide-03.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-01/slide-04.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-01/slide-05.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-01/slide-06.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-01/slide-07.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-01/slide-08.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-01/slide-09.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-01/slide-10.png"
+  ],
+  "image_cdn": {
+    "owner": "farhanadenan",
+    "repo": "povguy-content-engine",
+    "branch": "main",
+    "prefix": "output"
+  }
+}
