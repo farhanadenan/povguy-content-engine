@@ -1,0 +1,32 @@
+{
+  "drop_id": "2026-05-02-masterplan",
+  "theme": "URA Masterplan + Policy",
+  "hook": "URA just reshuffled the map — here's what shifts in your favour",
+  "slide_count": 10,
+  "sources": [
+    "URA Masterplan 2025",
+    "URA GLS H1 2026",
+    "MAS TDSR guidelines",
+    "HDB",
+    "POV Guy analysis"
+  ],
+  "rendered_at": "2026-05-02T09:15:26.715Z",
+  "image_urls": [
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-02/slide-01.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-02/slide-02.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-02/slide-03.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-02/slide-04.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-02/slide-05.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-02/slide-06.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-02/slide-07.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-02/slide-08.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-02/slide-09.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-02/slide-10.png"
+  ],
+  "image_cdn": {
+    "owner": "farhanadenan",
+    "repo": "povguy-content-engine",
+    "branch": "main",
+    "prefix": "output"
+  }
+}
