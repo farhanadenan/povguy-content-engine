@@ -1,0 +1,33 @@
+{
+  "drop_id": "2026-05-03-geopolitics",
+  "theme": "Global geopolitics & Singapore property",
+  "hook": "Capital is moving — and Singapore is where it lands",
+  "slide_count": 10,
+  "sources": [
+    "MAS",
+    "Federal Reserve",
+    "URA",
+    "Bloomberg FX",
+    "SRX",
+    "POV Guy network analysis"
+  ],
+  "rendered_at": "2026-05-03T09:27:04.510Z",
+  "image_urls": [
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-03/slide-01.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-03/slide-02.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-03/slide-03.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-03/slide-04.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-03/slide-05.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-03/slide-06.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-03/slide-07.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-03/slide-08.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-03/slide-09.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-03/slide-10.png"
+  ],
+  "image_cdn": {
+    "owner": "farhanadenan",
+    "repo": "povguy-content-engine",
+    "branch": "main",
+    "prefix": "output"
+  }
+}
