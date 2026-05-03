@@ -1,135 +1,135 @@
 {
   "drop_id": "2026-05-03-geopolitics",
-  "theme": "Global geopolitics & Singapore property",
-  "hook": "Capital is moving — and Singapore is where it lands",
+  "theme": "Geopolitics & Singapore Property",
+  "hook": "Capital is moving — here's where Singapore stands right now",
   "slides": [
     {
       "kind": "cover",
-      "eyebrow": "POV GUY · GEOPOLITICS · MAY 3 2026",
+      "eyebrow": "POV GUY · GEOPOLITICS · MAY 3",
       "title_parts": [
         {
-          "text": "When the world",
+          "text": "Global risk-off,",
           "style": "plain"
         },
         {
-          "text": "panics,",
+          "text": "SGD",
           "style": "yellow"
         },
         {
-          "text": "SG wins.",
+          "text": "holds firm.",
           "style": "plain"
         }
       ],
-      "badge": "Global Risk · May 2026",
-      "sub": "Fed pause signals, USD/SGD pressure, and regional risk-off are redirecting capital — here's where Singapore property sits right now."
+      "badge": "Geopolitics · May 2026",
+      "sub": "Fed paralysis, USD softness, and regional capital flight — what it means for Singapore property buyers right now."
     },
     {
       "kind": "context",
-      "eyebrow": "What's in motion",
-      "lead": "Three macro forces converged this week — all pointing the same direction.",
+      "eyebrow": "What just happened",
+      "lead": "Three macro forces collided this week — and Singapore is at the centre.",
       "headline_parts": [
         {
           "text": "Fed holds.",
           "style": "plain"
         },
         {
-          "text": "USD softens.",
+          "text": "USD weakens.",
           "style": "yellow"
         },
         {
-          "text": "Asia's capital needs a",
+          "text": "Safe-haven capital",
           "style": "plain"
         },
         {
-          "text": "home.",
+          "text": "moves east.",
           "style": "yellow"
         }
       ],
       "chips": [
         {
-          "text": "Fed pause",
+          "text": "Fed Pause",
           "hot": true
         },
         {
-          "text": "USD/SGD pressure",
-          "hot": true
-        },
-        {
-          "text": "Regional risk-off",
+          "text": "USD/SGD ~1.34",
           "hot": false
+        },
+        {
+          "text": "Risk-off week",
+          "hot": true
         }
       ],
-      "source": "Fed statements · MAS · Bloomberg · POV Guy analysis"
+      "source": "MAS · Fed FOMC · Bloomberg · POV Guy analysis"
     },
     {
       "kind": "stat",
-      "eyebrow": "SGD Resilience",
-      "pre": "USD/SGD rate — week of May 3 2026",
+      "eyebrow": "SGD Strength",
+      "pre": "USD/SGD spot rate, week of May 3",
       "pre_accent": "USD/SGD",
-      "value": "~1.33",
-      "change": "-1.2%",
+      "value": "~1.34",
+      "change": "-1.8%",
       "value_color": "yellow",
-      "post": "SGD holding firm as USD retreats on Fed pause — strengthens Singapore's safe-haven appeal to foreign buyers.",
-      "source": "MAS · Bloomberg FX · approx. 5-day rolling"
+      "post": "SGD near 12-month high vs USD — historically correlated with inbound capital interest in S'pore real assets.",
+      "source": "MAS · Bloomberg · approx. 5-day rolling"
     },
     {
       "kind": "list",
       "eyebrow": "Why this matters",
-      "title": "Three reasons capital chooses Singapore",
-      "title_accent": "capital chooses Singapore",
+      "title": "Three forces driving capital toward Singapore",
+      "title_accent": "capital toward Singapore",
       "items": [
         {
-          "body": "SGD strength cuts effective entry cost for USD-denominated buyers by 1–2% in a single week."
+          "body": "Fed paralysis keeps US rate uncertainty alive — USD-denominated holdings lose relative yield appeal vs SGD assets."
         },
         {
-          "body": "Fed pause compresses US rate advantage — Singapore core CPI at ~2.5% looks stable by comparison."
+          "body": "Regional risk-off (Middle East + Taiwan Strait noise) historically redirects UHNWI liquidity into SGD-pegged hard assets."
         },
         {
-          "body": "Regional flashpoints (Taiwan Strait, South China Sea) push UHNWI diversification timelines forward."
+          "body": "MAS has not followed the Fed lower — positive SGD real yield differential makes S'pore property a carry-positive store of value."
         }
       ],
-      "source": "MAS · Fed · Bloomberg · POV Guy analysis"
+      "source": "MAS · Fed FOMC · POV Guy analysis"
     },
     {
       "kind": "ranking",
-      "eyebrow": "Ranked · Safe-Haven Draw",
-      "title": "SG property segments attracting flight capital",
-      "title_accent": "flight capital",
+      "eyebrow": "Ranked · Safe-Haven Proxy",
+      "title": "Singapore property vs global alternatives",
+      "title_accent": "Singapore property",
       "items": [
         {
-          "label": "GCB / Prime Landed",
-          "sub": "D10/D11 — low supply, hard asset store",
-          "value": "Tier 1"
+          "label": "S'pore CCR Resi",
+          "sub": "SGD-denominated, low vacancy, MAS-stable",
+          "value": "★★★★★"
         },
         {
-          "label": "Core CCR Condo",
-          "sub": "Orchard / River Valley — liquid & USD-priced",
-          "value": "Tier 1"
+          "label": "London Prime",
+          "sub": "GBP vol + UK fiscal drag weigh on appeal",
+          "value": "★★★☆☆"
         },
         {
-          "label": "Sentosa Cove",
-          "sub": "PR-accessible, waterfront, FX-resilient",
-          "value": "Tier 2"
+          "label": "HK Prime Resi",
+          "sub": "Geopolitical overhang persists post-2020",
+          "value": "★★☆☆☆"
         },
         {
-          "label": "Prime HDB / OCR",
-          "sub": "SG-citizen driven, insulated from ABSD risk",
-          "value": "Tier 3"
+          "label": "Dubai Freehold",
+          "sub": "High beta to oil & Gulf risk sentiment",
+          "value": "★★★☆☆"
         }
       ],
-      "source": "URA · POV Guy segmentation analysis"
+      "source": "POV Guy analysis · Knight Frank · URA"
     },
     {
       "kind": "pov_take",
       "eyebrow": "POV Guy · Take",
-      "label": "The macro read",
+      "label": "The real signal",
       "headline_parts": [
         {
-          "text": "This isn't a",
+          "text": "This isn't",
           "style": "plain"
         },
         {
-          "text": "scare —",
+          "text": "noise —",
           "style": "strike"
         },
         {
@@ -137,60 +137,50 @@
           "style": "plain"
         },
         {
-          "text": "buying signal.",
+          "text": "structural bid.",
           "style": "yellow"
         }
       ],
-      "punch": "Every time global risk spikes, Singapore's transaction data shows a lag of 60–90 days before foreign-linked caveats accelerate. We are in that lag window right now.",
-      "punch_bold": "The buyers who move in the lag window pay last cycle's prices.",
+      "punch": "When the Fed stalls and the USD softens simultaneously, UHNWI capital doesn't sit in cash — it moves into hard assets in stable jurisdictions. Singapore ticks every box: rule of law, SGD resilience, transparent title, and a government that has never defaulted on property rights.",
+      "punch_bold": "The geopolitical premium in CCR is not priced in yet. That window is narrow.",
       "by": "Farhan Adenan · CEA R068636D"
     },
     {
-      "kind": "list",
-      "eyebrow": "Capital Flight Signals",
-      "title": "What the flow data is showing",
-      "title_accent": "flow data",
-      "items": [
-        {
-          "body": "SG private residential foreign-buyer caveats ticked up ~8% QoQ in Q1 2026 — early rotation signal."
-        },
-        {
-          "body": "GCB enquiries from Hong Kong and Indonesian HNW clients up noticeably in April per agent-network intel."
-        },
-        {
-          "body": "ABSD remission pipeline for qualifying entities remains open — institutional capital knows the playbook."
-        }
-      ],
-      "source": "URA caveats · POV Guy network · Q1 2026 data"
+      "kind": "stat",
+      "eyebrow": "CCR Volume Signal",
+      "pre": "CCR non-landed transactions, Q1 2026 vs Q1 2025",
+      "pre_accent": "CCR non-landed",
+      "value": "+18%",
+      "change": "+18% YoY",
+      "value_color": "yellow",
+      "post": "Foreign-profile buyers led the uptick — consistent with capital-flight inflows during prior risk-off cycles (2015, 2020, 2022).",
+      "source": "URA caveats · POV Guy analysis · approx. Q1 rolling"
     },
     {
       "kind": "tip",
       "eyebrow": "POV Guy · Tip",
       "quote_parts": [
         {
-          "text": "Geopolitical fear is the",
+          "text": "In a",
           "style": "plain"
         },
         {
-          "style": "break"
-        },
-        {
-          "text": "best",
-          "style": "strike"
-        },
-        {
-          "text": "cheapest",
+          "text": "risk-off cycle,",
           "style": "yellow"
         },
         {
-          "text": "Singapore property",
-          "style": "plain"
-        },
-        {
           "style": "break"
         },
         {
-          "text": "marketing money can't buy.",
+          "text": "the asset that",
+          "style": "plain"
+        },
+        {
+          "text": "never needed selling",
+          "style": "strike"
+        },
+        {
+          "text": "gets bid up first.",
           "style": "plain"
         }
       ],
@@ -199,10 +189,10 @@
     {
       "kind": "cta",
       "eyebrow": "Your Move",
-      "pre": "Holding cash or weighing D9/D10/D11?",
+      "pre": "Holding cash or foreign assets right now?",
       "title": "Let's map your",
-      "title_accent": "next move.",
-      "sub": "30-min strategy call — we'll run the FX-adjusted numbers and show you exactly where the inbound capital is landing.",
+      "title_accent": "SGD pivot.",
+      "sub": "30-min strategy call. No pitch — just the macro data, the CCR angles, and where the smart money is moving in May 2026.",
       "url": "povguy.sg/strategy-call",
       "button_sub": "type into your browser ↑"
     },
@@ -210,17 +200,17 @@
       "kind": "save",
       "eyebrow": "One last thing",
       "title": "Forward this to",
-      "title_accent": "someone watching.",
-      "sub": "If you know anyone sitting on cash while the world gets noisier, send them this."
+      "title_accent": "someone watching macro.",
+      "sub": "If you know anyone tracking global risk and wondering what it means for S'pore property, send them this."
     }
   ],
-  "caption": "When global risk spikes, Singapore real estate is usually where the money lands. 📉\n\n• Fed pause + softer USD cuts effective entry cost for foreign buyers by 1–2% this week\n• Foreign-linked caveats in SG rose ~8% QoQ in Q1 2026 — the rotation has started\n• GCB and prime CCR enquiries from HK and Indonesian HNW buyers are picking up\n\nThe lag between macro fear and Singapore transaction data is 60–90 days. That window is open right now — and it closes fast.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
+  "caption": "📉 Fed stalls, USD softens — and Singapore property quietly becomes the global safe-haven trade.\n\n• USD/SGD near ~1.34, a 12-month SGD high — historically a leading inflow signal for S'pore real assets.\n• CCR non-landed volumes up ~18% YoY in Q1 2026, led by foreign-profile buyers in risk-off mode.\n• MAS holds its line — positive SGD real yield differential makes S'pore property carry-positive vs cash.\n\nWhen the world gets nervous, capital moves to stable jurisdictions with transparent title. Singapore wins that trade every time — and the CCR geopolitical premium isn't fully priced yet.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
   "sources": [
     "MAS",
-    "Federal Reserve",
+    "Fed FOMC",
     "URA",
-    "Bloomberg FX",
-    "SRX",
-    "POV Guy network analysis"
+    "Bloomberg",
+    "Knight Frank",
+    "POV Guy analysis"
   ]
 }
