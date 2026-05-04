@@ -1,0 +1,225 @@
+{
+  "drop_id": "2026-05-04-distress-condo",
+  "theme": "Condo distress radar + resale undervalue by district",
+  "hook": "D10 condos asking 51% below median — what the data actually says",
+  "slides": [
+    {
+      "kind": "cover",
+      "eyebrow": "POV GUY · CONDO · MAY 4 2026",
+      "title_parts": [
+        {
+          "text": "D10 condo:",
+          "style": "plain"
+        },
+        {
+          "text": "51% off",
+          "style": "yellow"
+        },
+        {
+          "text": "median psf",
+          "style": "plain"
+        }
+      ],
+      "badge": "Condo Distress · May 2026",
+      "sub": "This week's radar flags D10, D09 and D15 listings asking 38–51% below their district median — live on PropertyGuru right now."
+    },
+    {
+      "kind": "context",
+      "eyebrow": "What just appeared",
+      "lead": "Two d'Leedon units hit the market this week at half the district median.",
+      "headline_parts": [
+        {
+          "text": "d'Leedon asking",
+          "style": "plain"
+        },
+        {
+          "text": "S$1,182 psf",
+          "style": "yellow"
+        },
+        {
+          "text": "vs a D10 median of",
+          "style": "plain"
+        },
+        {
+          "text": "S$2,408 psf.",
+          "style": "strike"
+        }
+      ],
+      "chips": [
+        {
+          "text": "District 10",
+          "hot": true
+        },
+        {
+          "text": "5-bed / 3,766 sqft",
+          "hot": false
+        },
+        {
+          "text": "-51% vs median",
+          "hot": true
+        }
+      ],
+      "source": "PropertyGuru listings · POV Guy radar · 21 Apr 2026"
+    },
+    {
+      "kind": "stat",
+      "eyebrow": "Deepest Discount",
+      "pre": "d'Leedon ask vs D10 condo median psf",
+      "pre_accent": "D10 condo median",
+      "value": "−51%",
+      "change": "",
+      "value_color": "yellow",
+      "post": "Largest single-project gap in this week's 50-listing condo distress scan — at S$1,182 psf on a 3,766 sqft unit.",
+      "source": "PropertyGuru · POV Guy distress radar · Apr 2026"
+    },
+    {
+      "kind": "list",
+      "eyebrow": "Why this matters",
+      "title": "Three distress clusters this week",
+      "title_accent": "distress clusters",
+      "items": [
+        {
+          "body": "D10 (d'Leedon, Montview, Lutheran Towers): 4 listings at 39–51% below the S$2,408 psf district median — the deepest pocket in this scan."
+        },
+        {
+          "body": "D09 Mackenzie 88: 2-bed asking S$1,845 psf vs D09 median S$2,973 psf — a 38% gap on a sub-$1.6m ticket in the Core Central Region."
+        },
+        {
+          "body": "D15 (Malvern Springs, Villa Marina): 37–40% below the S$2,349 psf median — East Coast freehold at pricing not seen since pre-2021 levels."
+        }
+      ],
+      "source": "PropertyGuru · POV Guy distress radar · Apr 2026"
+    },
+    {
+      "kind": "ranking",
+      "eyebrow": "Ranked · This Week",
+      "title": "Biggest condo discount vs district median",
+      "title_accent": "condo discount",
+      "items": [
+        {
+          "label": "d'Leedon (D10)",
+          "sub": "5-bed, 3,766 sqft — ask S$1,182 psf",
+          "value": "−51%"
+        },
+        {
+          "label": "Lutheran Towers (D10)",
+          "sub": "4-bed, 1,916 sqft — ask S$1,352 psf",
+          "value": "−44%"
+        },
+        {
+          "label": "Parc Haven (D12)",
+          "sub": "3-bed, 2,518 sqft — ask S$1,033 psf",
+          "value": "−44%"
+        },
+        {
+          "label": "Sims Green (D14)",
+          "sub": "3-bed, 1,755 sqft — ask S$1,054 psf",
+          "value": "−43%"
+        }
+      ],
+      "source": "PropertyGuru · POV Guy distress radar · Apr 2026"
+    },
+    {
+      "kind": "pov_take",
+      "eyebrow": "POV Guy · Take",
+      "label": "What the gap means",
+      "headline_parts": [
+        {
+          "text": "A 51% discount isn't a",
+          "style": "plain"
+        },
+        {
+          "text": "deal —",
+          "style": "strike"
+        },
+        {
+          "text": "it's a",
+          "style": "plain"
+        },
+        {
+          "text": "signal to verify.",
+          "style": "yellow"
+        }
+      ],
+      "punch": "Listings this far below median almost always carry a story: lease decay, legal encumbrance, deferred maintenance, or an overleveraged seller who needs out fast. The number alone isn't the edge — understanding why it's there is.",
+      "punch_bold": "Do the caveat check before you do the viewing.",
+      "by": "Farhan Adenan · CEA R068636D"
+    },
+    {
+      "kind": "list",
+      "eyebrow": "Outside CCR",
+      "title": "Best-value distress beyond D9–D11",
+      "title_accent": "distress beyond D9–D11",
+      "items": [
+        {
+          "body": "D05 — Westcove & Blue Horizon: two listings at 33–37% below the S$2,106 psf median; sub-$1.5m entry with HV/West Coast MRT access."
+        },
+        {
+          "body": "D15 — Malvern Springs: 2,734 sqft freehold asking S$1,419 psf, 40% below district median — rare large-format East Coast unit at this psf."
+        },
+        {
+          "body": "D28 — Seletar Springs: 4-bed, 2,067 sqft asking S$1,064 psf vs median S$1,625 psf, 35% below — North-East landed-fringe condo at sub-$2.2m."
+        }
+      ],
+      "source": "PropertyGuru · POV Guy distress radar · Apr 2026"
+    },
+    {
+      "kind": "tip",
+      "eyebrow": "POV Guy · Tip",
+      "quote_parts": [
+        {
+          "text": "The biggest",
+          "style": "plain"
+        },
+        {
+          "text": "discount",
+          "style": "yellow"
+        },
+        {
+          "text": "in the room",
+          "style": "plain"
+        },
+        {
+          "style": "break"
+        },
+        {
+          "text": "is rarely the",
+          "style": "plain"
+        },
+        {
+          "text": "best",
+          "style": "strike"
+        },
+        {
+          "text": "safest buy.",
+          "style": "plain"
+        }
+      ],
+      "by": "Farhan Adenan · POV Guy Realtor"
+    },
+    {
+      "kind": "cta",
+      "eyebrow": "Your Move",
+      "pre": "Eyeing D10, D09, D15 or D05?",
+      "title": "Let's map your",
+      "title_accent": "next move.",
+      "sub": "30-min strategy call — we cross-check every distress flag against URA caveats, lease data and recent transacted psf before you view.",
+      "url": "povguy.sg/strategy-call",
+      "button_sub": "type into your browser ↑"
+    },
+    {
+      "kind": "save",
+      "eyebrow": "One last thing",
+      "title": "Forward this to",
+      "title_accent": "someone deciding.",
+      "sub": "If you know anyone weighing a condo upgrade or CCR entry this month, send them this — the window on these listings is short."
+    }
+  ],
+  "caption": "D10 condos asking 51% below district median — here's what the distress radar picked up this week.\n\n• d'Leedon listed at S$1,182 psf vs the D10 median of S$2,408 psf — a 51% gap on a 3,766 sqft unit\n• D09, D12, D14 and D15 also flagged: 4 projects asking 38–44% below their respective district medians\n• Listings this far below median almost always carry a reason — caveat check before viewing is non-negotiable\n\nThe data is live. The question is whether the discount reflects value or a problem you inherit.\n\n📅 Book a 30-min strategy call → povguy.sg/strategy-call\n\n— Farhan · POVGUY.SG · +65 9236 1561",
+  "sources": [
+    "PropertyGuru",
+    "URA caveats",
+    "POV Guy distress radar",
+    "data.gov.sg"
+  ]
+}

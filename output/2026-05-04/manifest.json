@@ -1,0 +1,31 @@
+{
+  "drop_id": "2026-05-04-distress-condo",
+  "theme": "Condo distress radar + resale undervalue by district",
+  "hook": "D10 condos asking 51% below median — what the data actually says",
+  "slide_count": 10,
+  "sources": [
+    "PropertyGuru",
+    "URA caveats",
+    "POV Guy distress radar",
+    "data.gov.sg"
+  ],
+  "rendered_at": "2026-05-04T10:21:18.955Z",
+  "image_urls": [
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-04/slide-01.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-04/slide-02.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-04/slide-03.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-04/slide-04.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-04/slide-05.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-04/slide-06.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-04/slide-07.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-04/slide-08.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-04/slide-09.png",
+    "https://cdn.jsdelivr.net/gh/farhanadenan/povguy-content-engine@main/output/2026-05-04/slide-10.png"
+  ],
+  "image_cdn": {
+    "owner": "farhanadenan",
+    "repo": "povguy-content-engine",
+    "branch": "main",
+    "prefix": "output"
+  }
+}
